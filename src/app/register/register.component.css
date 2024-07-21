@@ -1,0 +1,44 @@
+.purple-bg {
+    /* Bootstrap's purple color */
+    height: 100%;
+    padding: 40px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  
+  .purple-bg img {
+    max-width: 80%;
+    height: auto;
+  }
+  
+  .text-white h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: black;
+  }
+  
+  .text-white p {
+    font-size: 16px;
+    color: black;
+  }
+  
+  .container {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+   
+    max-width: 900px;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  @media (max-width: 767px) {
+    .purple-bg {
+      display: none;
+    }
+    .container {
+      border-radius: 10px;
+    }
+  }
+  

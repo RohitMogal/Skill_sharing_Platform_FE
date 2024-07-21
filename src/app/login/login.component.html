@@ -1,0 +1,35 @@
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="row w-100">
+      <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center purple-bg">
+        <div class=" text-center">
+            <img src="/assets/l.png" alt="Join Us" class="img-fluid mb-4">
+          <h3>Welcome Back!</h3>
+          <p>Sign in to access your account and continue where you left off.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h2 class="text-center mb-4">Login</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" formControlName="email" class="form-control" />
+            <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched" class="text-danger">
+              A valid email is required.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" formControlName="password" class="form-control" />
+            <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched" class="text-danger">
+              Password is required .
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button>
+        </form>
+        <div class="text-center mt-3">
+          <p>Don't have an account? <a routerLink="/register">Register</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
