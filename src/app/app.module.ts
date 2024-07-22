@@ -8,6 +8,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { CreatesessionComponent } from './createsession/createsession.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -15,12 +20,17 @@ import { FooterComponent } from './footer/footer.component';
     RegisterComponent,
     LoginComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    CreatesessionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
