@@ -1,94 +1,86 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="p-3 border rounded">
+            <div class="p-3 ">
                 <div class="row">
                     <div class="col-md-4 text-center">
-                        <img src="assets/session.avif" alt="Image" class="img-fluid rounded session">
+                        <img src="assets/session.avif" alt="Image" class="img-fluid mb-4">
                         <p>Join our skill-sharing sessions and learn from experts around the world.</p>
                     </div>
+                    
                     <div class="col-md-8">
                         <!-- Form Section -->
                         <form [formGroup]="sessionForm" (ngSubmit)="onSubmit()">
                             <div class="form-group">
                                 <label for="title">Title</label>
-                                <input 
-                                    type="text" 
-                                    id="title" 
-                                    class="form-control" 
-                                    formControlName="title" 
-                                    style="max-width: 100%;" 
-                                    placeholder="Enter the title of the session"
-                                >
+                                <input type="text" id="title" class="form-control" formControlName="title"
+                                    style="max-width: 100%;" placeholder="Enter the title of the session">
                             </div>
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <textarea 
-                                    id="description" 
-                                    class="form-control" 
-                                    formControlName="description" 
-                                    rows="2" 
-                                    style="max-width: 100%;" 
-                                    placeholder="Provide a brief description of the session"
-                                ></textarea>
+                                <textarea id="description" class="form-control" formControlName="description" rows="2"
+                                    style="max-width: 100%;"
+                                    placeholder="Provide a brief description of the session"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="link">Link</label>
-                                <input 
-                                    type="text" 
-                                    id="link" 
-                                    class="form-control" 
-                                    formControlName="link" 
-                                    style="max-width: 100%;" 
-                                    placeholder="Enter the session link"
-                                >
+                                <input type="text" id="link" class="form-control" formControlName="link"
+                                    style="max-width: 100%;" placeholder="Enter the session link">
                             </div>
                             <div class="form-group">
                                 <label for="date">Date</label>
-                                <input
-                                    type="date"
-                                    id="date"
-                                    class="form-control"
-                                    formControlName="date"
-                                    [min]="minDate"
-                                    style="max-width: 100%;"
-                                    placeholder="Select a date"
-                                />
+                                <input type="date" id="date" class="form-control" formControlName="date" [min]="minDate"
+                                    style="max-width: 100%;" placeholder="Select a date" />
                             </div>
                             <div class="form-group">
                                 <label for="time">Time</label>
                                 <div class="d-flex">
-                                    <select id="hour" class="form-control me-1" formControlName="hour" placeholder="Hour">
+                                    <select id="hour" class="form-control me-1" formControlName="hour"
+                                        placeholder="Hour">
                                         <option *ngFor="let hour of hours" [value]="hour">{{ hour }}</option>
                                     </select>
                                     <span class="me-1">:</span>
-                                    <select id="minute" class="form-control me-1" formControlName="minute" placeholder="Minute">
-                                        <option *ngFor="let minute of minutes" [value]="minute">{{ minute < 10 ? '0' + minute : minute }}</option>
+                                    <select id="minute" class="form-control me-1" formControlName="minute"
+                                        placeholder="Minute">
+                                        <option *ngFor="let minute of minutes" [value]="minute">{{ minute < 10 ? '0' +
+                                                minute : minute }}</option>
                                     </select>
-                                    <select id="period" class="form-control" formControlName="period" placeholder="AM/PM">
+                                    <select id="period" class="form-control" formControlName="period"
+                                        placeholder="AM/PM">
                                         <option *ngFor="let p of amPm" [value]="p">{{ p }}</option>
                                     </select>
                                 </div>
                             </div>
                             <!-- Interests Section -->
                             <div class="mb-3">
-                                <label>Interests:</label><br/>
-                                <span class="badge rounded-pill bg-secondary me-2">C</span>
-                                <span class="badge rounded-pill bg-secondary me-2">Angular</span>
-                                <span class="badge rounded-pill bg-secondary me-2">React</span>
+                                <!-- <label for="interests">Interests:</label> -->
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Select Interests
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item">C</a></li>
+                                        <li><a class="dropdown-item">Angular</a></li>
+                                        <li><a class="dropdown-item">React</a></li>
+                                        <li><a class="dropdown-item">JavaScript</a></li>
+                                        <li><a class="dropdown-item">Python</a></li>
+                                        <li><a class="dropdown-item">Java</a></li>
+                                        <li><a class="dropdown-item">PHP</a></li>
+                                        <li><a class="dropdown-item">Node.js</a></li>
+
+                                    </ul>
+                                </div>
                             </div>
+
+
+
+
                             <!-- Image Upload Section -->
                             <div class="form-group">
                                 <label for="imageUpload">Upload Image</label>
-                                <input 
-                                    type="file" 
-                                    id="imageUpload" 
-                                    class="form-control" 
-                                    formControlName="imageUpload" 
-                                    accept="image/*" 
-                                    style="max-width: 100%;" 
-                                    placeholder="Choose an image to upload"
-                                />
+                                <input type="file" id="imageUpload" class="form-control" formControlName="imageUpload"
+                                    accept="image/*" style="max-width: 100%;" placeholder="Choose an image to upload" />
                             </div>
                             <button type="submit" class="btn btn-primary mt-3">Create</button>
                         </form>
