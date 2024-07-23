@@ -8,11 +8,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule } from '@angular/material/button';
+import { CreatesessionComponent } from './createsession/createsession.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -21,18 +24,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     NavbarComponent,
     FooterComponent,
-
-
+    CreatesessionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    CommonModule,
-    MatIconModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
+    BrowserAnimationsModule,
     MatMenuModule,
-    MatButtonModule,
-    BrowserAnimationsModule
+    MatMenuModule,
+MatIconModule,
+MatMenuModule,
+MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

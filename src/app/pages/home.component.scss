@@ -4,13 +4,25 @@
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   line-height: 120%;
-  font-family: "geomanist";
+  // font-family: "geomanist";
   font-weight: 600;
 }
 .heading2  {
   font-size: 35px;
   display: block;
-  font-family: "geomanist";
+  // font-family: "geomanist";
+  font-weight: 600px;
+  line-height: 120%;
+  padding-left: 5%;
+  padding-top: 10%;
+  font-weight: 600;
+  // margin-right: 100px;
+}
+
+.heading3{
+  font-size: 35px;
+  display: block;
+  // font-family: "geomanist";
   font-weight: 600px;
   line-height: 120%;
   padding-left: 5%;
@@ -18,74 +30,64 @@
   font-weight: 600;
 }
 
-.heading3{
-    font-size: 25px;
-    display: block;
-    font-family: "geomanist";
-    font-weight: 600px;
-    line-height: 120%;
-    padding-left: 5%;
-    padding-top: 10%;
-    font-weight: 600;
-}
-
 .heading4{
-    font-size: 25px;
-    display: block;
-    font-family: "geomanist";
-    // font-weight: 100%;
-    line-height: 120%;
-    padding-left: 5%;
-    padding-top: 20%;
-    font-weight: 600;
+  font-size: 35px;
+  display: block;
+  // font-family: "geomanist";
+  font-weight: 600px;
+  line-height: 120%;
+  padding-left: 5%;
+  padding-top: 10%;
+  font-weight: 600;
 }
 
 .heading5{
-    font-size: 25px;
-    display: block;
-    font-family: "geomanist";
-    // font-weight: 100%;
-    line-height: 120%;
-    padding-left: 5%;
-    padding-top: 20%;
-    font-weight: 600;
+  font-size: 35px;
+  display: block;
+  // font-family: "geomanist";
+  font-weight: 600px;
+  line-height: 120%;
+  padding-left: 5%;
+  padding-top: 10%;
+  font-weight: 600;
 }
 
 
 .heading6{
-    font-size: 25px;
-    display: block;
-    font-family: "geomanist";
-    // font-weight: 100%;
-    line-height: 120%;
-    padding-left: 5%;
-    padding-top: 20%;
-    font-weight: 600;
+  font-size: 35px;
+  display: block;
+  // font-family: "geomanist";
+  font-weight: 600px;
+  line-height: 120%;
+  padding-left: 5%;
+  padding-top: 10%;
+  font-weight: 600;
 }
 .para1 {
   font-size: 20px;
   display: block;
-  font-family: "geomanist";
+  // font-family: "geomanist";
   line-height: 155%;
 }
 .para2 {
   font-size: 20px;
   display: block;
-  font-family: "geomanist";
+  // font-family: "geomanist";
   line-height: 150%;
   padding-top: 10%;
+  
 }
 .para3 {
   font-size: 20px;
   display: block;
-  font-family: "geomanist";
+  // font-family: "geomanist";
   line-height: 150%;
 }
 
 .para6{
     font-size: 20px;
     display: block;
-    font-family: "geomanist";
+    // font-family: "geomanist";
     line-height: 150%;
     padding-left: 5%;
 }
@@ -93,12 +95,12 @@
 .para7 {
     font-size: 20px;
     display: block;
-    font-family: "geomanist";
+    // font-family: "geomanist";
     line-height: 150%;
  }
 
  .para5{
-    font-family: "geomanist";
+    // font-family: "geomanist";
     // padding-left: 10%;
     font-size: 17px;
     display: block;
@@ -110,10 +112,10 @@
  
 }
 .para8{
-    font-size: 17px;
-    display: block;
-    font-family: "geomanist";
-    line-height: 150%;
+  font-size: 20px;
+  display: block;
+  line-height: 150%;
+  padding-top: 10%;
 }
 .loadingPage {
   background-color: white;
@@ -135,8 +137,40 @@
 }
 .card-title2{
     margin-right: 10px;
-    font-family: "geomanist";
+    // font-family: "geomanist";
 }
 .card-rating{
     margin-left: 10px;
+}
+.rotate-image {
+  transform: rotate(106.733deg);
+}
+.round-image {
+  border-radius: 50%; /* Makes the image round */
+  background-color: transparent; /* Ensures no background color */
+  width: 200px; /* Adjust width as needed */
+  height: 200px; /* Adjust height as needed */
+  object-fit: cover; /* Ensures the image covers the dimensions without distortion */
+
+  margin-left: 10%;
+}
+.image1{
+  width:150%;
+  height: 180%;
+  margin-left: -30px;
+  
+}
+.text-right {
+  text-align: right;
+}
+.card1{
+  width: 80%;
+  height: 25%;
+}
+.image2{
+  width: 90%; 
+  height: 90%;
+  padding-top: 70px;
+  padding-left: 200px;
+
 }
