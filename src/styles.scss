@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Geomanist' !important;
+    src: url('/skillSharing_Platform/src/assets/fonts/Geomanist-Light.woff') format('woff') !important;
+    font-weight: normal;
+    font-style: normal;
+}
+html, body { 
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-family: geomanist, "light", sans-serif !important;
+}
+
+
+  

@@ -28,3 +28,10 @@ html, body {
   a{
     color: black;
   }
+  .separator {
+    border-left: 1px solid #000; /* Adjust the color as needed */
+    height: 1em; /* Adjust the height as needed */
+    display: inline-block;
+    margin: 0 10px; /* Adjust the space around the separator as needed */
+    vertical-align: middle;
+  }
