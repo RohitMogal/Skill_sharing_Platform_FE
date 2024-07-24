@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { DataServiceService } from '../data-service.service';
 
 @Component({
   selector: 'app-register',
@@ -11,10 +13,10 @@ export class RegisterComponent implements OnInit {
 
   repeatPass: string = 'none';
   registerForm!: FormGroup;
-  private _userService: any;
+
   hidePassword: any;
 
-  constructor(private fb: FormBuilder, private _router: Router) {
+  constructor(private fb: FormBuilder, private _router: Router,  private http: HttpClient, private _userService: DataServiceService) {
     this.registerForm = this.fb.group({
       fullName: new FormControl('', [
         Validators.required,
@@ -44,23 +46,23 @@ export class RegisterComponent implements OnInit {
     if (this.Password.value == this.ConfirmPassword.value) {
       console.log(this.registerForm.value);
       this.repeatPass = 'none';
-      this.signUp();
     } else {
       this.repeatPass = 'inline';
     }
+    this.registerMethod();
   }
 
-  signUp() {
+  registerMethod() {
     if (this.registerForm.valid) {
-      this._userService.registerPost(this.registerForm.getRawValue()).subscribe(
+      this._userService.userRegister(this.registerForm.getRawValue()).subscribe(
         (response: any) => {
           if (response) {
-            console.log('register completed:', response);
-            this._router.navigate(['/login']);
+            console.log('New data added:', response);
+            this._router.navigate(['/home']);
           }
         },
         (error: any) => {
-          console.error('Error adding post:', error);
+          console.error('Error adding data:', error);
         }
       );
     }
@@ -69,7 +71,6 @@ export class RegisterComponent implements OnInit {
     this.hidePassword = !this.hidePassword;
   }
   getMethod() {
-
   }
 
   get FullName(): FormControl {

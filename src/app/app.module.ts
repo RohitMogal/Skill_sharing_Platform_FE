@@ -18,6 +18,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 
@@ -43,6 +44,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
+    HttpClientModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],

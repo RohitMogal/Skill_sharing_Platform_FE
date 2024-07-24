@@ -5,16 +5,19 @@ import { Observable, catchError } from 'rxjs';
   providedIn: 'root'
 })
 export class DataServiceService {
-apiUrl = "";
+  apiUrl = "https://jsonplaceholder.typicode.com/posts";
 
-  constructor(private http: HttpClient,) { 
-    
+  constructor(private http: HttpClient,) {
+
   }
   ngOnInit(): void {
   }
-  
-  saveUsers(data:any){
-    return this.http.post(this.apiUrl,data)
-  }
-}
 
+  userLogin(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, data)
+  }
+
+  userRegister(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, data)
+}
+}

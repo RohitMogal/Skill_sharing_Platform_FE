@@ -11,7 +11,7 @@
       <div class="d-flex align-items-center ">
         <h2 class=" mb-4">Login</h2>
       </div>
-      <form [formGroup]="loginForm" #usersForm="ngForm" (ngSubmit)="onSubmit(usersForm.value)">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="mb-3 form-group">
           <label for="email" class="form-label">Email</label>
           <input type="email" id="email" formControlName="email" class="form-control">
