@@ -26,11 +26,11 @@ export class CreatesessionComponent implements OnInit {
       date: ['', Validators.required],
       hour: ['', Validators.required],
       minute: ['', Validators.required],
-      period: ['AM', Validators.required], // Default to 'AM'
-      myItems: [this.selectedItems] // FormControl for multi-select dropdown
+      period: ['AM', Validators.required],
+      myItems: [this.selectedItems] 
     });
 
-    // Initialize hours and minutes
+   
     this.hours = Array.from({ length: 12 }, (_, i) => i + 1);
     this.minutes = Array.from({ length: 60 }, (_, i) => i);
   }
@@ -58,7 +58,7 @@ export class CreatesessionComponent implements OnInit {
     this.dropdownSettings = {
       idField: 'ID',
       textField: 'Value',
-      allowSearchFilter: true, // Remove 'allowRemoteData'
+      allowSearchFilter: true, 
       selectAllText: 'Select All',
       unSelectAllText: 'Unselect All',
       itemsShowLimit: 5
@@ -68,7 +68,7 @@ export class CreatesessionComponent implements OnInit {
   onSubmit(): void {
     if (this.sessionForm.valid) {
       console.log('Form Value', this.sessionForm.value);
-      // Add your form submission logic here
+      
     }
   }
 }
