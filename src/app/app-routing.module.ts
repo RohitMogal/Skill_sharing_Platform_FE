@@ -7,14 +7,22 @@ import { HomeComponent } from './pages/home.component';
 import { CreatesessionComponent } from './createsession/createsession.component';
 
 const routes: Routes = [
+
   { path: 'register', component: RegisterComponent },
   // { path: '', redirectTo: '/register', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   // { path: '', redirectTo: '/login', pathMatch: 'full' }
   { path: 'create-session', component: CreatesessionComponent },
-  { path: 'search-session', component:  NavbarComponent},
+
+
   { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent }
+  { path: 'home', component: HomeComponent },
+  
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  // { path: 'create-session', component: NavbarComponent },
+  // { path: 'search-session', component:  NavbarComponent},
+
 ];
 
 @NgModule({
