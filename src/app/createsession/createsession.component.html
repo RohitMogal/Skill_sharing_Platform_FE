@@ -1,11 +1,13 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="p-3 ">
+            <div class="p-3">
                 <div class="row">
-                    <div class="col-md-4 text-center">
-                        <img src="assets/session.avif" alt="Image" class="img-fluid mb-4">
-                        <p>Join our skill-sharing sessions and learn from experts around the world.</p>
+                    <div class="col-md-4 d-flex align-items-center justify-content-center">
+                        <div class="text-center">
+                            <img src="assets/session.avif" alt="Image" class="img-fluid mb-4" style="height: 250px;width: 400px; ">
+                            <p>Join our skill-sharing sessions and learn from experts around the world.</p>
+                        </div>
                     </div>
                     
                     <div class="col-md-8">
@@ -35,46 +37,32 @@
                             <div class="form-group">
                                 <label for="time">Time</label>
                                 <div class="d-flex">
-                                    <select id="hour" class="form-control me-1" formControlName="hour"
-                                        placeholder="Hour">
+                                    <select id="hour" class="form-control me-1" formControlName="hour">
+                                        <option value="" disabled selected>HH</option>
                                         <option *ngFor="let hour of hours" [value]="hour">{{ hour }}</option>
                                     </select>
                                     <span class="me-1">:</span>
-                                    <select id="minute" class="form-control me-1" formControlName="minute"
-                                        placeholder="Minute">
-                                        <option *ngFor="let minute of minutes" [value]="minute">{{ minute < 10 ? '0' +
-                                                minute : minute }}</option>
+                                    <select id="minute" class="form-control me-1" formControlName="minute">
+                                        <option value="" disabled selected>MM</option>
+                                        <option *ngFor="let minute of minutes" [value]="minute">{{ minute < 10 ? '0' + minute : minute }}</option>
                                     </select>
-                                    <select id="period" class="form-control" formControlName="period"
-                                        placeholder="AM/PM">
+                                    <select id="period" class="form-control" formControlName="period" aria-placeholder="AM/PM" >
+                                        <option value="" disabled selected>AM/PM</option>
                                         <option *ngFor="let p of amPm" [value]="p">{{ p }}</option>
                                     </select>
+                                    
                                 </div>
                             </div>
+                            
                             <!-- Interests Section -->
                             <div class="mb-3">
-                                <!-- <label for="interests">Interests:</label> -->
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-secondary dropdown-toggle"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Select Interests
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item">C</a></li>
-                                        <li><a class="dropdown-item">Angular</a></li>
-                                        <li><a class="dropdown-item">React</a></li>
-                                        <li><a class="dropdown-item">JavaScript</a></li>
-                                        <li><a class="dropdown-item">Python</a></li>
-                                        <li><a class="dropdown-item">Java</a></li>
-                                        <li><a class="dropdown-item">PHP</a></li>
-                                        <li><a class="dropdown-item">Node.js</a></li>
-
-                                    </ul>
-                                </div>
+                                <label for="interests" class="form-label">Tags:</label>
+                                <ng-multiselect-dropdown
+                                    [settings]="dropdownSettings"
+                                    [data]="dropdownData"
+                                    formControlName="myItems">
+                                </ng-multiselect-dropdown>
                             </div>
-
-
-
 
                             <!-- Image Upload Section -->
                             <div class="form-group">

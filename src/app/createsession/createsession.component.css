@@ -26,3 +26,26 @@
     margin-bottom: 30%;
     height: 60%;
   }
+  
+/* createsession.component.css */
+
+.ng-multiselect-dropdown {
+  display: inline-block;
+  width: 100%;
+}
+
+.ng-multiselect-dropdown .ng-dropdown-panel {
+  width: 100% !important;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  width: 100%;
+}
+/* 
+#period {
+  margin-right: 1rem; 
+} */

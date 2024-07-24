@@ -13,6 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
+
 
 @NgModule({
   declarations: [
@@ -30,7 +33,11 @@ import { MatInputModule } from '@angular/material/input';
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgMultiSelectDropDownModule.forRoot()
+  
+   
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

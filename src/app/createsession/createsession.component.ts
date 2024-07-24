@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 
 @Component({
   selector: 'app-createsession',
@@ -13,6 +14,9 @@ export class CreatesessionComponent implements OnInit {
   hours: number[] = [];
   minutes: number[] = [];
   amPm: string[] = ['AM', 'PM'];
+  dropdownData: any[] = [];
+  dropdownSettings: IDropdownSettings = {};
+  selectedItems: any[] = [];
 
   constructor(private fb: FormBuilder) {
     this.sessionForm = this.fb.group({
@@ -22,7 +26,8 @@ export class CreatesessionComponent implements OnInit {
       date: ['', Validators.required],
       hour: ['', Validators.required],
       minute: ['', Validators.required],
-      period: ['AM', Validators.required] // Default to 'AM'
+      period: ['AM', Validators.required], // Default to 'AM'
+      myItems: [this.selectedItems] // FormControl for multi-select dropdown
     });
 
     // Initialize hours and minutes
@@ -32,12 +37,32 @@ export class CreatesessionComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeMinDate();
+    this.initializeDropdown();
   }
 
   initializeMinDate(): void {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     this.minDate = tomorrow.toISOString().split('T')[0];
+  }
+
+  initializeDropdown(): void {
+    this.dropdownData = [
+      { ID: 1, Value: 'Data1' },
+      { ID: 2, Value: 'Data2' },
+      { ID: 3, Value: 'Data3' },
+      { ID: 4, Value: 'Data4' },
+      { ID: 5, Value: 'Data5' }
+    ];
+
+    this.dropdownSettings = {
+      idField: 'ID',
+      textField: 'Value',
+      allowSearchFilter: true, // Remove 'allowRemoteData'
+      selectAllText: 'Select All',
+      unSelectAllText: 'Unselect All',
+      itemsShowLimit: 5
+    };
   }
 
   onSubmit(): void {
