@@ -15,50 +15,58 @@
         <div class="mb-3 form-group">
           <label for="fullName" class="form-label">Full Name</label>
           <input id="fullName" formControlName="fullName" class="form-control" />
-          <div class="form-text text-danger" *ngIf="FullName.errors?.['required'] && FullName.touched ">
+          <small class="form-text text-danger"  *ngIf="registerForm.get('fullName').errors?.required && registerForm.get('fullName').touched">
             *Full name is required
-          </div>
-          <div class="form-text text-danger" *ngIf="FullName.errors?.['pattern'] && FullName.touched ">
+          </small>
+          <small class="form-text text-danger" *ngIf="registerForm.get('fullName').errors?.pattern && registerForm.get('fullName').touched">
             *Full name start with alphabet
-          </div>
+          </small>
         </div>
         <div class="mb-3 form-group">
           <label for="email" class="form-label">Email</label>
           <input type="email" id="email" formControlName="email" class="form-control" />
-          <div class="form-text text-danger" *ngIf="Email.errors?.['required'] && Email.touched ">
+          <small class="form-text text-danger" *ngIf="registerForm.get('email').errors?.required && registerForm.get('email').touched">
             *Email is required
-          </div>
-          <div class="form-text text-danger" *ngIf="Email.errors?.['email'] && Email.touched ">
+          </small>
+          <small class="form-text text-danger" *ngIf="registerForm.get('email').errors?.pattern && registerForm.get('email').touched">
             *Invalid email address
-          </div>
+          </small>
         </div>
+
+        <div class="form-group">
+          <label for="description">About me</label>
+          <textarea id="description" class="form-control" formControlName="description" rows="2"
+              style="max-width: 100%;"
+              placeholder="Provide a brief description of the session"></textarea>
+      </div>
         <div class="mb-3 form-group">
           <div class="position-relative">
             <label for="password" class="form-label">Password</label>
             <input [type]="hidePassword ? 'password' : 'text'" id="password" formControlName="password"
               class="form-control">
-            <button type="button" class="password-toggle-btn" style="outline: none;"
+            <button type="button" class="password-toggle-btn"
               (click)="togglePasswordVisibility()">
               <i class="fas" [ngClass]="hidePassword ? 'fa-eye-slash' : 'fa-eye'"></i>
             </button>
           </div>
-          <div class="form-text text-danger" *ngIf="Password.errors?.['required'] && Password.touched ">
+          <small class="form-text text-danger" *ngIf="registerForm.controls.password?.errors?.required && registerForm.get('password').touched">
             *Password is required
-          </div>
-          <div class="form-text text-danger" *ngIf="Password.errors?.['minlength'] || Password.errors?.['maxlength'] && 
-          Password.touched">*Password should be at least minimum 6 and maximum 15 character
-          </div>
+          </small>
+          <small class="form-text text-danger" *ngIf="registerForm.controls.password?.errors?.minlength || registerForm.controls.password?.errors?.maxlength">
+            *Password should be at least minimum 6 and maximum 15 character
+          </small>
         </div>
 
         <div class=" mb-3 form-group">
           <div class="position-relative">
           <label for="rpwd" class="form-label">Confirm Passowrd</label>
-          <input [type]="hidePassword ? 'password' : 'text'" id="rpwd" formControlName="rpwd" class="form-control">
+          <input [type]="hidePassword ? 'password' : 'text'" id="rpwd" [formControl]="rpwd" class="form-control">
           <button type="button" class="rpwd-toggle-btn" style="outline: none;" (click)="togglePasswordVisibility()">
             <i class="fas" [ngClass]="hidePassword ? 'fa-eye-slash' : 'fa-eye'"></i>
           </button>
           </div>
-          <div class="form-text text-danger" [ngStyle]="{'display':repeatPass}">*Confirm Password is Invalid</div>
+          <small class="form-text text-danger" [ngStyle]="{'display':rpwd?.errors?.required && rpwd?.touched ?'block' :'none'}" >*Password is required</small>
+          <small class="form-text text-danger" [ngStyle]="{'display':(rpwd.value!=registerForm.get('password').value && rpwd?.touched) &&!rpwd?.errors?.required ?'block' :'none'}" >*Password not Matched</small>
         </div>
         <div class="text-center mt-3">
         <p>Already have an account? <a routerLink="/login">Login</a></p>
@@ -66,7 +74,6 @@
         <button type="submit" class="btn btn-primary w-100" color="registerForm.valid ? 'primary' : ''"
           [disabled]="!registerForm.valid">Register</button>
       </form>
-      
     </div>
   </div>
 </div>

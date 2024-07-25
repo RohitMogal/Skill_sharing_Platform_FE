@@ -1,4 +1,4 @@
-<div class="container mt-2 d-flex justify-content-center" style="width: 50%;">
+<div class="container mt-2 d-flex justify-content-center">
   <div class="row w-100 ">
     <div class="col-md-6 - d-none d-md-flex align-items-center justify-content-center purple-bg">
       <div class=" text-center">
@@ -15,31 +15,33 @@
         <div class="mb-3 form-group">
           <label for="email" class="form-label">Email</label>
           <input type="email" id="email" formControlName="email" class="form-control">
-          <div class="form-text text-danger" *ngIf="Email.errors?.['required'] && Email.touched ">
+          <small class="form-text text-danger"
+            *ngIf="loginForm.get('email').errors?.required && loginForm.get('email').touched">
             *Email is required
-          </div>
-          <div class="form-text text-danger" *ngIf="Email.errors?.['email'] && Email.touched ">
+          </small>
+          <small class="form-text text-danger" *ngIf="loginForm.get('email').errors?.pattern">
             *Invalid email address
-          </div>
+          </small>
         </div>
         <div class="mb-3 form-group position-relative">
           <label for="password" class="form-label">Password</label>
-          <input [type]="hidePassword ? 'password' : 'text'" id="password" formControlName="password" class="form-control">
-          <button type="button"class="password-toggle-btn" style="outline: none;" (click)="togglePasswordVisibility()">
-            <i class="fas" [ngClass]="hidePassword ? 'fa-eye-slash' : 'fa-eye'"></i>
-          </button>
-          <div class="form-text text-danger" *ngIf="Password.errors?.['required'] && Password.touched ">
+          <div class="input-w-icon">
+            <input [type]="hidePassword ? 'password' : 'text'" id="password" formControlName="password"
+              class="form-control">
+            <button type="button" class="password-toggle-btn" (click)="togglePasswordVisibility()">
+              <i class="fas" [ngClass]="hidePassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+            </button>
+          </div>
+          <small class="form-text text-danger"
+            *ngIf="loginForm.controls.password?.errors?.required && loginForm.get('password').touched">
             *Password is required
-          </div>
-          <div class="form-text text-danger" *ngIf="Password.errors?.['minlength'] || Password.errors?.['maxlength'] && 
-          Password.touched">*Password should be at least minimum 6 and maximum 15 character
-          </div>
+          </small>
         </div>
         <div class="text-center mt-1">
           <small>Don't have an account? <a routerLink="/register">Register</a></small>
         </div>
-        <button type="submit" color="loginForm.valid ? 'primary' : ''" [disabled]="!loginForm.valid"
-          class="btn btn-primary " style="float:right; ">Sign In</button><br>
+        <button type="submit" class="btn btn-primary" color="loginForm.valid ? 'primary' : ''"
+          [disabled]="!loginForm.valid" style="float:right; ">Sign In</button>
       </form>
     </div>
   </div>

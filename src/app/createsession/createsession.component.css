@@ -1,5 +1,4 @@
 .container {
-    /* margin-top: 50px; */
     border: 1px solid #ddd;
     border-radius: 10px;
     border-radius: 8px;
@@ -9,26 +8,21 @@
     max-width: 55%;
     height: 30%;
     margin: 0 auto;
-  
   }
   
-  img {
+  .img-fluid {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
-    padding-top: 8%;
   }
   
-  form {
+  .form-group{
     margin-top: 20px;
   }
   .session{
     margin-bottom: 30%;
     height: 60%;
   }
-  
-/* createsession.component.css */
-
 .ng-multiselect-dropdown {
   display: inline-block;
   width: 100%;
@@ -45,7 +39,3 @@
 .form-control {
   width: 100%;
 }
-/* 
-#period {
-  margin-right: 1rem; 
-} */

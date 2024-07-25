@@ -4,6 +4,7 @@
   border-radius: 8px;
   display: flexbox;
   box-shadow: 0px 0px 10px rgba(7, 6, 6, 0.571);
+  width: 50%;
 }
 
 h2 {
@@ -30,9 +31,15 @@ h2 {
   border: none;
   position: absolute;
   right: 10px;
-  top: 70%;
+  top: 55%;
   transform: translateY(-50%);
   cursor: pointer;
+  /* padding:375rem 2.85rem 375rem 75rem; */
+}
+.input-w-icon{
+  position: relative;
+
+  
 }
 .text-center {
   align-items: center;
@@ -53,3 +60,6 @@ h2 {
   background-color: grey;
   color: white;
 }
+
+
+

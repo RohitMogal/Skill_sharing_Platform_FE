@@ -18,8 +18,8 @@ export class CreatesessionComponent implements OnInit {
   dropdownSettings: IDropdownSettings = {};
   selectedItems: any[] = [];
 
-  constructor(private fb: FormBuilder) {
-    this.sessionForm = this.fb.group({
+  constructor(private _fb: FormBuilder) {
+    this.sessionForm = this._fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
       link: ['', Validators.required],
