@@ -12,11 +12,11 @@
   
   }
   
-  img {
+  .img-fluid {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
-    padding-top: 8%;
+ 
   }
   
   form {

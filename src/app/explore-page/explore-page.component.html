@@ -1,0 +1,227 @@
+<!-- Container for the Card Grid -->
+<div class="container my-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="input-group">
+        <input type="text" class="form-control" id="searchInput" placeholder="Search Sessions...">
+        <button class="btn btn-success" id="searchButton">Search</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-12 col-md-3 mb-4">
+      <div style="top: 1rem;">
+        <div class="card" style="border: none; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">
+          <div class="card-body">
+            <h5 class="card-title">Interested Sessions</h5>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none">React Session</a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none">Angular Session</a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none">Python Session</a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none">PHP Session</a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none">Java Session</a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none">React Session</a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none">Angular Session</a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none">Python Session</a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none">PHP Session</a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none">Java Session</a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none">React Session</a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none">Angular Session</a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none">Python Session</a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none">PHP Session</a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none">Java Session</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <!-- Card Grid -->
+    <div class="col-12 col-md-9">
+      <div class="row">
+        <!-- Card 1 -->
+        <div class="col-12 col-md-4 mb-4">
+          <div class="card" data-session="react-session" style="border: none; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); display: flex; flex-direction: column;">
+            <div class="row no-gutters flex-grow-1">
+              <div class="col-12 d-flex align-items-center justify-content-start p-2">
+                <img src="/assets/Profile.png" class="rounded-circle profile-photo" alt="Profile Image" style="width: 40px; height: 40px; margin-right: 10px; object-fit: cover;" (click)="openProfileModal()">
+                <h5>Prajakta Ghuge</h5>
+              </div>
+              <div class="col-12">
+                <hr class="my-1">
+              </div>
+              <div class="col-12 p-0">
+                <h6 class="mb-2" style="font-size: 1rem; margin-bottom: 20px;">React Session</h6>
+                <img src="/assets/React.png" class="card-img-top" alt="Image" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body p-2" style="position: relative; overflow: hidden;">
+                  <p class="card-text mb-1 description" data-fulltext="React is a free and open-source JavaScript library for building user interfaces, maintained by Facebook and the community.">
+                    React is a free and open-source JavaScript library for...
+                  </p>
+                  <label class="btn btn-link text-primary show-more" (click)="readMore()">Read More</label>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="btn btn-success w-100 mt-auto">Start Session</a>
+          </div>
+        </div>
+        
+        <!-- Card 2 -->
+        <div class="col-12 col-md-4 mb-4">
+          <div class="card" data-session="angular-session" style="border: none; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); display: flex; flex-direction: column;">
+            <div class="row no-gutters flex-grow-1">
+              <div class="col-12 d-flex align-items-center justify-content-start p-2">
+                <img src="/assets/Profile.png" class="rounded-circle profile-photo" alt="Profile Image" style="width: 40px; height: 40px; margin-right: 10px; object-fit: cover;">
+                <h5>Prajakta Ghuge</h5>
+              </div>
+              <div class="col-12">
+                <hr class="my-1">
+              </div>
+              <div class="col-12 p-0">
+                <h6 class="mb-2" style="font-size: 1rem; margin-bottom: 20px;">Angular Session</h6>
+                <img src="/assets/Angular.jfif" class="card-img-top" alt="Image" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body p-2" style="position: relative; overflow: hidden;">
+                  <p class="card-text mb-1 description" data-fulltext="Angular is a platform and framework for building client-side applications using HTML and TypeScript.">
+                    Angular is a platform and framework for building client...
+                  </p>
+                  <a href="card-details" class="btn btn-link text-primary show-more">Read More</a>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="btn btn-success w-100 mt-auto">Start Session</a>
+          </div>
+        </div>
+        
+        <!-- Card 3 -->
+        <div class="col-12 col-md-4 mb-4">
+          <div class="card" data-session="python-session" style="border: none; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); display: flex; flex-direction: column;">
+            <div class="row no-gutters flex-grow-1">
+              <div class="col-12 d-flex align-items-center justify-content-start p-2">
+                <img src="/assets/Profile.png" class="rounded-circle profile-photo" alt="Profile Image" style="width: 40px; height: 40px; margin-right: 10px; object-fit: cover;">
+                <h5>Prajakta Ghuge</h5>
+              </div>
+              <div class="col-12">
+                <hr class="my-1">
+              </div>
+              <div class="col-12 p-0">
+                <h6 class="mb-2" style="font-size: 1rem; margin-bottom: 20px;">Python Session</h6>
+                <img src="/assets/Python.jfif" class="card-img-top" alt="Image" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body p-2" style="position: relative; overflow: hidden;">
+                  <p class="card-text mb-1 description" data-fulltext="Python is an interpreted, high-level, and general-purpose programming language. Its design philosophy emphasizes code readability.">
+                    Python is an interpreted, high-level, and general-purpose...
+                  </p>
+                  <a href="card-details" class="btn btn-link text-primary show-more">Read More</a>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="btn btn-success w-100 mt-auto">Start Session</a>
+          </div>
+        </div>
+        
+        <!-- Card 4 -->
+        <div class="col-12 col-md-4 mb-4">
+          <div class="card" data-session="php-session" style="border: none; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); display: flex; flex-direction: column;">
+            <div class="row no-gutters flex-grow-1">
+              <div class="col-12 d-flex align-items-center justify-content-start p-2">
+                <img src="/assets/Profile.png" class="rounded-circle profile-photo" alt="Profile Image" style="width: 40px; height: 40px; margin-right: 10px; object-fit: cover;">
+                <h5>Prajakta Ghuge</h5>
+              </div>
+              <div class="col-12">
+                <hr class="my-1">
+              </div>
+              <div class="col-12 p-0">
+                <h6 class="mb-2" style="font-size: 1rem; margin-bottom: 20px;">PHP Session</h6>
+                <img src="/assets/php.jfif" class="card-img-top" alt="Image" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body p-2" style="position: relative; overflow: hidden;">
+                  <p class="card-text mb-1 description" data-fulltext="PHP is a popular general-purpose scripting language that is especially suited to web development.">
+                    PHP is a popular general-purpose scripting language...
+                  </p>
+                  <a href="card-details" class="btn btn-link text-primary show-more">Read More</a>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="btn btn-success w-100 mt-auto">Start Session</a>
+          </div>
+        </div>
+        
+        <!-- Card 5 -->
+        <div class="col-12 col-md-4 mb-4">
+          <div class="card" data-session="java-session" style="border: none; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); display: flex; flex-direction: column;">
+            <div class="row no-gutters flex-grow-1">
+              <div class="col-12 d-flex align-items-center justify-content-start p-2">
+                <img src="/assets/Profile.png" class="rounded-circle profile-photo" alt="Profile Image" style="width: 40px; height: 40px; margin-right: 10px; object-fit: cover;">
+                <h5>Prajakta Ghuge</h5>
+              </div>
+              <div class="col-12">
+                <hr class="my-1">
+              </div>
+              <div class="col-12 p-0">
+                <h6 class="mb-2" style="font-size: 1rem; margin-bottom: 20px;">Java Session</h6>
+                <img src="/assets/Java.jfif" class="card-img-top" alt="Image" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body p-2" style="position: relative; overflow: hidden;">
+                  <p class="card-text mb-1 description" data-fulltext="Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible.">
+                    Java is a high-level, class-based, object-oriented...
+                  </p>
+                  <a href="card-details" class="btn btn-link text-primary show-more">Read More</a>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="btn btn-success w-100 mt-auto">Start Session</a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Profile Modal -->
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="profileModalLabel">Profile Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Here are the details of the user profile...</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

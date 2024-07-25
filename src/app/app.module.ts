@@ -18,6 +18,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { ExplorePageComponent } from './explore-page/explore-page.component';
+import { CardDetailsComponent } from './card-details/card-details.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -28,7 +31,10 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     LoginComponent,
     NavbarComponent,
     FooterComponent,
-    CreatesessionComponent
+    CreatesessionComponent,
+    ExplorePageComponent,
+    CardDetailsComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -38,11 +44,15 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     MatInputModule,
     MatNativeDateModule,
     BrowserAnimationsModule,
+
+    MatDialogModule,
+
     MatMenuModule,
     MatMenuModule,
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
+
     NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],
