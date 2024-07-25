@@ -11,7 +11,7 @@ import { DataServiceService } from '../services/data-service.service';
 })
 export class RegisterComponent implements OnInit {
 
-  ;
+  
   registerForm!: FormGroup | any;
   hidePassword: boolean = true;
   hideConfirmPassword: boolean = true;

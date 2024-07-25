@@ -10,6 +10,7 @@ export class NavbarComponent {
 
   constructor(private _router: Router) { }
 
+  
   logout() {
     this._router.navigate(['/login']);
     console.log('Logout clicked');

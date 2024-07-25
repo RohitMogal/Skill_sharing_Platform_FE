@@ -5,6 +5,9 @@ import { Observable, catchError } from 'rxjs';
   providedIn: 'root'
 })
 export class DataServiceService {
+  saveUsers(data: any) {
+    throw new Error('Method not implemented.');
+  }
   apiUrl = "http://192.168.9.112:3000";
   token:any;
   constructor(private http: HttpClient,) {}
@@ -19,5 +22,9 @@ export class DataServiceService {
     const header=new HttpHeaders()
     .set('Authorization',this.token)
     return this.http.get(`${this.apiUrl}/session`,{ headers:header });
+  }
+
+  sessionCreate(data:any){
+    return this.http.post(`${this.apiUrl}/user`, data);
   }
 }

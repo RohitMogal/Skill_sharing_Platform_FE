@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { DataServiceService } from '../services/data-service.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-createsession',
@@ -9,7 +12,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 })
 export class CreatesessionComponent implements OnInit {
 
-  sessionForm: FormGroup;
+  sessionForm: FormGroup | any;
   minDate!: string;
   hours: number[] = [];
   minutes: number[] = [];
@@ -18,7 +21,7 @@ export class CreatesessionComponent implements OnInit {
   dropdownSettings: IDropdownSettings = {};
   selectedItems: any[] = [];
 
-  constructor(private _fb: FormBuilder) {
+  constructor(private _fb: FormBuilder, private _userService: DataServiceService, private _toaster: ToastrService, private _router: Router) {
     this.sessionForm = this._fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
@@ -27,10 +30,10 @@ export class CreatesessionComponent implements OnInit {
       hour: ['', Validators.required],
       minute: ['', Validators.required],
       period: ['AM', Validators.required],
-      myItems: [this.selectedItems] 
+      myItems: [this.selectedItems]
     });
 
-   
+
     this.hours = Array.from({ length: 12 }, (_, i) => i + 1);
     this.minutes = Array.from({ length: 60 }, (_, i) => i);
   }
@@ -58,7 +61,7 @@ export class CreatesessionComponent implements OnInit {
     this.dropdownSettings = {
       idField: 'ID',
       textField: 'Value',
-      allowSearchFilter: true, 
+      allowSearchFilter: true,
       selectAllText: 'Select All',
       unSelectAllText: 'Unselect All',
       itemsShowLimit: 5
@@ -67,8 +70,26 @@ export class CreatesessionComponent implements OnInit {
 
   onSubmit(): void {
     if (this.sessionForm.valid) {
+      // this.createSession();
       console.log('Form Value', this.sessionForm.value);
-      
+
     }
   }
+  // createSession() {
+  //   this._userService.sessionCreate(this.sessionForm.getRawValue()).subscribe(
+  //     (response: any) => {
+  //       if (response) {
+
+  //         this._userService.token = response.token;
+  //         this._userService.getSessions().subscribe();
+  //         this._toaster.success("Session created successfully");
+  //         this._router.navigate(['/home']);
+  //       }
+  //     },
+  //     (error: any) => {
+  //       this._toaster.error("Created session failed");
+
+  //     }
+  //   );
+  // }
 }
