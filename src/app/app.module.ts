@@ -12,12 +12,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { ExplorePageComponent } from './explore-page/explore-page.component';
+import { CardDetailsComponent } from './card-details/card-details.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,11 +28,14 @@ import { ToastrModule } from 'ngx-toastr';
     LoginComponent,
     NavbarComponent,
     FooterComponent,
-    CreatesessionComponent
-    ],
+    CreatesessionComponent,
+    ExplorePageComponent,
+    CardDetailsComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatDialogModule,
     ReactiveFormsModule,
     MatDatepickerModule,
     MatInputModule,
@@ -42,7 +48,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatButtonModule,
     HttpClientModule,
     NgMultiSelectDropDownModule.forRoot(),
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

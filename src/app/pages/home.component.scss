@@ -4,59 +4,47 @@
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   line-height: 120%;
-  // font-family: "geomanist";
   font-weight: 600;
 }
-.heading2  {
+.heading2 {
   font-size: 35px;
   display: block;
-  // font-family: "geomanist";
-  font-weight: 600px;
-  line-height: 120%;
-  padding-left: 5%;
-  padding-top: 10%;
-  font-weight: 600;
-  // margin-right: 100px;
-}
-
-.heading3{
-  font-size: 35px;
-  display: block;
-  // font-family: "geomanist";
   font-weight: 600px;
   line-height: 120%;
   padding-left: 5%;
   padding-top: 10%;
   font-weight: 600;
 }
-
-.heading4{
+.heading3 {
   font-size: 35px;
   display: block;
-  // font-family: "geomanist";
   font-weight: 600px;
   line-height: 120%;
   padding-left: 5%;
   padding-top: 10%;
   font-weight: 600;
 }
-
-.heading5{
+.heading4 {
   font-size: 35px;
   display: block;
-  // font-family: "geomanist";
   font-weight: 600px;
   line-height: 120%;
   padding-left: 5%;
   padding-top: 10%;
   font-weight: 600;
 }
-
-
-.heading6{
+.heading5 {
   font-size: 35px;
   display: block;
-  // font-family: "geomanist";
+  font-weight: 600px;
+  line-height: 120%;
+  padding-left: 5%;
+  padding-top: 10%;
+  font-weight: 600;
+}
+.heading6 {
+  font-size: 35px;
+  display: block;
   font-weight: 600px;
   line-height: 120%;
   padding-left: 5%;
@@ -66,52 +54,39 @@
 .para1 {
   font-size: 20px;
   display: block;
-  // font-family: "geomanist";
   line-height: 155%;
 }
 .para2 {
   font-size: 20px;
   display: block;
-  // font-family: "geomanist";
   line-height: 150%;
   padding-top: 10%;
-  
 }
 .para3 {
   font-size: 20px;
   display: block;
-  // font-family: "geomanist";
   line-height: 150%;
 }
-
-.para6{
-    font-size: 20px;
-    display: block;
-    // font-family: "geomanist";
-    line-height: 150%;
-    padding-left: 5%;
+.para6 {
+  font-size: 20px;
+  display: block;
+  line-height: 150%;
+  padding-left: 5%;
 }
-
 .para7 {
-    font-size: 20px;
-    display: block;
-    // font-family: "geomanist";
-    line-height: 150%;
- }
-
- .para5{
-    // font-family: "geomanist";
-    // padding-left: 10%;
-    font-size: 17px;
-    display: block;
-    line-height: 150%;
+  font-size: 20px;
+  display: block;
+  line-height: 150%;
 }
-.star{
- 
-  font-size:25px;
- 
+.para5 {
+  font-size: 17px;
+  display: block;
+  line-height: 150%;
 }
-.para8{
+.star {
+  font-size: 25px;
+}
+.para8 {
   font-size: 20px;
   display: block;
   line-height: 150%;
@@ -129,48 +104,44 @@
   overflow-clip-margin: content-box;
   overflow: clip;
   background-color: #f2f2f2;
-  width:10%;
+  width: 10%;
 }
-.card-section{
-    display: flex;
-    align-items:center;
+.card-section {
+  display: flex;
+  align-items: center;
 }
-.card-title2{
-    margin-right: 10px;
-    // font-family: "geomanist";
+.card-title2 {
+  margin-right: 10px;
 }
-.card-rating{
-    margin-left: 10px;
+.card-rating {
+  margin-left: 10px;
 }
 .rotate-image {
   transform: rotate(106.733deg);
 }
 .round-image {
-  border-radius: 50%; /* Makes the image round */
-  background-color: transparent; /* Ensures no background color */
-  width: 200px; /* Adjust width as needed */
-  height: 200px; /* Adjust height as needed */
-  object-fit: cover; /* Ensures the image covers the dimensions without distortion */
-
+  border-radius: 50%;
+  background-color: transparent;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
   margin-left: 10%;
 }
-.image1{
-  width:150%;
+.image1 {
+  width: 150%;
   height: 180%;
   margin-left: -30px;
-  
 }
 .text-right {
   text-align: right;
 }
-.card1{
+.card1 {
   width: 80%;
   height: 25%;
 }
-.image2{
-  width: 90%; 
+.image2 {
+  width: 90%;
   height: 90%;
   padding-top: 70px;
   padding-left: 200px;
-
 }

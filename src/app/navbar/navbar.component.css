@@ -1,16 +1,7 @@
-
 .navbar {
-    background-color: #ffffff; 
-  }
-  
-  .navbar-brand img {
-    height: 50px;
-    width: auto; 
-  }
-  /* .small-button {
-    
-  } */
-  
-  
-  
- 
+  background-color: #ffffff;
+}
+.navbar-brand img {
+  height: 50px;
+  width: auto;
+}

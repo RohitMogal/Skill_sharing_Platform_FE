@@ -4,14 +4,12 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { DataServiceService } from '../services/data-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-createsession',
   templateUrl: './createsession.component.html',
   styleUrls: ['./createsession.component.css']
 })
 export class CreatesessionComponent implements OnInit {
-
   sessionForm: FormGroup | any;
   minDate!: string;
   hours: number[] = [];
@@ -32,8 +30,6 @@ export class CreatesessionComponent implements OnInit {
       period: ['AM', Validators.required],
       myItems: [this.selectedItems]
     });
-
-
     this.hours = Array.from({ length: 12 }, (_, i) => i + 1);
     this.minutes = Array.from({ length: 60 }, (_, i) => i);
   }
@@ -42,13 +38,13 @@ export class CreatesessionComponent implements OnInit {
     this.initializeMinDate();
     this.initializeDropdown();
   }
-
+  //Date Logic
   initializeMinDate(): void {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     this.minDate = tomorrow.toISOString().split('T')[0];
   }
-
+  //DropDown Logic
   initializeDropdown(): void {
     this.dropdownData = [
       { ID: 1, Value: 'Data1' },
@@ -57,7 +53,6 @@ export class CreatesessionComponent implements OnInit {
       { ID: 4, Value: 'Data4' },
       { ID: 5, Value: 'Data5' }
     ];
-
     this.dropdownSettings = {
       idField: 'ID',
       textField: 'Value',
@@ -67,12 +62,11 @@ export class CreatesessionComponent implements OnInit {
       itemsShowLimit: 5
     };
   }
-//call when form submit
+  //call when form submit
   onSubmit(): void {
     if (this.sessionForm.valid) {
       this.createSession();
       console.log('Form Value', this.sessionForm.value);
-
     }
   }
   //Create session Logic

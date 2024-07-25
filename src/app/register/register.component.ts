@@ -3,23 +3,21 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Route, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DataServiceService } from '../services/data-service.service';
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
-  
   registerForm!: FormGroup | any;
   hidePassword: boolean = true;
   hideConfirmPassword: boolean = true;
-  rpwd:FormControl |any
+  rpwd: FormControl | any
   constructor(private _fb: FormBuilder, private _router: Router, private _userService: DataServiceService, private _toster: ToastrService) {
   }
 
   ngOnInit(): void {
+    //Validation Logic
     this.registerForm = this._fb.group({
       fullName: new FormControl(null, [
         Validators.required,
@@ -35,18 +33,17 @@ export class RegisterComponent implements OnInit {
         Validators.minLength(6),
         Validators.maxLength(15),
       ]),
-      description:new FormControl(null,[Validators.required])
-
+      description: new FormControl(null, [Validators.required])
     });
-    this.rpwd= new FormControl(null, [Validators.required]);
+    this.rpwd = new FormControl(null, [Validators.required]);
   }
-//call when form submit
+  //call when form submit
   onSubmit() {
-    if ( this.registerForm.value.password === this.registerForm.value.rpwd) {
-    this.registerMethod();
+    if (this.registerForm.value.password === this.registerForm.value.rpwd) {
+      this.registerMethod();
     }
   }
-//Registration Form logic
+  //Registration Form logic
   registerMethod() {
     if (this.registerForm.valid) {
       this._userService.userRegister(this.registerForm.getRawValue()).subscribe(

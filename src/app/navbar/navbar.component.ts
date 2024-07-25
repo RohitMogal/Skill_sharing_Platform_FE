@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -9,8 +8,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
 
   constructor(private _router: Router) { }
-
-  
+  //Routing Logic
   logout() {
     this._router.navigate(['/login']);
     console.log('Logout clicked');

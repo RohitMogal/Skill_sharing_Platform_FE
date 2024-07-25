@@ -12,6 +12,6 @@ html, body {
     padding: 0px;
     font-family: geomanist, "light", sans-serif !important;
 }
-
-
-  
+.cdk-overlay-container {
+    backdrop-filter: blur(3px) !important;
+  }
