@@ -9,7 +9,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 })
 export class CreatesessionComponent implements OnInit {
 
-  sessionForm: FormGroup;
+  sessionForm: FormGroup ;
   minDate!: string;
   hours: number[] = [];
   minutes: number[] = [];

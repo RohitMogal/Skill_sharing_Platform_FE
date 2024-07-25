@@ -5,6 +5,8 @@ import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './pages/home.component';
 import { CreatesessionComponent } from './createsession/createsession.component';
+import { ExplorePageComponent } from './explore-page/explore-page.component';
+import { CardDetailsComponent } from './card-details/card-details.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -12,9 +14,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   // { path: '', redirectTo: '/login', pathMatch: 'full' }
   { path: 'create-session', component: CreatesessionComponent },
-  { path: 'search-session', component:  NavbarComponent},
+ 
   { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent }
+  { path: 'home', component: HomeComponent },
+  { path: 'explore-page', component: ExplorePageComponent },
+  { path: 'card-details', component: CardDetailsComponent }
 ];
 
 @NgModule({
