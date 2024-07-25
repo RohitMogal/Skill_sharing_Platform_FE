@@ -67,29 +67,28 @@ export class CreatesessionComponent implements OnInit {
       itemsShowLimit: 5
     };
   }
-
+//call when form submit
   onSubmit(): void {
     if (this.sessionForm.valid) {
-      // this.createSession();
+      this.createSession();
       console.log('Form Value', this.sessionForm.value);
 
     }
   }
-  // createSession() {
-  //   this._userService.sessionCreate(this.sessionForm.getRawValue()).subscribe(
-  //     (response: any) => {
-  //       if (response) {
-
-  //         this._userService.token = response.token;
-  //         this._userService.getSessions().subscribe();
-  //         this._toaster.success("Session created successfully");
-  //         this._router.navigate(['/home']);
-  //       }
-  //     },
-  //     (error: any) => {
-  //       this._toaster.error("Created session failed");
-
-  //     }
-  //   );
-  // }
+  //Create session Logic
+  createSession() {
+    this._userService.sessionCreate(this.sessionForm.getRawValue()).subscribe(
+      (response: any) => {
+        if (response) {
+          this._userService.token = response.token;
+          this._userService.getSessions().subscribe();
+          this._toaster.success("Session created successfully");
+          this._router.navigate(['/home']);
+        }
+      },
+      (error: any) => {
+        this._toaster.error("Created session failed");
+      }
+    );
+  }
 }

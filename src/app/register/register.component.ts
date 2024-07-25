@@ -40,13 +40,13 @@ export class RegisterComponent implements OnInit {
     });
     this.rpwd= new FormControl(null, [Validators.required]);
   }
-
+//call when form submit
   onSubmit() {
     if ( this.registerForm.value.password === this.registerForm.value.rpwd) {
     this.registerMethod();
     }
   }
-
+//Registration Form logic
   registerMethod() {
     if (this.registerForm.valid) {
       this._userService.userRegister(this.registerForm.getRawValue()).subscribe(
