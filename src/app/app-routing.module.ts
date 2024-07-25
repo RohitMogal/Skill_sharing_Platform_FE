@@ -9,16 +9,29 @@ import { ExplorePageComponent } from './explore-page/explore-page.component';
 import { CardDetailsComponent } from './card-details/card-details.component';
 
 const routes: Routes = [
+
   { path: 'register', component: RegisterComponent },
   // { path: '', redirectTo: '/register', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   // { path: '', redirectTo: '/login', pathMatch: 'full' }
   { path: 'create-session', component: CreatesessionComponent },
+
  
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'explore-page', component: ExplorePageComponent },
   { path: 'card-details', component: CardDetailsComponent }
+
+
+
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  // { path: 'create-session', component: NavbarComponent },
+  // { path: 'search-session', component:  NavbarComponent},
+
 ];
 
 @NgModule({
