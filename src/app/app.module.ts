@@ -16,11 +16,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { ExplorePageComponent } from './explore-page/explore-page.component';
 import { CardDetailsComponent } from './card-details/card-details.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { InterceptInterceptor } from './interceptors/intercept.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,9 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     NgMultiSelectDropDownModule.forRoot(),
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:InterceptInterceptor,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

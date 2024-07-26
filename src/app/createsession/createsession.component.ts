@@ -74,8 +74,8 @@ export class CreatesessionComponent implements OnInit {
     this._userService.sessionCreate(this.sessionForm.getRawValue()).subscribe(
       (response: any) => {
         if (response) {
-          this._userService.token = response.token;
-          this._userService.getSessions().subscribe();
+          // this._userService.token = response.token;
+          // this._userService.getSessions().subscribe();
           this._toaster.success("Session created successfully");
           this._router.navigate(['/home']);
         }

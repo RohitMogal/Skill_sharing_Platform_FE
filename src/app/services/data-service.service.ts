@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, catchError } from 'rxjs';
+import { Observable, Subject, catchError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,7 +9,8 @@ export class DataServiceService {
     throw new Error('Method not implemented.');
   }
   apiUrl = "http://192.168.9.112:3000";
-  token: any;
+  tokenSubject: Subject<any>= new Subject();
+  
   constructor(private http: HttpClient,) { }
 
   //Login API 
@@ -22,9 +23,7 @@ export class DataServiceService {
   }
   //Session API
   getSessions() {
-    const header = new HttpHeaders()
-      .set('Authorization', this.token)
-    return this.http.get(`${this.apiUrl}/session`, { headers: header });
+    return this.http.get(`${this.apiUrl}/session`);
   }
   //Create session API
   sessionCreate(data: any) {

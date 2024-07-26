@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home.component';
 import { CreatesessionComponent } from './createsession/createsession.component';
 import { ExplorePageComponent } from './explore-page/explore-page.component';
 import { CardDetailsComponent } from './card-details/card-details.component';
+import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
 
@@ -14,7 +15,7 @@ const routes: Routes = [
   // { path: '', redirectTo: '/register', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   // { path: '', redirectTo: '/login', pathMatch: 'full' }
-  { path: 'create-session', component: CreatesessionComponent },
+  { path: 'create-session', component: CreatesessionComponent, canActivate:[AuthService] },
 
  
   { path: '', component: HomeComponent },
@@ -35,7 +36,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{ useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
