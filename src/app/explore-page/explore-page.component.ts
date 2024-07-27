@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CardDetailsComponent } from '../card-details/card-details.component';
+import { CourseDetailComponent } from '../pages/course-detail/course-detail.component';
 import { Router } from '@angular/router';
+import { DataServiceService } from '../services/data-service.service';
+import { ToastrService } from 'ngx-toastr';
 declare const $: any;
 @Component({
   selector: 'app-explore-page',
@@ -10,11 +13,17 @@ declare const $: any;
 })
 export class ExplorePageComponent implements OnInit {
   dialogBox: any;
-  
-  constructor(private _dialogRef: MatDialog, private _router: Router) {
+  sessionsList:any=[];
+  constructor(private _dialogRef: MatDialog, private _router: Router, private _userService:DataServiceService, private _toster:ToastrService) {
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this._userService.getSessions().subscribe((response:any)=>{
+      if(response.success==true){
+        this.sessionsList=response.data;
+      }
+    },(error)=>{
+      this._toster.error(error.error.message);
+    });
   }
 //Profile detail popup logic
   openProfileModal(): void {

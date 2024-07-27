@@ -22,6 +22,9 @@ import { ExplorePageComponent } from './explore-page/explore-page.component';
 import { CardDetailsComponent } from './card-details/card-details.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { InterceptInterceptor } from './interceptors/intercept.interceptor';
+import { CourseDetailComponent } from './pages/course-detail/course-detail.component';
+import { AuthGuard } from './services/auth-guard/auth.guard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +34,8 @@ import { InterceptInterceptor } from './interceptors/intercept.interceptor';
     FooterComponent,
     CreatesessionComponent,
     ExplorePageComponent,
-    CardDetailsComponent
+    CardDetailsComponent,
+    CourseDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,8 @@ import { InterceptInterceptor } from './interceptors/intercept.interceptor';
     ToastrModule.forRoot()
   ],
   providers: [
-    {provide:HTTP_INTERCEPTORS,useClass:InterceptInterceptor,multi:true}
+    AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

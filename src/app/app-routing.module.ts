@@ -7,36 +7,24 @@ import { HomeComponent } from './pages/home.component';
 import { CreatesessionComponent } from './createsession/createsession.component';
 import { ExplorePageComponent } from './explore-page/explore-page.component';
 import { CardDetailsComponent } from './card-details/card-details.component';
-import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth-guard/auth.guard';
+import { CourseDetailComponent } from './pages/course-detail/course-detail.component';
 
 const routes: Routes = [
 
-  { path: 'register', component: RegisterComponent },
-  // { path: '', redirectTo: '/register', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  // { path: '', redirectTo: '/login', pathMatch: 'full' }
-  { path: 'create-session', component: CreatesessionComponent, canActivate:[AuthService] },
-
- 
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'explore-page', component: ExplorePageComponent },
-  { path: 'card-details', component: CardDetailsComponent },
-
-
-
-  { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
-  
+  { path: 'explore-page', component: ExplorePageComponent, canActivate: [AuthGuard] },
+  { path: 'card-details', component: CardDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'create-session', component: CreatesessionComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  // { path: 'create-session', component: NavbarComponent },
-  // { path: 'search-session', component:  NavbarComponent},
+  {path: 'course-detail', component:CourseDetailComponent}
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{ useHash: true })],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

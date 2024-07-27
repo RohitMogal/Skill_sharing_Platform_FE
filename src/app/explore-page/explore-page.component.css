@@ -39,7 +39,7 @@
   font-size: 0.875rem;
   text-decoration: none;
 }
-a {
+.link-text {
   color: black;
 }
 .btn-search {
@@ -62,4 +62,8 @@ a {
 }
 .card-text {
   padding: 1%;
+}
+.btn{
+  background-color: #009AAD;
+  color: white;
 }

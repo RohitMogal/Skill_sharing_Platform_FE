@@ -3,7 +3,7 @@
     <div class="col-12  ">
       <div class="input-group">
         <input type="text" class="form-control" id="searchInput" placeholder="Search Sessions...">
-        <button class="btn btn-success btn-search" id="searchButton">Search</button>
+        <button class="btn  btn-search" id="searchButton">Search</button>
       </div>
     </div>
   </div>
@@ -17,60 +17,60 @@
             <h5 class="card-title ">Interested Sessions</h5>
             <ul class="list-group">
               <li class="list-group-item">
-                <a href="#" class="text-decoration-none">React Session</a>
+                <a href="#" class="text-decoration-none link-text">React Session</a>
               </li>
               <li class="list-group-item">
-                <a href="#" class="text-decoration-none">Angular Session</a>
+                <a href="#" class="text-decoration-none link-text">Angular Session</a>
               </li>
               <li class="list-group-item">
-                <a href="#" class="text-decoration-none">Python Session</a>
+                <a href="#" class="text-decoration-none link-text">Python Session</a>
               </li>
               <li class="list-group-item">
-                <a href="#" class="text-decoration-none">PHP Session</a>
+                <a href="#" class="text-decoration-none  link-text">PHP Session</a>
               </li>
               <li class="list-group-item">
-                <a href="#" class="text-decoration-none">Java Session</a>
+                <a href="#" class="text-decoration-none link-text">Java Session</a>
               </li>
               <li class="list-group-item">
-                <a href="#" class="text-decoration-none">React Session</a>
+                <a href="#" class="text-decoration-none link-text">React Session</a>
               </li>
               <li class="list-group-item">
-                <a href="#" class="text-decoration-none">Angular Session</a>
+                <a href="#" class="text-decoration-none link-text">Angular Session</a>
               </li>
               <li class="list-group-item">
-                <a href="#" class="text-decoration-none">Python Session</a>
+                <a href="#" class="text-decoration-none link-text">Python Session</a>
               </li>
               <li class="list-group-item">
-                <a href="#" class="text-decoration-none">PHP Session</a>
+                <a href="#" class="text-decoration-none link-text">PHP Session</a>
               </li>
               <li class="list-group-item">
-                <a href="#" class="text-decoration-none">Java Session</a>
+                <a href="#" class="text-decoration-none link-text">Java Session</a>
               </li>
               <li class="list-group-item">
-                <a href="#" class="text-decoration-none">React Session</a>
+                <a href="#" class="text-decoration-none link-text">React Session</a>
               </li>
               <li class="list-group-item">
-                <a href="#" class="text-decoration-none">Angular Session</a>
+                <a href="#" class="text-decoration-none link-text">Angular Session</a>
               </li>
               <li class="list-group-item">
-                <a href="#" class="text-decoration-none">Python Session</a>
+                <a href="#" class="text-decoration-none link-text">Python Session</a>
               </li>
               <li class="list-group-item">
-                <a href="#" class="text-decoration-none">PHP Session</a>
+                <a href="#" class="text-decoration-none link-text">PHP Session</a>
               </li>
               <li class="list-group-item">
-                <a href="#" class="text-decoration-none">Java Session</a>
+                <a href="#" class="text-decoration-none link-text">Java Session</a>
               </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-12 col-md-9">
+    <div class="col-12 col-md-9" *ngIf="sessionsList.length>0">
       <div class="row">
         <!-- Card 1 -->
-        <div class="col-12 col-md-4 mb-4 ">
-          <div class="card" data-session="react-session">
+        <div class="col-12 col-md-4 mb-4" *ngFor="let session of sessionsList">
+          <div class="card" data-session="react-session" >
             <div class="row no-gutters flex-grow-1">
               <div class="col-12 d-flex align-items-center justify-content-start p-1">
                 <img src="/assets/Profile.png" class="rounded-circle profile-photo image" alt="Profile Image"
@@ -81,159 +81,19 @@
                 <hr class="my-1">
               </div>
               <div class="col-12 p-0">
-                <h6 class="mb-2 card-title">React Session</h6>
-                <img src="/assets/react.jpg" class="card-img-top" alt="Image"
+                <h6 class="mb-2 card-title">{{session.Title}}</h6>
+                <img [src]="session.Img" class="card-img-top" alt="Image"
                   style="width: 100%; height: 150px; object-fit: cover;">
                 <div class="card-body p-2" style="position: relative; overflow: hidden;">
                   <small class="card-text mb-1 description"
                     data-fulltext="React is a free and open-source JavaScript library for building user interfaces, maintained by Facebook and the community.">
-                    React is a free and open-source JavaScript library for...
+                    {{session.Description}}
                   </small>
-                  <label class="btn-read btn-link text-primary show-more" (click)="readMore()">Read More</label>
+                  <!-- <label class="btn-read btn-link text-primary show-more" (click)="readMore()">Read More</label> -->
                 </div>
               </div>
             </div>
-            <a href="#" class="btn btn-success w-100 mt-auto">Explore</a>
-          </div>
-        </div>
-        <!-- Card 2 -->
-        <div class="col-12 col-md-4 mb-4">
-          <div class="card" data-session="angular-session">
-            <div class="row no-gutters flex-grow-1">
-              <div class="col-12 d-flex align-items-center justify-content-start p-1">
-                <img src="/assets/Profile.png" class="rounded-circle profile-photo image" alt="Profile Image"
-                  (click)="openProfileModal()">
-                <small>Ushanta Shinde</small>
-              </div>
-              <div class="col-12">
-                <hr class="my-1">
-              </div>
-              <div class="col-12 p-0">
-                <h6 class="mb-2 card-title">Angular Session</h6>
-                <img src="/assets/angular (1).jpg" class="card-img-top " alt="Image"
-                  style="width: 100%; height: 150px; object-fit: cover;">
-                <div class="card-body p-2" style="position: relative; overflow: hidden;">
-                  <small class="card-text mb-1 description"
-                    data-fulltext="Angular is a platform and framework for building client-side applications using HTML and TypeScript.">
-                    Angular is a platform and framework for building client...
-                  </small>
-                  <a href="card-details" class="btn-read btn-link text-primary show-more">Read More</a>
-                </div>
-              </div>
-            </div>
-            <a href="#" class="btn btn-success w-100 mt-auto">Explore</a>
-          </div>
-        </div>
-        <!-- Card 3 -->
-        <div class="col-12 col-md-4 mb-4">
-          <div class="card" data-session="python-session">
-            <div class="row no-gutters flex-grow-1">
-              <div class="col-12 d-flex align-items-center justify-content-start p-1">
-                <img src="/assets/Profile.png" class="rounded-circle profile-photo image" alt="Profile Image"
-                  (click)="openProfileModal()">
-                <small>Rohit Mogal</small>
-              </div>
-              <div class="col-12">
-                <hr class="my-1">
-              </div>
-              <div class="col-12 p-0">
-                <h6 class="mb-2 card-title">Python Session</h6>
-                <img src="/assets/python2.jpg" class="card-img-top" alt="Image"
-                  style="width: 100%; height: 150px; object-fit: cover;">
-                <div class="card-body p-2" style="position: relative; overflow: hidden;">
-                  <small class="card-text mb-1 description"
-                    data-fulltext="Python is an interpreted, high-level, and general-purpose programming language. Its design philosophy emphasizes code readability.">
-                    Python is an interpreted, high-level, and general-purpose...
-                  </small>
-                  <a href="card-details" class="btn-read btn-link text-primary show-more">Read More</a>
-                </div>
-              </div>
-            </div>
-            <a href="#" class="btn btn-success w-100 mt-auto">Explore</a>
-          </div>
-        </div>
-        <!-- Card 4 -->
-        <div class="col-12 col-md-4 mb-4 p-3 ">
-          <div class="card" data-session="php-session">
-            <div class="row no-gutters flex-grow-1">
-              <div class="col-12 d-flex align-items-center justify-content-start p-1">
-                <img src="/assets/Profile.png" class="rounded-circle profile-photo image" alt="Profile Image"
-                  (click)="openProfileModal()">
-                <small>Aishwarya Sonawane</small>
-              </div>
-              <div class="col-12">
-                <hr class="my-1">
-              </div>
-              <div class="col-12 p-0">
-                <h6 class="mb-2 card-title">PHP Session</h6>
-                <img src="/assets/learning.png" class="card-img-top" alt="Image"
-                  style="width: 100%; height: 150px; object-fit: cover;">
-                <div class="card-body p-2" style="position: relative; overflow: hidden;">
-                  <small class="card-text mb-1 description"
-                    data-fulltext="PHP is a popular general-purpose scripting language that is especially suited to web development.">
-                    PHP is a popular general-purpose scripting language...
-                  </small>
-                  <a href="card-details" class="btn-read btn-link text-primary show-more">Read More</a>
-                </div>
-              </div>
-            </div>
-            <a href="#" class="btn btn-success w-100 mt-auto">Explore</a>
-          </div>
-        </div>
-        <!-- Card 5 -->
-        <div class="col-12 col-md-4 mb-4 p-3">
-          <div class="card" data-session="java-session">
-            <div class="row no-gutters flex-grow-1">
-              <div class="col-12 d-flex align-items-center justify-content-start p-1">
-                <img src="/assets/Profile.png" class="rounded-circle profile-photo image" alt="Profile Image"
-                  (click)="openProfileModal()">
-                <small>Nikhil Patil</small>
-              </div>
-              <div class="col-12">
-                <hr class="my-1">
-              </div>
-              <div class="col-12 p-0">
-                <h6 class="mb-2 card-title">Java Session</h6>
-                <img src="/assets/javaa.jpg" class="card-img-top" alt="Image"
-                  style="width: 100%; height: 150px; object-fit: cover;">
-                <div class="card-body p-2" style="position: relative; overflow: hidden;">
-                  <small class="card-text mb-1 description"
-                    data-fulltext="Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible.">
-                    Java is a high-level, class-based, object-oriented...
-                  </small>
-                  <a href="card-details" class="btn-read btn-link text-primary show-more">Read More</a>
-                </div>
-              </div>
-            </div>
-            <a href="#" class="btn btn-success w-100 mt-auto">Explore</a>
-          </div>
-        </div>
-        <!-- card-6 -->
-        <div class="col-12 col-md-4 mb-4 p-3">
-          <div class="card" data-session="java-session">
-            <div class="row no-gutters flex-grow-1">
-              <div class="col-12 d-flex align-items-center justify-content-start p-1">
-                <img src="/assets/Profile.png" class="rounded-circle profile-photo image" alt="Profile Image"
-                  (click)="openProfileModal()">
-                <small>Rohit Patil</small>
-              </div>
-              <div class="col-12">
-                <hr class="my-1">
-              </div>
-              <div class="col-12 p-0">
-                <h6 class="mb-2 card-title">Machine Learning</h6>
-                <img src="/assets/MachineLearning.jpg" class="card-img-top" alt="Image"
-                  style="width: 100%; height: 150px; object-fit: cover;">
-                <div class="card-body p-2" style="position: relative; overflow: hidden;">
-                  <small class="card-text mb-1 description"
-                    data-fulltext="Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible.">
-                    Java is a high-level, class-based, object-oriented...
-                  </small>
-                  <a href="card-details" class="btn-read btn-link text-primary show-more">Read More</a>
-                </div>
-              </div>
-            </div>
-            <a href="#" class="btn btn-success w-100 mt-auto">Explore</a>
+            <a routerLink='/course-detail' class="btn w-100 mt-auto">Interested</a>
           </div>
         </div>
       </div>

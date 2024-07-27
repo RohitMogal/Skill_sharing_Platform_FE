@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this._dataService.tokenSubject.subscribe(response=>{
+    this._dataService.tokenSubject.subscribe((response:any)=>{
       if(response!=null){
         this.loggedIn=true;
       }
