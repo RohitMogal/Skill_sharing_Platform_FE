@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataServiceService } from '../../services/data-service.service';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -10,52 +11,65 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
   profileForm: FormGroup | any;
   isEditMode: boolean = false;
-  profile: any;
 
   constructor(private _fb: FormBuilder, private dataService: DataServiceService, private _router: Router) { }
 
   ngOnInit(): void {
     this.profileForm = this._fb.group({
-      name: ['', Validators.required],
-      email: ['',
-        Validators.required,
-        Validators.email,
-        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
-      ],
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
       aboutMe: ['', Validators.required],
-      picture: ['', [Validators.required, Validators.pattern('(https?://.*.(?:png|jpg))')]]
+      picture: ['']
     });
     this.loadProfile();
   }
+
   loadProfile() {
     this.dataService.getUserProfile().subscribe(data => {
       this.profileForm.patchValue(data);
       this.profileForm.get('email').disable(); 
-
     });
   }
+
   toggleEditMode() {
     this.isEditMode = !this.isEditMode;
-    if (this.isEditMode) {
-      this.profileForm.get('email').disable(); 
+    if (!this.isEditMode) {
+      this.profileForm.get('email').disable();
     } else {
       this.profileForm.get('email').disable(); 
     }
   }
+
   onSubmit() {
     if (this.profileForm.valid) {
       this.dataService.updateUserProfile(this.profileForm.value).subscribe(response => {
         this.isEditMode = false;
+        this.loadProfile(); 
       });
     }
   }
 
   onSave() {
-    this.loadProfile();
-    this.isEditMode = false;
+    if (this.profileForm.valid) {
+      this.onSubmit();
+    }
   }
 
   onDiscard() {
-    // this._router.navigate(['/profile'])
+    if (confirm('Are you sure you want to discard the changes?')) {
+      this.loadProfile(); // Reload profile data to discard changes
+      this.isEditMode = false;
+    }
+  }
+
+  onImageUpload(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.profileForm.get('picture').setValue(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
   }
 }
