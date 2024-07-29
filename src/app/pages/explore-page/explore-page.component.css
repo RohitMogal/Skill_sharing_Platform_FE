@@ -38,9 +38,11 @@
 .btn-link.show-more {
   font-size: 0.875rem;
   text-decoration: none;
+
 }
 .link-text {
   color: black;
+  cursor: pointer;
 }
 .btn-search {
   margin-left: 10px;
@@ -66,4 +68,23 @@
 .btn{
   background-color: #009AAD;
   color: white;
+}
+
+
+.description {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: max-height 0.3s ease;
+}
+
+.description.text-truncate {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.show-more {
+  cursor: pointer;
+  user-select: none;
 }

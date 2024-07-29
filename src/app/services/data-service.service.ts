@@ -5,6 +5,7 @@ import { Observable, Subject, catchError } from 'rxjs';
   providedIn: 'root'
 })
 export class DataServiceService {
+  token: any;
   saveUsers(data: any) {
     throw new Error('Method not implemented.');
   }
@@ -25,8 +26,25 @@ export class DataServiceService {
   getSessions() {
     return this.http.get(`${this.apiUrl}/session`);
   }
-  //Create session API
-  sessionCreate(data: any) {
-    return this.http.post(`${this.apiUrl}/user`, data);
+  // //Create session API
+  // sessionCreate(data: any): Observable<any> {
+  //   return this.http.post(`${this.apiUrl}/session`, data);
+  // }
+//Profile API
+  getUserProfile(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/user/profile`);
   }
+//UPdate Profile API
+  updateUserProfile(data: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/user/profile`, data);
+  }
+  
+  getUserInterests(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/user/interests`);
+  }
+ //create session
+  sessionCreate(sessionData: any) {
+    return this.http.post(`${this.apiUrl}/sessions`, sessionData);
+  }
+ 
 }

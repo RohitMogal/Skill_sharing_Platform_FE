@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" [routerLink]="!loggedIn? '/home' : '/explore-page' ">
+    <img src="/assets/Logo4.png" alt="Logo">
+  </a>
+  <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto" *ngIf="loggedIn">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/create-session">Create Session</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/request-session">Request Session</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/explore-page">Explore Session</a>
+      </li>
+      <div class="profile">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+      </div>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item class="">
+          <a class="dropdown-item" (click)="logout()"><mat-icon>power_settings_new</mat-icon>Log out</a>
+        </button>
+        <button mat-menu-item routerLink="/profile">
+          <mat-icon>person</mat-icon>
+          <span>View Profile</span>
+        </button>
+      </mat-menu>
+    </ul>
+    <div class="ml-auto" *ngIf="!loggedIn">
+      <button type="button" class="btn btn-primary" (click)="login()">
+        Log In
+      </button>
+    </div>
+  </div>
+</nav>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { DataServiceService } from '../services/data-service.service';
+import { DataServiceService } from '../../services/data-service.service';
 import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-login',
@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   }
   //Call when Form submitted
   onSubmit() {
+    
     if (this.loginForm.valid) {
       this.login();
     }
@@ -40,6 +41,7 @@ export class LoginComponent implements OnInit {
           this._toaster.success("Login successful");
           // console.log(response)
           this._router.navigate(['/explore-page']);
+
         } else {
           this._toaster.error("Login Failed");
         }

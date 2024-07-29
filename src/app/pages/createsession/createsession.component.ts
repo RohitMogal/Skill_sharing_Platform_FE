@@ -1,17 +1,19 @@
+// src/app/components/createsession/createsession.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { DataServiceService } from '../services/data-service.service';
+import { DataServiceService } from '../../services/data-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-createsession',
   templateUrl: './createsession.component.html',
   styleUrls: ['./createsession.component.css']
 })
 export class CreatesessionComponent implements OnInit {
-  sessionForm: FormGroup | any;
-  minDate!: string;
+  sessionForm: FormGroup;
+  minDate: any;
   hours: number[] = [];
   minutes: number[] = [];
   amPm: string[] = ['AM', 'PM'];
@@ -19,11 +21,16 @@ export class CreatesessionComponent implements OnInit {
   dropdownSettings: IDropdownSettings = {};
   selectedItems: any[] = [];
 
-  constructor(private _fb: FormBuilder, private _userService: DataServiceService, private _toaster: ToastrService, private _router: Router) {
-    this.sessionForm = this._fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
-      link: ['', Validators.required],
+  constructor(
+    private fb: FormBuilder,
+    private userService: DataServiceService,
+    private toaster: ToastrService,
+    private router: Router
+  ) {
+    this.sessionForm = this.fb.group({
+      Title: ['', Validators.required],
+      Description: ['', Validators.required],
+      Link: ['', Validators.required],
       date: ['', Validators.required],
       hour: ['', Validators.required],
       minute: ['', Validators.required],
@@ -38,13 +45,13 @@ export class CreatesessionComponent implements OnInit {
     this.initializeMinDate();
     this.initializeDropdown();
   }
-  //Date Logic
+
   initializeMinDate(): void {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     this.minDate = tomorrow.toISOString().split('T')[0];
   }
-  //DropDown Logic
+
   initializeDropdown(): void {
     this.dropdownData = [
       { ID: 1, Value: 'Data1' },
@@ -62,26 +69,36 @@ export class CreatesessionComponent implements OnInit {
       itemsShowLimit: 5
     };
   }
-  //call when form submit
+  
   onSubmit(): void {
     if (this.sessionForm.valid) {
       this.createSession();
-      console.log('Form Value', this.sessionForm.value);
     }
   }
-  //Create session Logic
-  createSession() {
-    this._userService.sessionCreate(this.sessionForm.getRawValue()).subscribe(
+
+  createSession(): void {
+    const formValues = this.sessionForm.getRawValue();
+    const sessionTime = new Date(`${formValues.date} ${formValues.hour}:${formValues.minute} ${formValues.period}`).toISOString();
+
+    const sessionData = {
+      UserId: 'f98fe64a-820d-49ff-a81f-479b34397500', 
+      Description: formValues.Description,
+      Title: formValues.Title,
+      Link: formValues.Link,
+      Img: 'https://images.pexels.com/photos/19736973/pexels-photo-19736973/free-photo-of-working-on-ipad-tablet-with-magic-keyboard.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
+      Interests: formValues.myItems.map((item: any) => item.Value).toString(),
+      SessionTime: sessionTime
+    };
+
+    this.userService.sessionCreate(sessionData).subscribe(
       (response: any) => {
         if (response) {
-          // this._userService.token = response.token;
-          // this._userService.getSessions().subscribe();
-          this._toaster.success("Session created successfully");
-          this._router.navigate(['/home']);
+          this.toaster.success('Session created successfully');
+          this.router.navigate(['/home']);
         }
       },
       (error: any) => {
-        this._toaster.error("Created session failed");
+        this.toaster.error('Failed to create session');
       }
     );
   }

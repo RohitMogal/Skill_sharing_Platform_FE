@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { DataServiceService } from '../services/data-service.service';
+import { DataServiceService } from '../../services/data-service.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',

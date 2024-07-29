@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataServiceService } from '../services/data-service.service';
+import { DataServiceService } from '../../services/data-service.service';
 import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-navbar',
@@ -42,4 +42,5 @@ export class NavbarComponent implements OnInit{
     this._router.navigate(['/login'])
     console.log('Login clicked');
   }
+  
 }

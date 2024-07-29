@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './pages/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './login/login.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
-import { CreatesessionComponent } from './createsession/createsession.component';
+import { LoginComponent } from './pages/login/login.component';
+import { NavbarComponent } from './includes/navbar/navbar.component';
+import { FooterComponent } from './includes/footer/footer.component';
+import { CreatesessionComponent } from './pages/createsession/createsession.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -18,12 +18,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-import { ExplorePageComponent } from './explore-page/explore-page.component';
-import { CardDetailsComponent } from './card-details/card-details.component';
+import { ExplorePageComponent } from './pages/explore-page/explore-page.component';
+import { CardDetailsComponent } from './pages/card-details/card-details.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { InterceptInterceptor } from './interceptors/intercept.interceptor';
 import { CourseDetailComponent } from './pages/course-detail/course-detail.component';
 import { AuthGuard } from './services/auth-guard/auth.guard';
+import { ProfileComponent } from './includes/profile/profile.component';
+import { DataServiceService } from './services/data-service.service';
+import { FormsModule } from '@angular/forms';
+import { RequestSessionComponent } from './pages/request-session/request-session.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,10 @@ import { AuthGuard } from './services/auth-guard/auth.guard';
     CreatesessionComponent,
     ExplorePageComponent,
     CardDetailsComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    ProfileComponent,
+    RequestSessionComponent,
+ 
   ],
   imports: [
     BrowserModule,
@@ -53,9 +60,11 @@ import { AuthGuard } from './services/auth-guard/auth.guard';
     MatButtonModule,
     HttpClientModule,
     NgMultiSelectDropDownModule.forRoot(),
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FormsModule,
   ],
   providers: [
+    DataServiceService,
     AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptInterceptor, multi: true }
   ],

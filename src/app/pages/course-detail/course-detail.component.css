@@ -5,6 +5,77 @@
   min-height: 50%;
   max-width: 100%;
 }
-/* .testimonial-card {
-  margin: 15px 0;
+.img-fluid{
+  display: unset !important;
+}
+.testimonial-card .card {
+  position: relative;
+  overflow: hidden;
+}
+.testimonial-card .card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(360deg, red, orange, yellow, green, blue, indigo, violet);
+  background-size: 400%;
+  z-index: 2;
+  animation: rainbow 3s linear infinite;
+ 
+}
+.testimonial-card .card .card-body {
+  position: relative;
+  z-index: 2;
+  background: white;
+  border-radius: 5%;
+  padding: 20px;
+  margin: 3px; 
+}
+@keyframes rainbow {
+  0% {
+      background-position: 0% 50%;
+  }
+  100% {
+      background-position: 100% 50%;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.my-5 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-md-4 {
+  flex: 0 0 auto;
+  width: 50%;
+  padding: 15px;
+}
+
+.card {
+  border: none; 
+}
+
+.card-title, .card-subtitle {
+  text-align: center;
+}
+
+.card-text {
+  font-style: italic;
+}
+
+/* .testimonial-custom-color {
+  background: linear-gradient(hsl(210deg 6% 78% / 0%), hsl(208deg 48% 95%));
+  border-radius: 12px;
 } */
+

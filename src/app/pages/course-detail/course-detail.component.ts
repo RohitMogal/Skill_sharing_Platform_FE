@@ -12,5 +12,7 @@ export class CourseDetailComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  openPaymentModule(){
+    
+  }
 }

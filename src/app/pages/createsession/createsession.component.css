@@ -13,8 +13,6 @@
   max-width: 100%;
   height: auto;
   border-radius: 10px;
-
- 
 }
 .form-group {
   margin-top: 20px;
@@ -35,4 +33,31 @@
 }
 .form-control {
   width: 100%;
+}
+
+.form-group {
+  position: relative;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  cursor: pointer;
+  padding: 6px 12px;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.custom-file-upload:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.form-control-file {
+  display: none;
+}
+
+.btn {
+  background-color: #009aad;
+  color: white;
 }
