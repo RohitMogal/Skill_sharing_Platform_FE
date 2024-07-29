@@ -7,18 +7,23 @@ import { HomeComponent } from './pages/home.component';
 import { CreatesessionComponent } from './createsession/createsession.component';
 import { ExplorePageComponent } from './explore-page/explore-page.component';
 import { CardDetailsComponent } from './card-details/card-details.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { MyActivityComponent } from './my-activity/my-activity.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
-  // { path: '', redirectTo: '/register', pathMatch: 'full' },
+
   { path: 'login', component: LoginComponent },
-  // { path: '', redirectTo: '/login', pathMatch: 'full' }
   { path: 'create-session', component: CreatesessionComponent },
  
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'explore-page', component: ExplorePageComponent },
-  { path: 'card-details', component: CardDetailsComponent }
+  { path: 'card-details', component: CardDetailsComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent},
+  {path:'my-activity' , component:MyActivityComponent},
+  {path:'payment', component:PaymentComponent}
 ];
 
 @NgModule({
