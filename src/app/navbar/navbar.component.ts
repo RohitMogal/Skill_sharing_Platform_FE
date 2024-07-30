@@ -7,12 +7,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  constructor(private router: Router) {}
+
+  constructor(private _router: Router) { }
 
   logout() {
-    // Implement your logout logic here
+    this._router.navigate(['/']);
     console.log('Logout clicked');
-    // Redirect to login page or perform logout action
-    this.router.navigate(['/login']);
+  }
+  register() {
+    this._router.navigate(['/register'])
+    console.log('Register clicked');
+  }
+  login() {
+    this._router.navigate(['/login'])
+    console.log('Login clicked');
   }
 }

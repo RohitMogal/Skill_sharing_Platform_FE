@@ -1,42 +1,71 @@
-<div class="container mt-5 d-flex justify-content-center">
-    <div class="row w-100">
-      <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center purple-bg">
-        <div class="text-white text-center">
-            <img src="/assets/login.jfif" alt="Join Us" class="img-fluid mb-4">
-          <h3>Join Us!</h3>
-          <p>Create an account to access all our features and start learning today.</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <h2 class="text-center mb-4">Register</h2>
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-          <div class="mb-3">
-            <label for="firstName" class="form-label">First Name</label>
-            <input id="firstName" formControlName="firstName" class="form-control" />
-            <div *ngIf="registerForm.controls['firstName'].invalid && registerForm.controls['firstName'].touched" class="text-danger">
-              First Name is required .
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" id="email" formControlName="email" class="form-control" />
-            <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched" class="text-danger">
-              A valid email is required.
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" id="password" formControlName="password" class="form-control" />
-            <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched" class="text-danger">
-              Password is required .
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary w-100" [disabled]="registerForm.invalid">Register</button>
-        </form>
-        <div class="text-center mt-3">
-          <p>Already have an account? <a routerLink="/login">Login</a></p>
-        </div>
+<div class="container mt-2 d-flex justify-content-center">
+  <div class="row w-80">
+    <div class="col-md-6 mt-3 d-none d-md-flex align-items-center justify-content-center purple-bg">
+      <div class="text-white text-center">
+        <img src="/assets/signUp.png" alt="Join Us" class="img-fluid mb-4">
+        <h3>Join Us!</h3>
+        <p>Create an account to access all our features and start learning today.</p>
       </div>
     </div>
+    <div class="col-md-5 mt-3">
+      <div class="d-flex align-items-center ">
+        <h2 class=" mb-4 ">Register</h2>
+      </div>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3 form-group">
+          <label for="fullName" class="form-label">Full Name</label>
+          <input id="fullName" formControlName="fullName" class="form-control" />
+          <div class="form-text text-danger" *ngIf="FullName.errors?.['required'] && FullName.touched ">
+            *Full name is required
+          </div>
+          <div class="form-text text-danger" *ngIf="FullName.errors?.['pattern'] && FullName.touched ">
+            *Full name start with alphabet
+          </div>
+        </div>
+        <div class="mb-3 form-group">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" formControlName="email" class="form-control" />
+          <div class="form-text text-danger" *ngIf="Email.errors?.['required'] && Email.touched ">
+            *Email is required
+          </div>
+          <div class="form-text text-danger" *ngIf="Email.errors?.['email'] && Email.touched ">
+            *Invalid email address
+          </div>
+        </div>
+        <div class="mb-3 form-group">
+          <div class="position-relative">
+            <label for="password" class="form-label">Password</label>
+            <input [type]="hidePassword ? 'password' : 'text'" id="password" formControlName="password"
+              class="form-control">
+            <button type="button" class="password-toggle-btn" style="outline: none;"
+              (click)="togglePasswordVisibility()">
+              <i class="fas" [ngClass]="hidePassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+            </button>
+          </div>
+          <div class="form-text text-danger" *ngIf="Password.errors?.['required'] && Password.touched ">
+            *Password is required
+          </div>
+          <div class="form-text text-danger" *ngIf="Password.errors?.['minlength'] || Password.errors?.['maxlength'] && 
+          Password.touched">*Password should be at least minimum 6 and maximum 15 character
+          </div>
+        </div>
+        <div class=" mb-3 form-group">
+          <div class="position-relative">
+          <label for="rpwd" class="form-label">Confirm Passowrd</label>
+          <input [type]="hidePassword ? 'password' : 'text'" id="rpwd" formControlName="rpwd" class="form-control">
+          <button type="button" class="rpwd-toggle-btn" style="outline: none;" (click)="togglePasswordVisibility()">
+            <i class="fas" [ngClass]="hidePassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+          </button>
+          </div>
+          <div class="form-text text-danger" [ngStyle]="{'display':repeatPass}">*Confirm Password is Invalid</div>
+        </div>
+        <div class="text-center mt-3">
+        <p>Already have an account? <a routerLink="/login">Login</a></p>
+      </div>
+        <button type="submit" class="btn btn-primary w-100" color="registerForm.valid ? 'primary' : ''"
+          [disabled]="!registerForm.valid">Register</button>
+      </form>
+      
+    </div>
   </div>
-  
+</div>

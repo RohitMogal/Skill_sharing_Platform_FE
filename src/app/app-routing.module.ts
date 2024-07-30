@@ -12,10 +12,12 @@ import { MyActivityComponent } from './my-activity/my-activity.component';
 import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
+
   { path: 'register', component: RegisterComponent },
 
   { path: 'login', component: LoginComponent },
   { path: 'create-session', component: CreatesessionComponent },
+
  
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
