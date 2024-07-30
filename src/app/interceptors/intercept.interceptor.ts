@@ -14,11 +14,14 @@ export class InterceptInterceptor implements HttpInterceptor {
   constructor(private _cookieService:CookieService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = this._cookieService.get('token')
-    if (token){
+    const token = this._cookieService.get('token');
+    const id = this._cookieService.get('userId');
+    
+    if (token && id){
     const modifiedRequest=request.clone({
       setHeaders:{
-        'Authorization': token
+        'Authorization': `Bearer ${token}`,
+        'id': id
       }
     });
     return next.handle(modifiedRequest)

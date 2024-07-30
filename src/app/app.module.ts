@@ -28,7 +28,11 @@ import { ProfileComponent } from './includes/profile/profile.component';
 import { DataServiceService } from './services/data-service.service';
 import { FormsModule } from '@angular/forms';
 import { RequestSessionComponent } from './pages/request-session/request-session.component';
-
+import { PaymentComponent } from './payment/payment.component';
+import { MyActivityComponent } from './pages/my-activity/my-activity.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +46,9 @@ import { RequestSessionComponent } from './pages/request-session/request-session
     CourseDetailComponent,
     ProfileComponent,
     RequestSessionComponent,
- 
+    PaymentComponent,
+    MyActivityComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +68,9 @@ import { RequestSessionComponent } from './pages/request-session/request-session
     NgMultiSelectDropDownModule.forRoot(),
     ToastrModule.forRoot(),
     FormsModule,
+    MatTabsModule,
+    FormsModule
+
   ],
   providers: [
     DataServiceService,

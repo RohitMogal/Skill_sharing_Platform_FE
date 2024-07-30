@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profileForm: FormGroup | any;
+  profileForm: FormGroup|any;
   isEditMode: boolean = false;
 
   constructor(private _fb: FormBuilder, private dataService: DataServiceService, private _router: Router) { }

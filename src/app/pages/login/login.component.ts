@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
       (response: any) => {
         if (response.success == true) {
           this._userService.tokenSubject.next(response.token);
+          this._cookieService.set('userId', response.id);
           this._cookieService.set('token', response.token);
           this._toaster.success("Login successful");
           // console.log(response)
