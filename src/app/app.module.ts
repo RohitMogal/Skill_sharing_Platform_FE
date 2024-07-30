@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
@@ -21,6 +21,11 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ExplorePageComponent } from './explore-page/explore-page.component';
 import { CardDetailsComponent } from './card-details/card-details.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { MyActivityComponent } from './my-activity/my-activity.component';
+import { PaymentComponent } from './payment/payment.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 
@@ -34,6 +39,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     CreatesessionComponent,
     ExplorePageComponent,
     CardDetailsComponent,
+    ForgotPasswordComponent,
+    MyActivityComponent,
+    PaymentComponent,
     
   ],
   imports: [
@@ -46,13 +54,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     BrowserAnimationsModule,
 
     MatDialogModule,
-
-    MatMenuModule,
-    MatMenuModule,
-    MatIconModule,
-    MatMenuModule,
-    MatButtonModule,
-
+    MatSnackBarModule,
+    MatTabsModule,
+    FormsModule ,
     NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],
