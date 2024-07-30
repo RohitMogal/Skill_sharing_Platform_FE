@@ -5,14 +5,14 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { DataServiceService } from '../../services/data-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-createsession',
   templateUrl: './createsession.component.html',
   styleUrls: ['./createsession.component.css']
 })
 export class CreatesessionComponent implements OnInit {
-  sessionForm: FormGroup;
+  sessionForm: FormGroup | any;
   minDate: any;
   hours: number[] = [];
   minutes: number[] = [];
@@ -22,12 +22,12 @@ export class CreatesessionComponent implements OnInit {
   selectedItems: any[] = [];
 
   constructor(
-    private fb: FormBuilder,
-    private userService: DataServiceService,
-    private toaster: ToastrService,
-    private router: Router
+    private _fb: FormBuilder,
+    private _userService: DataServiceService,
+    private _toaster: ToastrService,
+    private _router: Router
   ) {
-    this.sessionForm = this.fb.group({
+    this.sessionForm = this._fb.group({
       Title: ['', Validators.required],
       Description: ['', Validators.required],
       Link: ['', Validators.required],
@@ -35,7 +35,8 @@ export class CreatesessionComponent implements OnInit {
       hour: ['', Validators.required],
       minute: ['', Validators.required],
       period: ['AM', Validators.required],
-      myItems: [this.selectedItems]
+      interests: [this.selectedItems],
+      amount:['0.00', Validators.required]
     });
     this.hours = Array.from({ length: 12 }, (_, i) => i + 1);
     this.minutes = Array.from({ length: 60 }, (_, i) => i);
@@ -54,11 +55,11 @@ export class CreatesessionComponent implements OnInit {
 
   initializeDropdown(): void {
     this.dropdownData = [
-      { ID: 1, Value: 'Data1' },
-      { ID: 2, Value: 'Data2' },
-      { ID: 3, Value: 'Data3' },
-      { ID: 4, Value: 'Data4' },
-      { ID: 5, Value: 'Data5' }
+      { ID: 1, Value: 'Reactjs' },
+      { ID: 2, Value: 'Angular' },
+      { ID: 3, Value: 'C#' },
+      { ID: 4, Value: 'Java' },
+      { ID: 5, Value: 'Nodejs' }
     ];
     this.dropdownSettings = {
       idField: 'ID',
@@ -74,32 +75,36 @@ export class CreatesessionComponent implements OnInit {
     if (this.sessionForm.valid) {
       this.createSession();
     }
+    this._router.navigate(['/explore-page'])
   }
 
   createSession(): void {
     const formValues = this.sessionForm.getRawValue();
-    const sessionTime = new Date(`${formValues.date} ${formValues.hour}:${formValues.minute} ${formValues.period}`).toISOString();
-
+    let sessionTime:any = new Date(`${formValues.date} ${formValues.hour}:${formValues.minute} ${formValues.period}`);
+    sessionTime=moment().format("YYYY-MM-DD HH:MM")
     const sessionData = {
       UserId: 'f98fe64a-820d-49ff-a81f-479b34397500', 
       Description: formValues.Description,
       Title: formValues.Title,
       Link: formValues.Link,
       Img: 'https://images.pexels.com/photos/19736973/pexels-photo-19736973/free-photo-of-working-on-ipad-tablet-with-magic-keyboard.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
-      Interests: formValues.myItems.map((item: any) => item.Value).toString(),
+      Interests: formValues.interests.map((item: any) => item.Value),
       SessionTime: sessionTime
     };
 
-    this.userService.sessionCreate(sessionData).subscribe(
+    this._userService.sessionCreate(sessionData).subscribe(
       (response: any) => {
-        if (response) {
-          this.toaster.success('Session created successfully');
-          this.router.navigate(['/home']);
+        if (response.success==true) {
+          this._toaster.success('Session created successfully');
+          this._router.navigate(['/explore-page'])
+        }
+        else{
+        this._toaster.error(response.message);
         }
       },
       (error: any) => {
-        this.toaster.error('Failed to create session');
+        this._toaster.error(error.error.message || error.statusText);
       }
-    );
+    )
   }
 }

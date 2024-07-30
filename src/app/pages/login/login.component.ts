@@ -12,8 +12,8 @@ import { CookieService } from 'ngx-cookie-service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup | any;
-  hidePassword: any;
-  users: any;
+  hidePassword: boolean = true;
+    users: any;
 
   constructor(private _fb: FormBuilder, private _router: Router, private _userService: DataServiceService, private _toaster: ToastrService, private _cookieService: CookieService) {
     this.loginForm = this._fb.group({

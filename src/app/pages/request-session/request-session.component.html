@@ -1,4 +1,5 @@
-<div class="container mt-2">
+<form id="request-session-form">
+  <div class="container mt-2">
     <h2 class="mb-4 text-center">Request Session</h2>
     <form>
       <div class="form-group">
@@ -9,6 +10,8 @@
         <label for="description">Description</label>
         <textarea class="form-control" id="description" rows="3" placeholder="Enter description"></textarea>
       </div>
-      <button type="submit" class="btn ">Submit</button>
+      <button type="submit" class="btn " (click)="onSubmit()" >Submit</button>
     </form>
   </div>
+</form>
+

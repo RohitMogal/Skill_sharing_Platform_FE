@@ -22,15 +22,14 @@ import { ExplorePageComponent } from './pages/explore-page/explore-page.componen
 import { CardDetailsComponent } from './pages/card-details/card-details.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { InterceptInterceptor } from './interceptors/intercept.interceptor';
-import { CourseDetailComponent } from './pages/course-detail/course-detail.component';
 import { AuthGuard } from './services/auth-guard/auth.guard';
 import { ProfileComponent } from './includes/profile/profile.component';
 import { DataServiceService } from './services/data-service.service';
 import { FormsModule } from '@angular/forms';
 import { RequestSessionComponent } from './pages/request-session/request-session.component';
-import { PaymentComponent } from './payment/payment.component';
+import { PaymentComponent } from './pages/payment/payment.component';
 import { MyActivityComponent } from './pages/my-activity/my-activity.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 @NgModule({
@@ -43,7 +42,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
     CreatesessionComponent,
     ExplorePageComponent,
     CardDetailsComponent,
-    CourseDetailComponent,
+
     ProfileComponent,
     RequestSessionComponent,
     PaymentComponent,
@@ -69,7 +68,8 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
     ToastrModule.forRoot(),
     FormsModule,
     MatTabsModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
 
   ],
   providers: [

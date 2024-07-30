@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -8,10 +10,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent implements OnInit {
-  forgotPasswordForm: FormGroup;
+  forgotPasswordForm: FormGroup | any;
 
-  constructor(private fb: FormBuilder, private _router: Router) {
-    this.forgotPasswordForm = this.fb.group({
+  constructor(
+    private _fb: FormBuilder,
+    private _router: Router,
+    private _userService: DataServiceService,
+    private _toastr: ToastrService
+  ) { }
+
+  ngOnInit(): void {
+    this.forgotPasswordForm = this._fb.group({
       newPassword: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required]]
     }, {
@@ -19,15 +28,27 @@ export class ForgotPasswordComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    
-  }
-
   onSubmit() {
     if (this.forgotPasswordForm.valid) {
-      // Implement your password change logic here
-      this._router.navigate(['/login']);
+      this.forgotPass();
     }
+  }
+//API Logic
+  forgotPass() {
+    this._userService.postForgot(this.forgotPasswordForm.getRawValue()).subscribe(
+      (response: any) => {
+        if (response.success) {
+          this._toastr.success("Password reset successfully");
+          this._router.navigate(['/login']);
+        } else {
+          this._toastr.error(response.message || "Password reset failed");
+        }
+      },
+      (error: any) => {
+        console.error('Error resetting password:', error);
+        this._toastr.error("An error occurred while resetting the password. Please try again.");
+      }
+    );
   }
 
   mustMatch(controlName: string, matchingControlName: string) {

@@ -8,7 +8,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" *ngIf="userInterests.length>0">
     <!-- sideBar -->
     <div class="col-12 col-md-3 mb-4 left">
       <div style="top: 1rem;" class="sticky-bar">
@@ -16,24 +16,10 @@
           <div class="card-body">
             <h5 class="card-title">Interested Sessions</h5>
             <ul class="list-group">
-              <li class="list-group-item">
-                <a (click)="selectCategory('All Session')" class="text-decoration-none link-text">All Session</a>
-              </li>
-              <li class="list-group-item">
-                <a (click)="selectCategory('React Session')" class="text-decoration-none link-text">React Session</a>
-              </li>
-              <li class="list-group-item">
-                <a (click)="selectCategory('Angular Session')" class="text-decoration-none link-text">Angular
-                  Session</a>
-              </li>
-              <li class="list-group-item">
-                <a (click)="selectCategory('Python Session')" class="text-decoration-none link-text">Python Session</a>
-              </li>
-              <li class="list-group-item">
-                <a (click)="selectCategory('PHP Session')" class="text-decoration-none link-text">PHP Session</a>
-              </li>
-              <li class="list-group-item">
-                <a (click)="selectCategory('Java Session')" class="text-decoration-none link-text">Java Session</a>
+              <li class="list-group-item" *ngFor="let interests of userInterests">
+                <a (click)="selectCategory(interests.id)" class="text-decoration-none link-text">
+                  {{interests.Interest}}
+                </a>
               </li>
             </ul>
           </div>
@@ -58,7 +44,6 @@
                 <h6 class="mb-2 card-title">{{session.Title}}</h6>
                 <img [src]="session.Img" class="card-img-top" alt="Image"
                   style="width: 100%; height: 150px; object-fit: cover;">
-
                 <div class="card-body p-2" style="position: relative; overflow: hidden;">
                   <small>Session Time: <strong>{{ session.SessionTime }}</strong></small>
                   <br>
@@ -73,7 +58,7 @@
                   </label>
                 </div>
               </div>
-              <a routerLink='/course-detail' class="btn w-100 mt-auto">Interested</a>
+              <a routerLink="/payment" class="btn w-100 mt-auto">Enroll</a>
             </div>
           </div>
         </div>

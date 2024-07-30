@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { DataServiceService } from '../../services/data-service.service';
 import { ToastrService } from 'ngx-toastr';
 declare const $: any;
-
 @Component({
   selector: 'app-explore-page',
   templateUrl: './explore-page.component.html',
@@ -18,8 +17,7 @@ export class ExplorePageComponent implements OnInit {
   dialogBox: any;
   sessionsList: any = [];
   filteredSessionsList: any = [];
-  userInterests: string[] = [];
-
+  userInterests: any = [];
   constructor(
     private _dialogRef: MatDialog,
     private _router: Router,
@@ -32,10 +30,13 @@ export class ExplorePageComponent implements OnInit {
     this._userService.getSessions().subscribe((response: any) => {
       if (response.success === true) {
         this.sessionsList = response.data;
-        this.filterSessions();
+        this.selectCategory();
+      }
+      else {
+        this._toster.error(response.message);
       }
     }, (error) => {
-      this._toster.error(error.error.message);
+      this._toster.error(error.error.message || error.statusText);
     });
   }
 
@@ -43,7 +44,9 @@ export class ExplorePageComponent implements OnInit {
     this._userService.getUserInterests().subscribe((response: any) => {
       if (response.success === true) {
         this.userInterests = response.data;
-        this.filterSessions();
+      }
+      else {
+        this._toster.error(response.message);
       }
     }, (error) => {
       this._toster.error(error.error.message);
@@ -67,20 +70,18 @@ export class ExplorePageComponent implements OnInit {
     this.dialogBox = this._dialogRef.open(CardDetailsComponent, { width: "50%" });
   }
 
-  filterSessions() {
-    let filteredList = this.sessionsList;
-    if (this.selectedCategory !== 'All Session') {
-      filteredList = filteredList.filter((session: any) => session.Category === this.selectedCategory);
+  selectCategory(category?: any) {
+    this.filteredSessionsList = [];
+    if (category) {
+      this.selectedCategory = category;
+      this.sessionsList.forEach((element: any) => {
+        if (JSON.parse(element.Interests).includes(category)) {
+          this.filteredSessionsList.push(element);
+        }
+      });
     }
-    const commonElements = filteredList.filter((session: any) => {
-      const interestsArray = JSON.parse(session.Interests);
-      return interestsArray.some((interest: string) => this.userInterests.includes(interest));
-    });
-    this.filteredSessionsList = commonElements;
-  }
-
-  selectCategory(category: string) {
-    this.selectedCategory = category;
-    this.filterSessions();
+    else {
+      this.filteredSessionsList = this.sessionsList;
+    }
   }
 }

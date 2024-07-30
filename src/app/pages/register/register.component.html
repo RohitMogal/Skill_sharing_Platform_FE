@@ -8,10 +8,10 @@
       </div>
     </div>
     <div class="col-md-5 mt-3">
-      <div class="d-flex align-items-center ">
-        <h2 class=" mb-4 ">Register</h2>
+      <div class="d-flex align-items-center">
+        <h2 class="mb-4">Register</h2>
       </div>
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="registerForm">
         <div class="mb-3 form-group">
           <label for="fullName" class="form-label">Full Name</label>
           <input id="fullName" formControlName="fullName" class="form-control" />
@@ -21,7 +21,7 @@
           </small>
           <small class="form-text text-danger"
             *ngIf="registerForm.get('fullName').errors?.pattern && registerForm.get('fullName').touched">
-            *Full name start with alphabet
+            *Full name must start with an alphabet
           </small>
         </div>
         <div class="mb-3 form-group">
@@ -36,6 +36,7 @@
             *Invalid email address
           </small>
         </div>
+        
         <div class="form-group">
           <label for="description">About me</label>
           <textarea id="description" class="form-control" formControlName="description" rows="2"
@@ -44,8 +45,7 @@
         <div class="mb-3 form-group">
           <div class="position-relative">
             <label for="password" class="form-label">Password</label>
-            <input [type]="hidePassword ? 'password' : 'text'" id="password" formControlName="password"
-              class="form-control">
+            <input [type]="hidePassword ? 'password' : 'text'" id="password" formControlName="password" class="form-control">
             <button type="button" class="password-toggle-btn" (click)="togglePasswordVisibility()">
               <i class="fas" [ngClass]="hidePassword ? 'fa-eye-slash' : 'fa-eye'"></i>
             </button>
@@ -56,29 +56,26 @@
           </small>
           <small class="form-text text-danger"
             *ngIf="registerForm.controls.password?.errors?.minlength || registerForm.controls.password?.errors?.maxlength">
-            *Password should be at least minimum 6 and maximum 15 character
+            *Password should be between 6 and 15 characters
           </small>
         </div>
-        <div class=" mb-3 form-group">
+        <div class="mb-3 form-group">
           <div class="position-relative">
-            <label for="rpwd" class="form-label">Confirm Passowrd</label>
-            <input [type]="hidePassword ? 'password' : 'text'" id="rpwd" [formControl]="rpwd" class="form-control">
-            <button type="button" class="rpwd-toggle-btn" style="outline: none;" (click)="togglePasswordVisibility()">
-              <i class="fas" [ngClass]="hidePassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+            <label for="rpwd" class="form-label">Confirm Password</label>
+            <input [type]="hideConfirmPassword ? 'password' : 'text'" id="rpwd" [formControl]="rpwd" class="form-control">
+            <button type="button" class="rpwd-toggle-btn" (click)="toggleConfirmPasswordVisibility()">
+              <i class="fas" [ngClass]="hideConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
             </button>
           </div>
           <small class="form-text text-danger"
-            [ngStyle]="{'display':rpwd?.errors?.required && rpwd?.touched ?'block' :'none'}">*Password is
-            required</small>
+            [ngStyle]="{'display':rpwd?.errors?.required && rpwd?.touched ? 'block' : 'none'}">*Password is required</small>
           <small class="form-text text-danger"
-            [ngStyle]="{'display':(rpwd.value!=registerForm.get('password').value && rpwd?.touched) &&!rpwd?.errors?.required ?'block' :'none'}">*Password
-            not Matched</small>
+            [ngStyle]="{'display':(rpwd.value != registerForm.get('password').value && rpwd?.touched) && !rpwd?.errors?.required ? 'block' : 'none'}">*Passwords do not match</small>
         </div>
         <div class="text-center mt-3">
           <p>Already have an account? <a routerLink="/login">Login</a></p>
         </div>
-        <button type="submit" class="btn btn-primary w-100" color="registerForm.valid ? 'primary' : ''"
-          [disabled]="!registerForm.valid">Register</button>
+        <button type="submit" class="btn btn-primary w-100" [disabled]="!registerForm.valid" (click)="onSubmit()">Register</button>
       </form>
     </div>
   </div>

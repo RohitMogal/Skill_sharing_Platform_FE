@@ -29,6 +29,7 @@ export class ProfileComponent implements OnInit {
       this.profileForm.patchValue(data);
       this.profileForm.get('email').disable(); 
     });
+    this._router.navigate(['/profile'])
   }
 
   toggleEditMode() {
@@ -39,7 +40,6 @@ export class ProfileComponent implements OnInit {
       this.profileForm.get('email').disable(); 
     }
   }
-
   onSubmit() {
     if (this.profileForm.valid) {
       this.dataService.updateUserProfile(this.profileForm.value).subscribe(response => {
@@ -48,20 +48,17 @@ export class ProfileComponent implements OnInit {
       });
     }
   }
-
   onSave() {
     if (this.profileForm.valid) {
       this.onSubmit();
     }
   }
-
   onDiscard() {
     if (confirm('Are you sure you want to discard the changes?')) {
-      this.loadProfile(); // Reload profile data to discard changes
+      
       this.isEditMode = false;
     }
   }
-
   onImageUpload(event: any) {
     const file = event.target.files[0];
     if (file) {

@@ -9,10 +9,9 @@ import { ExplorePageComponent } from './pages/explore-page/explore-page.componen
 import { CardDetailsComponent } from './pages/card-details/card-details.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { MyActivityComponent } from './pages/my-activity/my-activity.component';
-import { PaymentComponent } from './payment/payment.component';
+import { PaymentComponent } from './pages/payment/payment.component';
 import { AuthGuard } from './services/auth-guard/auth.guard';
 import { RequestSessionComponent } from './pages/request-session/request-session.component';
-import { CourseDetailComponent } from './pages/course-detail/course-detail.component';
 import { ProfileComponent } from './includes/profile/profile.component';
 
 const routes: Routes = [
@@ -25,7 +24,6 @@ const routes: Routes = [
   { path: 'request-session', component: RequestSessionComponent,canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'course-detail', component: CourseDetailComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'payment', component: PaymentComponent },
