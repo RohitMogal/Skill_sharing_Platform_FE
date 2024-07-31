@@ -27,7 +27,21 @@ export class ExplorePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchUserInterests();
+    this.sessionRequest();
     this._userService.getSessions().subscribe((response: any) => {
+      if (response.success === true) {
+        this.sessionsList = response.data;
+        this.selectCategory();
+      }
+      else {
+        this._toster.error(response.message);
+      }
+    }, (error) => {
+      this._toster.error(error.error.message || error.statusText);
+    });
+  }
+  sessionRequest() {
+    this._userService.getSessionRequest().subscribe((response: any) => {
       if (response.success === true) {
         this.sessionsList = response.data;
         this.selectCategory();
@@ -41,7 +55,7 @@ export class ExplorePageComponent implements OnInit {
   }
 
   fetchUserInterests(): void {
-    this._userService.getUserInterests().subscribe((response: any) => {
+    this._userService.getInterests().subscribe((response: any) => {
       if (response.success === true) {
         this.userInterests = response.data;
       }
@@ -75,7 +89,7 @@ export class ExplorePageComponent implements OnInit {
     if (category) {
       this.selectedCategory = category;
       this.sessionsList.forEach((element: any) => {
-        if (JSON.parse(element.Interests).includes(category)) {
+        if (element.Interests.includes(category)) {
           this.filteredSessionsList.push(element);
         }
       });

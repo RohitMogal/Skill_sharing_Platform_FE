@@ -54,29 +54,35 @@
                             </div>
                             <!-- Interests Section -->
                             <div class="mb-3">
-                                <label for="interests" class="form-label">Interests</label>
+                                <label for="Interests" class="form-label">Interests</label>
                                 <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="dropdownData"
-                                    formControlName="interests"></ng-multiselect-dropdown>
+                                    formControlName="Interests"></ng-multiselect-dropdown>
                             </div>
                             <!-- Amount Section -->
                             <div class="mb-3 form-group">
-                                <label for="amount" class="form-label">Amount</label>
-                                <input type="number" id="amount" formControlName="amount" class="form-control" />
+                                <label for="Amount" class="form-label">Amount</label>
+                                <input type="number" id="Amount" formControlName="Amount" class="form-control" />
                                 <small class="form-text text-danger"
-                                  *ngIf="sessionForm.get('amount').errors?.required && sessionForm.get('amount').touched">
-                                  *Amount is required
+                                    *ngIf="sessionForm.get('Amount').errors?.required && sessionForm.get('Amount').touched">
+                                    *Amount is required
                                 </small>
                                 <small class="form-text text-danger"
-                                  *ngIf="sessionForm.get('amount').errors?.min && sessionForm.get('amount').touched">
-                                  *Amount must be greater than 0
+                                    *ngIf="sessionForm.get('Amount').errors?.min && sessionForm.get('Amount').touched">
+                                    *Amount must be greater than 0
                                 </small>
-                              </div>
+                            </div>
                             <!-- Image Upload Section -->
                             <div class="form-group">
-                                <label for="imageUpload">Upload Image</label>
-                                <input type="file" id="imageUpload" class="form-control" accept="image/*"
-                                    placeholder="Choose an image to upload" />
-                            </div>
+                                <label for="Img">Upload Image</label>
+                                <input
+                                  type="file"
+                                  id="Img"
+                                  class="form-control"
+                                  (change)="onImageChange($event)"
+                                  accept="image/*"
+                                  placeholder="Choose an image to upload"
+                                />
+                              </div>
                             <button type="submit" class="btn mt-3">Create</button>
                         </form>
                     </div>

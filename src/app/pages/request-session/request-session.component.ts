@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { DataServiceService } from 'src/app/services/data-service.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
@@ -10,44 +10,38 @@ import { Router } from '@angular/router';
   styleUrls: ['./request-session.component.css']
 })
 export class RequestSessionComponent implements OnInit {
-  // @Input() title: string = '';
-  // @Input() description: string = '';
-  requestForm: FormGroup | any;
-  requestData: any;
+  requestForm: FormGroup;
 
-  constructor(private _userService: DataServiceService, private _toastr: ToastrService, private _router: Router, private _fb: FormBuilder) {  this.requestForm = this._fb.group({
-    title: new FormControl('', [Validators.required]),
-    description: new FormControl('', [Validators.required])
-  });
-}
-
-  ngOnInit(): void {
-   
+  constructor(private _userService: DataServiceService, private _toastr: ToastrService, private _router: Router, private _fb: FormBuilder) {
+    this.requestForm = this._fb.group({
+      Title: new FormControl(null, [Validators.required]),
+      Description: new FormControl(null, [Validators.required]),
+    });
   }
 
+  ngOnInit(): void {
+  }
 
   onSubmit() {
-    if (this.requestForm.value) {
+    if (this.requestForm.valid) {
       this.requestMethod();
-
+    } else {
+      this._toastr.error("Form is not valid");
     }
   }
 
   requestMethod() {
-    // const requestData = {
-    //   title: this.requestForm.get('title').value,
-    //   description: this.requestForm.get('description').value
-    // };
-
-    this._userService.requestSessions(this.requestForm.getRawValue()).subscribe((response: any) => {
-      if (response.success) {
-        this._toastr.success("Request Send successfully");
-
-      }
-    },
+    this._userService.requestSessions(this.requestForm.getRawValue()).subscribe(
+      (response: any) => {
+        if (response.success) {
+          this._toastr.success("Request sent successfully");
+          this._router.navigate(['/explore-page']);
+        }
+      },
       (error: any) => {
         console.error('Error adding data:', error);
-      });
-    this._router.navigate(['/explore-page'])
+        this._toastr.error("Failed to send request");
+      }
+    );
   }
 }

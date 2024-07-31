@@ -47,7 +47,7 @@
             <div *ngIf="amount.errors?.['min']">Amount must be a positive number.</div>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary w-100" [disabled]="paymentForm.invalid">Make Payment</button>
+        <button type="submit" class="btn btn-primary w-100"  (click)=" makePayment()" >Make Payment</button>
       </form>
     </div>
   </div>

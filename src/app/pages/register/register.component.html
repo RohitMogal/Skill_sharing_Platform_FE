@@ -38,10 +38,30 @@
         </div>
         
         <div class="form-group">
-          <label for="description">About me</label>
-          <textarea id="description" class="form-control" formControlName="description" rows="2"
-            style="max-width: 100%;" placeholder="Provide a brief description of the session"></textarea>
+          <label for="about">About me</label>
+          <textarea id="about" class="form-control" formControlName="about" rows="2"
+            style="max-width: 100%;" placeholder="Provide a brief about of the session"></textarea>
         </div>
+
+        <div class="mb-3">
+          <label for="interests" class="form-label">Interests</label>
+          <ng-multiselect-dropdown  [placeholder]="'Select interests'"
+          [data]="intrestListDropdown"
+          formControlName="interests"
+          [settings]="dropdownSettings"
+              ></ng-multiselect-dropdown>
+      </div>
+
+      <div class="form-group">
+        <label for="profilePicture">Upload Image</label>
+        <input type="file" id="profilePicture" class="form-control" accept="image/*"
+        formControlName="profilePicture" placeholder="Choose an image to upload" />
+        <small class="form-text text-danger"
+            *ngIf="registerForm.get('profilePicture').errors?.required ">
+            *Image is required
+          </small>
+    </div>
+
         <div class="mb-3 form-group">
           <div class="position-relative">
             <label for="password" class="form-label">Password</label>

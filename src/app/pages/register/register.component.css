@@ -61,3 +61,10 @@ h2 {
   background-color: grey;
   color: white;
 }
+.ng-multiselect-dropdown {
+  display: inline-block;
+  width: 100%;
+}
+.ng-multiselect-dropdown .ng-dropdown-panel {
+  width: 100% !important;
+}

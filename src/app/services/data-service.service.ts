@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject, catchError } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,7 @@ export class DataServiceService {
   apiUrl = "http://192.168.9.112:3000";
   tokenSubject: Subject<any> = new Subject();
 
-  constructor(private http: HttpClient,) { }
+  constructor(private http: HttpClient, private _cookieService: CookieService) { }
 
   //Login API 
   userLogin(data: any): Observable<any> {
@@ -32,15 +33,15 @@ export class DataServiceService {
   }
   //Profile API
   getUserProfile(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/user`);
+    return this.http.get(`${this.apiUrl}/user/${this._cookieService.get('userId')}`);
   }
   //UPdate Profile API
   updateUserProfile(data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/user`, data);
+    return this.http.put(`${this.apiUrl}/user/${this._cookieService.get('userId')}`, data);
   }
   // User Interest API
-  getUserInterests(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/userInterest`);
+  getInterests(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/interests`);
   }
   //create session API
   sessionCreate(sessionData: any) {
@@ -51,23 +52,33 @@ export class DataServiceService {
     return this.http.post(`${this.apiUrl}/request`, requestData);
   }
 
- // My activity list API
- myActivity(): Observable<any> {
-  return this.http.post(`${this.apiUrl}/session/getfilterSession`, { filter: 'activity' });
-}
+  // My activity list API
+  myActivity(): Observable<any> {
+    return this.http.post(`${this.apiUrl}/session/getfilterSession`, { filter: 'activity' });
+  }
 
-// My interested list API
-myInterestedList(): Observable<any> {
-  return this.http.post(`${this.apiUrl}/session/getfilterSession`, { filter: 'interested' });
-}
+  // My interested list API
+  myInterestedList(): Observable<any> {
+    return this.http.post(`${this.apiUrl}/session/getfilterSession`, { filter: 'interested' });
+  }
 
-// My requested list API
-requestSessionsList(): Observable<any> {
-  return this.http.post(`${this.apiUrl}/session/getfilterSession`, { filter: 'requested' });
-}
+  // My requested list API
+  requestSessionsList(): Observable<any> {
+    return this.http.post(`${this.apiUrl}/session/getfilterSession`, { filter: 'requested' });
+  }
 
-//Make Payment API
-makePayment(paymentData: any): Observable<any> {
-  return this.http.post(`${this.apiUrl}/email/`, paymentData);
-}
+  //Make Payment API
+  makePayment(paymentData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/email/`, paymentData);
+  }
+
+  //DropDown Intrest API
+  dropDownIntrest(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/interests`);
+  }
+
+  //get session request
+  getSessionRequest(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/session/request`);
+    }
 }

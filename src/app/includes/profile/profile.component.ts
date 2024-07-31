@@ -16,20 +16,24 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.profileForm = this._fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
+      fullName: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      aboutMe: ['', Validators.required],
-      picture: ['']
+      about: ['', Validators.required],
+      profilePicture: ['']
     });
     this.loadProfile();
   }
 
   loadProfile() {
     this.dataService.getUserProfile().subscribe(data => {
-      this.profileForm.patchValue(data);
+      this.profileForm.patchValue({
+        fullName:data.data[0].fullName,
+        email:data.data[0].email,
+        about:data.data[0].about,
+        profilePicture:data.data[0].profilePicture
+      });
       this.profileForm.get('email').disable(); 
     });
-    this._router.navigate(['/profile'])
   }
 
   toggleEditMode() {
@@ -55,7 +59,7 @@ export class ProfileComponent implements OnInit {
   }
   onDiscard() {
     if (confirm('Are you sure you want to discard the changes?')) {
-      
+      this.loadProfile();
       this.isEditMode = false;
     }
   }
@@ -64,7 +68,7 @@ export class ProfileComponent implements OnInit {
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-        this.profileForm.get('picture').setValue(reader.result as string);
+        this.profileForm.get('profilePicture').setValue(reader.result as string);
       };
       reader.readAsDataURL(file);
     }
