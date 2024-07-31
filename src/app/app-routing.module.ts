@@ -13,6 +13,7 @@ import { PaymentComponent } from './pages/payment/payment.component';
 import { AuthGuard } from './services/auth-guard/auth.guard';
 import { RequestSessionComponent } from './pages/request-session/request-session.component';
 import { ProfileComponent } from './includes/profile/profile.component';
+import { FeedbackFormComponent } from './feedback-form/feedback-form.component';
 
 const routes: Routes = [
 
@@ -28,6 +29,12 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'my-activity', component: MyActivityComponent },
+  { path: 'payment', component: PaymentComponent },
+  { path: 'feedback-form', component: FeedbackFormComponent },
+
+  // { path: 'forgot-password', component: ForgotPasswordComponent },
+
+
   
 
  

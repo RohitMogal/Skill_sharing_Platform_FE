@@ -1,22 +1,177 @@
 <div class="container mt-4">
   <mat-tab-group>
-    <mat-tab label="My Activity">
+    <mat-tab label="Created Session">
       <div>
-        <p>Content for My Activity</p>
+        <div class="container">
+          <form>
+            <div class="row">
+              <div class="col-md-12">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+                  <ng-container matColumnDef="srno">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Sr.No</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.srno }}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="title">
+                    <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.title }}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.description }}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="feedback" style="display: flex; ">
+                    <mat-header-cell *matHeaderCellDef>Feedback</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.feedback }}
+                      <div class="btn-group" role="group">
+                        <button mat-icon-button (click)="feedback()" type="button">
+                          <mat-icon>Feedback</mat-icon>
+                        </button>
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </table>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </mat-tab>
-    <mat-tab label="Interested Sessions">
+
+    <!-- Requested Session -->
+    <mat-tab label="Requested Session">
       <div>
-        <p>Content for Interested Sessions</p>
-
-
+        <div class="container">
+          <form>
+            <div class="row">
+              <div class="col-md-12">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+                  <ng-container matColumnDef="srno">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Sr.No</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.srno }}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="title">
+                    <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.title }}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.description }}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="feedback" style="display: flex; ">
+                    <mat-header-cell *matHeaderCellDef>Feedback</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.feedback }}
+                      <div class="btn-group" role="group">
+                        <button mat-icon-button (click)="feedback()" type="button">
+                          <mat-icon>Feedback</mat-icon>
+                        </button>
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </table>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </mat-tab>
-    <mat-tab label="Requested Sessions">
+
+    <!-- Attended Session -->
+    <mat-tab label="Attended Session">
       <div>
-        <p>Content for Requested Sessions</p>
+        <div class="container">
+          <form>
+            <div class="row">
+              <div class="col-md-12">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+                  <ng-container matColumnDef="srno">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Sr.No</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.srno }}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="title">
+                    <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.title }}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.description }}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="feedback" style="display: flex; ">
+                    <mat-header-cell *matHeaderCellDef>Feedback</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.feedback }}
+                      <div class="btn-group" role="group">
+                        <button mat-icon-button (click)="feedback()" type="button">
+                          <mat-icon>Feedback</mat-icon>
+                        </button>
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </table>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </mat-tab>
 
-
+    //Feedback Session
+    <mat-tab label="Feedback Session">
+      <div>
+        <div class="container">
+          <form>
+            <div class="row">
+              <div class="col-md-12">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+                  <ng-container matColumnDef="srno">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Sr.No</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.srno }}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="title">
+                    <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.title }}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.description }}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="feedback" style="display: flex; ">
+                    <mat-header-cell *matHeaderCellDef>Feedback</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.feedback }}
+                      <div class="btn-group" role="group">
+                        <button mat-icon-button (click)="feedback()" type="button">
+                          <mat-icon>Feedback</mat-icon>
+                        </button>
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </table>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </mat-tab>
   </mat-tab-group>

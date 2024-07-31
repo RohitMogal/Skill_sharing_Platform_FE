@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormGroup, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { DataServiceService } from '../../services/data-service.service';
 
 @Component({
@@ -10,15 +10,17 @@ import { DataServiceService } from '../../services/data-service.service';
 })
 export class PaymentComponent {
   constructor(private snackBar: MatSnackBar, private dataService: DataServiceService) {}
-  paymentForm: FormGroup |any;
-  makePayment() {
-    if (this.paymentForm.valid) {
-      this.dataService.makePayment(this.paymentForm.value).subscribe({
+
+  
+
+  makePayment(form: NgForm) {
+    if (form.valid) {
+      this.dataService.makePayment(form.value).subscribe({
         next: (response) => {
           this.snackBar.open('Payment successfully done', 'Close', {
             duration: 3000
           });
-          this.paymentForm.resetForm();
+          form.resetForm();
         },
         error: (error) => {
           this.snackBar.open('Payment failed', 'Close', {

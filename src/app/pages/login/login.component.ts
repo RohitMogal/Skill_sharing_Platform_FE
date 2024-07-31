@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
   }
   //Call when Form submitted
   onSubmit() {
-    
     if (this.loginForm.valid) {
       this.login();
     }
@@ -42,7 +41,6 @@ export class LoginComponent implements OnInit {
           this._toaster.success("Login successful");
           // console.log(response)
           this._router.navigate(['/explore-page']);
-
         } else {
           this._toaster.error("Login Failed");
         }

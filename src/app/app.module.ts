@@ -31,7 +31,11 @@ import { PaymentComponent } from './pages/payment/payment.component';
 import { MyActivityComponent } from './pages/my-activity/my-activity.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
+import { FeedbackFormComponent } from './feedback-form/feedback-form.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +51,10 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
     RequestSessionComponent,
     PaymentComponent,
     MyActivityComponent,
+    PaymentComponent,
+    FeedbackFormComponent,
     ForgotPasswordComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -69,7 +76,10 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
     FormsModule,
     MatTabsModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule,
+    MatPaginatorModule
+    
 
   ],
   providers: [

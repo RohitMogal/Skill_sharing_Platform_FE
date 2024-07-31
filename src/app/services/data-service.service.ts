@@ -69,7 +69,7 @@ export class DataServiceService {
 
   //Make Payment API
   makePayment(paymentData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/email/`, paymentData);
+    return this.http.post(`${this.apiUrl}/payment`, paymentData);
   }
 
   //DropDown Intrest API
@@ -80,5 +80,10 @@ export class DataServiceService {
   //get session request
   getSessionRequest(): Observable<any> {
     return this.http.get(`${this.apiUrl}/session/request`);
+    }
+
+    //Feedback API
+    feedbackApi(data:any): Observable<any> {
+      return this.http.post(`${this.apiUrl}/feedback`,data);
     }
 }

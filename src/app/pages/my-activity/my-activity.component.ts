@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { DataServiceService } from 'src/app/services/data-service.service';
-
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-my-activity',
   templateUrl: './my-activity.component.html',
@@ -11,7 +13,12 @@ export class MyActivityComponent implements OnInit {
   activityList: any;
   userInterestsList: any;
   userRequestSessionList: any;
-
+  displayedColumns: any = ['srno',
+    'title',
+    'description',
+    'feedback',
+  ];
+  public dataSource: any = [];
   constructor(private _userService: DataServiceService, private _toster: ToastrService) { }
 
   ngOnInit(): void {
@@ -52,5 +59,9 @@ export class MyActivityComponent implements OnInit {
     }, (error) => {
       this._toster.error(error.error.message);
     });
+  }
+
+  feedback(){
+
   }
 }
