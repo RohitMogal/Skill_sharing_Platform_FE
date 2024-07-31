@@ -26,6 +26,7 @@ import { MyActivityComponent } from './my-activity/my-activity.component';
 import { PaymentComponent } from './payment/payment.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
+import { FeedbackFormComponent } from './feedback-form/feedback-form.component';
 
 
 
@@ -42,6 +43,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     ForgotPasswordComponent,
     MyActivityComponent,
     PaymentComponent,
+    FeedbackFormComponent,
     
   ],
   imports: [

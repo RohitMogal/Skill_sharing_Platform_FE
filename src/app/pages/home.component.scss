@@ -174,3 +174,20 @@
   padding-left: 200px;
 
 }
+/* Add these styles to your CSS file */
+
+.carousel-item {
+  height: 500px; /* Adjust height as needed */
+  background-size: cover;
+  background-position: center;
+}
+
+.carousel-caption {
+  bottom: 20px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust as needed */
+  border-radius: 50%;
+}
