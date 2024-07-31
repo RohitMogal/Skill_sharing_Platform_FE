@@ -10,6 +10,7 @@ import { CardDetailsComponent } from './card-details/card-details.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { MyActivityComponent } from './my-activity/my-activity.component';
 import { PaymentComponent } from './payment/payment.component';
+import { FeedbackFormComponent } from './feedback-form/feedback-form.component';
 
 const routes: Routes = [
 
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'card-details', component: CardDetailsComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent},
   {path:'my-activity' , component:MyActivityComponent},
-  {path:'payment', component:PaymentComponent}
+  {path:'payment', component:PaymentComponent},
+  {path:'feedback-form', component:FeedbackFormComponent}
 ];
 
 @NgModule({
