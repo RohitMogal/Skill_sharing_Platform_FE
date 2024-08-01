@@ -13,7 +13,24 @@
                 </div>
             </div>
         </section>
-
+        <div class="slideshow-container mt-5 pt-2">
+            <div
+  class="slide fade"
+  *ngFor="let slide of slides; let i = index"
+  [style.display]="i === currentSlideIndex ? 'block' : 'none'"
+>
+  <img [src]="slide.imageUrl" [alt]="'Online learning Image ' + (i + 1)" />
+  <div class="quote">{{ slide.quote }}</div>
+</div>
+    
+            <!-- Optional: Add navigation controls -->
+            <a class="prev d-none" (click)="currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length">&#10094;</a>
+            <a class="next d-none" (click)="showNextSlide()">&#10095;</a>
+          </div>
+    
+    
+    
+    </div>
 
         <section class="landing-about mt-5">
             <div class="row align-items-center">
@@ -109,4 +126,5 @@
             </div>
         </section>
     </div>
-</div>
+
+
