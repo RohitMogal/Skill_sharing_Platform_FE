@@ -45,10 +45,10 @@ export class RegisterComponent implements OnInit {
       about: new FormControl(null, [Validators.required])
     });
     this.rpwd = new FormControl(null, [Validators.required]);
-    this.intrestSessionList();
+    this.initializeDropdown();
     this.dropdownSettings = {
       singleSelection: false,
-      idField: 'Id',
+      idField: 'ID',
       textField: 'Value',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
@@ -90,20 +90,6 @@ export class RegisterComponent implements OnInit {
   toggleConfirmPasswordVisibility() {
     this.hideConfirmPassword = !this.hideConfirmPassword;
   }
-
-  intrestSessionList() {
-    this._userService.dropDownIntrest().subscribe((response: any) => {
-      if (response.success === true) {
-        this.intrestListDropdown = response.data;
-        console.log(this.intrestListDropdown)
-      }
-      else {
-        this._toaster.error(response.message);
-      }
-    }, (error: any) => {
-      this._toaster.error(error.error.message);
-    });
-  }
   initializeMinDate(): void {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
@@ -122,7 +108,7 @@ export class RegisterComponent implements OnInit {
             }
             this.dropdownData.push(tempObj)
           })
-          this.dropdownData = response.data;
+          // this.dropdownData = response.data;
           this.dropdownSettings = {
             idField: 'ID',
             textField: 'Value',

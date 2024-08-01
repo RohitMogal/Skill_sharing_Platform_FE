@@ -3,13 +3,22 @@
   <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" class="feedback-form border p-4 rounded mx-auto">
     <div class="mb-3">
       <label for="feedback" class="form-label">Feedback Comment</label>
-      <textarea id="feedback" class="form-control border-primary" formControlName="comment" rows="4"
+      <textarea id="feedback" class="form-control border-primary" formControlName="FeedbackComment" rows="4"
         placeholder="Enter your feedback"></textarea>
       <div
-        *ngIf="feedbackForm.controls['comment'].invalid && (feedbackForm.controls['comment'].dirty || feedbackForm.controls['comment'].touched)"
+        *ngIf="feedbackForm.controls['FeedbackComment'].invalid && (feedbackForm.controls['FeedbackComment'].dirty || feedbackForm.controls['FeedbackComment'].touched)"
         class="text-danger">
-        Feedback is required and must be between 10 and 200 characters.
+        Feedback is required 
       </div>
+      <div class="col-sm-12">
+        <ul class="list-inline rating-list" 
+            *ngFor="let star of stars" style="display: inline-block">
+              <li (click)="countStar(star)" 
+                  [ngClass]="{'selected': (star <= selectedValue)}">
+                <i class="fa fa-star"></i>
+              </li> 
+        </ul>
+    </div>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="feedbackForm.invalid">Submit</button>
   </form>

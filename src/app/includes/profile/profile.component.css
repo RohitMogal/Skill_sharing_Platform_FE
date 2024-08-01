@@ -1,45 +1,91 @@
-.container {
-  max-width: 70%;
+.container-fluid {
+  padding: 20px;
 }
+
+.profile-form {
+  max-width: 70%;
+  width: 100%;
+}
+
 .card {
   background-color: #ffffff;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid #ddd;
-  padding: 15px;
+  padding: 25px;
 }
-/* .btn {
-  border-radius: 5px;
-} */
+
 .btn {
-  background-color: #009aad;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-edit {
+  background-color: #007bff;
   color: white;
 }
 
-.form-group {
-  margin-bottom: 15px;
+.btn-edit:hover {
+  background-color: #0056b3;
 }
 
-.form-group  {
-  display: block;
-  margin-bottom: 5px;
+.btn-save {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-save:hover {
+  background-color: #218838;
+}
+
+.btn-discard {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-discard:hover {
+  background-color: #c82333;
+}
+
+.form-group {
+  margin-bottom: 20px;
 }
 
 .form-control {
-  border-radius: 4px;
-  /* border: 1px solid #ced4da; */
+  border-radius: 5px;
+  border: 1px solid #ced4da;
   padding: 10px;
   font-size: 1rem;
 }
 
 .img-thumbnail {
-  max-width: 100%;
-  height: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 50%;
+  border: none;
+  object-fit: cover;
+  margin-bottom: 20px;
 }
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+}
+
 .btn-row {
-  margin-top: 20px;
+  margin-top: 30px;
+  text-align: right;
 }
+
 .btn-row .btn {
   margin-right: 10px;
+}
+
+.text-danger {
+  font-size: 0.875rem;
+  margin-top: 5px;
+}
+
+textarea.form-control {
+  resize: none;
+  min-height: 100px;
 }

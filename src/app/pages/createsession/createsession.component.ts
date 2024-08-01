@@ -29,7 +29,7 @@ export class CreatesessionComponent implements OnInit {
     private _userService: DataServiceService,
     private _toaster: ToastrService,
     private _router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.sessionForm = this._fb.group({
@@ -38,7 +38,7 @@ export class CreatesessionComponent implements OnInit {
       Link: new FormControl(null, Validators.required),
       Interests: new FormControl([], Validators.required),
       sessionTime: this.sessionTime,
-      Img: new FormControl(null, Validators.required),
+      Img: new FormControl(null),
       date: new FormControl(null, Validators.required),
       hour: [null, Validators.required],
       minute: [null, Validators.required],
@@ -53,7 +53,8 @@ export class CreatesessionComponent implements OnInit {
       textField: 'Value',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 10
+      itemsShowLimit: 10,
+      allowSearchFilter: true,
     };
   }
 
@@ -74,10 +75,9 @@ export class CreatesessionComponent implements OnInit {
           this.dropdownSettings = {
             idField: 'ID',
             textField: 'Value',
-            allowSearchFilter: true,
             selectAllText: 'Select All',
             unSelectAllText: 'Unselect All',
-            itemsShowLimit: 10
+            itemsShowLimit: 10,
           };
         } else {
           this._toaster.error(response.message);
@@ -108,14 +108,14 @@ export class CreatesessionComponent implements OnInit {
       ...formValues,
       Interests: formValues.Interests.map((item: any) => item.ID),
       sessionTime,
-      Img: this.base64Image 
+      Img: this.base64Image
     };
 
     this._userService.sessionCreate(payload).subscribe(
       (response: any) => {
         if (response.success) {
           this._toaster.success('Session created successfully');
-          this._router.navigate(['/explore-page']);
+          this._router.navigate(['/explore-page' ]);
         }
       },
       (error: any) => {

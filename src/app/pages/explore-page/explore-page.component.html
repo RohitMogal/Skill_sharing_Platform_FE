@@ -29,9 +29,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-9" *ngIf="filteredSessionsList.length > 0">
+                <div class="col-12 col-md-9 mt-" *ngIf="filteredSessionsList.length > 0">
                   <div class="card-list-scrollable">
-                    <div class="row">
+                    <div class="row mt-3">
                       <!-- Card 1 -->
                       <div class="col-12 col-md-4 mb-4" *ngFor="let session of filteredSessionsList">
                         <div class="card" data-session="react-session">
@@ -39,19 +39,23 @@
                             <div class="col-12 d-flex align-items-center justify-content-start p-1">
                               <img src="/assets/Profile.png" class="rounded-circle profile-photo image"
                                 alt="Profile Image" (click)="openProfileModal()">
-                              <small>Prajakta Ghuge</small>
+                                <small> <strong>{{session.fullname }}</strong></small>
                             </div>
                             <div class="col-12">
                               <hr class="my-1">
                             </div>
                             <div class="col-12 p-0">
-                              <h6 class="mb-2 card-title">{{session.Title}}</h6>
-                              <img [src]="session.Img" class="card-img-top" alt="Image"
-                                style="width: 100%; height: 150px; object-fit: cover;">
+                              <h6 class="mb-2 card-title">{{session.title}}</h6>
+                              <img [src]="session.Img" onerror="this.onerror=null;this.src='/assets/noFoundImage.jpg';"
+                                class="card-img-top" alt="Image" style="width: 100%; height: 150px; object-fit: cover;">
                               <div class="card-body p-2" style="position: relative; overflow: hidden;">
-                                <small>Session Time: <strong>{{ session.SessionTime }}</strong></small>
+                                <small>Session Date: <strong>{{ session.sessiontime | date: 'mediumDate'
+                                    }}</strong></small>
                                 <br>
-                                <small>Amount: <strong>{{ session.Amount | currency }}</strong></small>
+                                <small>Session Time: <strong>{{ session.sessiontime | date: 'shortTime'
+                                    }}</strong></small>
+                                <br>
+                                <small>Amount: <strong>{{ session.amount | currency: 'INR' }}</strong></small>
                                 <br>
                                 <small class="card-text mb-1 description" [attr.data-fulltext]="session.Description"
                                   [ngClass]="{'text-truncate': !isExpanded}">
@@ -62,7 +66,7 @@
                                 </label>
                               </div>
                             </div>
-                            <a routerLink="/payment" class="btn w-100 mt-auto">Enroll</a>
+                            <a [routerLink]="['/payment',session.amount, session.id]" class="btn w-100 mt-auto">Enroll</a>
                           </div>
                         </div>
                       </div>
@@ -70,32 +74,13 @@
                   </div>
                 </div>
               </div>
-
-              <!-- Profile Detail-->
-              <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="profileModalLabel">Profile Details</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <p>Here are the details of the user profile...</p>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                        (click)="close()">Close</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </mat-tab>
 
-          <mat-tab label="Request session" >
-            <p>request session goes here</p>
-            <!-- <div>
+          <!-- Request Session -->
+          <mat-tab label="Request session">
+            <div class="row">
+              <!-- sideBar -->
               <div class="col-12 col-md-3 mb-4 left">
                 <div class="sticky-bar">
                   <div class="card"
@@ -104,12 +89,12 @@
                       <h5 class="card-title">Interested Sessions</h5>
                       <ul class="list-group">
                         <li class="list-group-item">
-                          <a (click)="selectCategory()" class="text-decoration-none link-text">
+                          <a (click)="selectCategoryReq()" class="text-decoration-none link-text">
                             All Sessions
                           </a>
                         </li>
                         <li class="list-group-item" *ngFor="let interests of userInterests">
-                          <a (click)="selectCategory(interests.id)" class="text-decoration-none link-text">
+                          <a (click)="selectCategoryReq(interests.id)" class="text-decoration-none link-text">
                             {{interests.Interest}}
                           </a>
                         </li>
@@ -118,49 +103,63 @@
                   </div>
                 </div>
               </div>
-            </div> -->
-            <!-- <div class="col-12 col-md-9" *ngIf="filteredSessionsList.length > 0">
-              <div class="card-list-scrollable">
-                <div class="row">
-                  Card 1
-                  <div class="col-12 col-md-4 mb-4" *ngFor="let session of filteredSessionsList">
-                    <div class="card" data-session="react-session">
-                      <div class="row no-gutters flex-grow-1">
-                        <div class="col-12 d-flex align-items-center justify-content-start p-1">
-                          <img src="/assets/Profile.png" class="rounded-circle profile-photo image" alt="Profile Image"
-                            (click)="openProfileModal()">
-                          <small>Prajakta Ghuge</small>
-                        </div>
-                        <div class="col-12">
-                          <hr class="my-1">
-                        </div>
-                        <div class="col-12 p-0">
-                          <h6 class="mb-2 card-title">{{session.Title}}</h6>
-                          <img [src]="session.Img" class="card-img-top" alt="Image"
-                            style="width: 100%; height: 150px; object-fit: cover;">
-                          <div class="card-body p-2" style="position: relative; overflow: hidden;">
-                            <small>Session Time: <strong>{{ session.SessionTime }}</strong></small>
-                            <br>
-                            <small>Amount: <strong>{{ session.Amount | currency }}</strong></small>
-                            <br>
-                            <small class="card-text mb-1 description" [attr.data-fulltext]="session.Description"
-                              [ngClass]="{'text-truncate': !isExpanded}">
-                              {{ session.Description }}
-                            </small>
-                            <label class="btn-read btn-link text-primary show-more" (click)="toggleReadMore()">
-                              {{ isExpanded ? 'Read Less' : 'Read More' }}
-                            </label>
+              <div class="col-12 col-md-9 mt-" *ngIf="filteredReqSessionsList.length > 0">
+                <div class="card-list-scrollable">
+                  <div class="row mt-3">
+                    <div class="col-12 col-md-4 mb-4" *ngFor="let reqSession of filteredReqSessionsList">
+                      <div class="card" data-session="react-session">
+                        <div class="row no-gutters flex-grow-1">
+                          <div class="col-12 d-flex align-items-center justify-content-start p-1">
+                            <img src="/assets/Profile.png" class="rounded-circle profile-photo image"
+                              alt="Profile Image" (click)="openProfileModal()">
+                            <small>Prajakta Ghuge</small>
                           </div>
+                          <div class="col-12">
+                            <hr class="my-1">
+                          </div>
+                          <div class="col-12 p-0">
+                            <h6 class="mb-2 card-title">{{reqSession.title}}</h6>
+                            <img [src]="reqSession.Img" onerror="this.onerror=null;this.src='/assets/noFoundImage.jpg';"
+                              class="card-img-top" alt="Image" style="width: 100%; height: 150px; object-fit: cover;">
+
+                            <div class="card-body p-2" style="position: relative; overflow: hidden;">
+                              <small class="card-text mb-1 description" [attr.data-fulltext]="reqSession.Description"
+                                [ngClass]="{'text-truncate': !isExpanded}">
+                                {{ reqSession.Description }}
+                              </small>
+                              <label class="btn-read btn-link text-primary show-more" (click)="toggleReadMore()">
+                                {{ isExpanded ? 'Read Less' : 'Read More' }}
+                              </label>
+                            </div>
+                          </div>
+                          <a routerLink="/create-session" class="btn w-100 mt-auto">Create</a>
                         </div>
-                        <a routerLink="/payment" class="btn w-100 mt-auto">Enroll</a>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div> -->
+            </div>
           </mat-tab>
         </mat-tab-group>
       </div>
     </div>
   </div>
+</div>
+<!-- Profile Detail-->
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="profileModalLabel">Profile Details</h5>
+        <i class="fa-solid fa-x" (click)="close()"></i>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="close()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

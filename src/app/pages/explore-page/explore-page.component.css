@@ -91,16 +91,21 @@
 .sticky-bar {
   position: sticky;
   top: 1rem;
+    max-height: 76vh;
+    overflow-x: hidden;
 }
-
+ 
 .card-list-scrollable {
-  max-height: 80vh; 
+  max-height: 80vh;
   overflow-y: auto;
-  /* -ms-overflow-style: none;  
-  scrollbar-width: none;  */
 }
-
-
+ 
+ 
 .card-list-scrollable::-webkit-scrollbar {
   display: none;
+}
+ 
+::ng-deep .mat-tab-body-content {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
 }

@@ -10,10 +10,10 @@
             </div>
             <div class="row">
               <div class="col-md-12">
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+                <table mat-table [dataSource]="createdSessionList" class="mat-elevation-z8" matSort>
                   <ng-container matColumnDef="srno">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>Sr.No</mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{ element.srno }}</mat-cell>
+                    <mat-cell *matCellDef="let element let i = index;">{{ i+1 }}</mat-cell>
                   </ng-container>
                   <ng-container matColumnDef="title">
                     <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
@@ -23,18 +23,8 @@
                     <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
                     <mat-cell *matCellDef="let element">{{ element.description }}</mat-cell>
                   </ng-container>
-                  <ng-container matColumnDef="feedback" style="display: flex; ">
-                    <mat-header-cell *matHeaderCellDef>Feedback</mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{ element.feedback }}
-                      <div class="btn-group" role="group">
-                        <button mat-icon-button (click)="feedback()" type="button">
-                          <mat-icon>Feedback</mat-icon>
-                        </button>
-                      </div>
-                    </mat-cell>
-                  </ng-container>
-                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                  <mat-header-row *matHeaderRowDef="displayedColumnsCreated"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumnsCreated;"></mat-row>
                 </table>
               </div>
             </div>
@@ -54,10 +44,10 @@
             </div>
             <div class="row">
               <div class="col-md-12">
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+                <table mat-table [dataSource]="requestedSessionList" class="mat-elevation-z8" matSort>
                   <ng-container matColumnDef="srno">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>Sr.No</mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{ element.srno }}</mat-cell>
+                    <mat-cell *matCellDef="let element let i = index;">{{ i+1 }}</mat-cell>
                   </ng-container>
                   <ng-container matColumnDef="title">
                     <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
@@ -67,18 +57,42 @@
                     <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
                     <mat-cell *matCellDef="let element">{{ element.description }}</mat-cell>
                   </ng-container>
-                  <ng-container matColumnDef="feedback" style="display: flex; ">
-                    <mat-header-cell *matHeaderCellDef>Feedback</mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{ element.feedback }}
-                      <div class="btn-group" role="group">
-                        <button mat-icon-button (click)="feedback()" type="button">
-                          <mat-icon>Feedback</mat-icon>
-                        </button>
-                      </div>
-                    </mat-cell>
+                  <mat-header-row *matHeaderRowDef="displayedColumnsRequested"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumnsRequested;"></mat-row>
+                </table>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </mat-tab>
+
+     <!-- Enrolled Session -->
+    <mat-tab label="Enrolled Session">
+      <div>
+        <div class="container">
+          <form>
+            <div class="row">
+              <div class="col-md-12">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <table mat-table [dataSource]="enrolledSessionList" class="mat-elevation-z8" matSort>
+                  <ng-container matColumnDef="srno">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Sr.No</mat-header-cell>
+                    <mat-cell *matCellDef="let element let i = index;">{{ i+1 }}</mat-cell>
                   </ng-container>
-                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                  <ng-container matColumnDef="title">
+                    <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.title }}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{ element.description }}</mat-cell>
+                  </ng-container>
+                  <mat-header-row *matHeaderRowDef="displayedColumnsEnrolled"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumnsEnrolled;"></mat-row>
                 </table>
               </div>
             </div>
@@ -98,10 +112,10 @@
             </div>
             <div class="row">
               <div class="col-md-12">
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+                <table mat-table [dataSource]="attendedSessionList" class="mat-elevation-z8" matSort>
                   <ng-container matColumnDef="srno">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>Sr.No</mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{ element.srno }}</mat-cell>
+                    <mat-cell *matCellDef="let element let i = index;">{{ i+1 }}</mat-cell>
                   </ng-container>
                   <ng-container matColumnDef="title">
                     <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
@@ -115,58 +129,12 @@
                     <mat-header-cell *matHeaderCellDef>Feedback</mat-header-cell>
                     <mat-cell *matCellDef="let element">{{ element.feedback }}
                       <div class="btn-group" role="group">
-                        <button mat-icon-button (click)="feedback()" type="button">
-                          <mat-icon>Feedback</mat-icon>
-                        </button>
+                        <i class="fas fa-edit" (click)="feedback(element.id)"></i>
                       </div>
                     </mat-cell>
                   </ng-container>
-                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-                </table>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </mat-tab>
-
-    //Feedback Session
-    <mat-tab label="Feedback Session">
-      <div>
-        <div class="container">
-          <form>
-            <div class="row">
-              <div class="col-md-12">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
-                  <ng-container matColumnDef="srno">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header>Sr.No</mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{ element.srno }}</mat-cell>
-                  </ng-container>
-                  <ng-container matColumnDef="title">
-                    <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{ element.title }}</mat-cell>
-                  </ng-container>
-                  <ng-container matColumnDef="description">
-                    <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{ element.description }}</mat-cell>
-                  </ng-container>
-                  <ng-container matColumnDef="feedback" style="display: flex; ">
-                    <mat-header-cell *matHeaderCellDef>Feedback</mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{ element.feedback }}
-                      <div class="btn-group" role="group">
-                        <button mat-icon-button (click)="feedback()" type="button">
-                          <mat-icon>Feedback</mat-icon>
-                        </button>
-                      </div>
-                    </mat-cell>
-                  </ng-container>
-                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                  <mat-header-row *matHeaderRowDef="displayedColumnsAttended"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumnsAttended;"></mat-row>
                 </table>
               </div>
             </div>

@@ -36,6 +36,8 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +48,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     CreatesessionComponent,
     ExplorePageComponent,
     CardDetailsComponent,
-
     ProfileComponent,
     RequestSessionComponent,
     PaymentComponent,
@@ -79,11 +80,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSnackBarModule,
     MatTableModule,
     MatPaginatorModule
-    
-
   ],
   providers: [
     DataServiceService,
+    
     AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptInterceptor, multi: true }
   ],

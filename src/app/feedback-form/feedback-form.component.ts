@@ -1,30 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataServiceService } from '../services/data-service.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-feedback-form',
   templateUrl: './feedback-form.component.html',
   styleUrls: ['./feedback-form.component.css']
 })
-export class FeedbackFormComponent  {
+export class FeedbackFormComponent implements OnInit {
   feedbackForm: FormGroup |any;
-
-  constructor(private fb: FormBuilder, private _userService: DataServiceService, private _toastr: ToastrService, private _router:Router) {
+  stars: number[] = [1, 2, 3, 4, 5];
+  selectedValue: number | any;
+  constructor(private fb: FormBuilder,private _route: ActivatedRoute,
+    private _router:Router, private _userService: DataServiceService, private _toastr: ToastrService, @Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<FeedbackFormComponent>
+  ) {
     this.feedbackForm = this.fb.group({
-      comment: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]]
+      FeedbackComment: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
+      Rating: [''],
+      SessionId:[this.data.sessionId],
+
     });
   }
+  ngOnInit():void{
 
+}
   onSubmit() {
     if (this.feedbackForm.valid) {
       console.log('Feedback:', this.feedbackForm.value.comment);
       alert('Thank you for your feedback!');
-      this.feedbackForm.reset();
+      this.feedbackMethod();
+    
     } 
-    this.feedbackMethod();
+   
   }
 
   feedbackMethod(){
@@ -32,7 +42,7 @@ export class FeedbackFormComponent  {
       (response: any) => {
         if (response.success) {
           this._toastr.success("Request sent successfully");
-          this._router.navigate(['/my-activity']);
+this.dialogRef.close();
         }
       },
       (error: any) => {
@@ -40,5 +50,11 @@ export class FeedbackFormComponent  {
         this._toastr.error("Failed to send request");
       }
     );
+  }
+
+  countStar(star: any) {
+    this.selectedValue = star;
+    this.feedbackForm.get('Rating').patchValue(this.selectedValue)
+    console.log('Value of star', star);
   }
 }

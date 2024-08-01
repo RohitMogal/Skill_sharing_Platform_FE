@@ -29,8 +29,8 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'my-activity', component: MyActivityComponent },
-  { path: 'payment', component: PaymentComponent },
-  { path: 'feedback-form', component: FeedbackFormComponent },
+  { path: 'payment/:amount/:SessionId', component: PaymentComponent },
+    { path: 'feedback-form/:SessionId', component: FeedbackFormComponent },
 
   // { path: 'forgot-password', component: ForgotPasswordComponent },
 
