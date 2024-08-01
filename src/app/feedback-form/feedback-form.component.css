@@ -1,44 +1,35 @@
- 
-
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #004085;
-  }
-  
-  .text-danger {
-    font-size: 0.875rem;
-  }
- 
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+.text-danger {
+  font-size: 0.875rem;
+}
 form {
-  border: 2px solid #007bff; 
+  border: 2px solid #007bff;
   border-radius: 0.25rem;
   padding: 20px;
 }
-
 textarea.form-control {
-  
   border-radius: 0.25rem;
 }
 .feedback-form {
-  max-width: 600px; 
+  max-width: 600px;
 }
 .rating-list li {
   float: right;
   color: #ddd;
   padding: 10px 5px;
-
 }
-
 .rating-list li:hover,
-.rating-list li:hover ~ li, .rating-list li.selected {
+.rating-list li:hover ~ li,
+.rating-list li.selected {
   color: #ffd700;
 }
-
 .rating-list {
   display: inline-block;
   list-style: none;

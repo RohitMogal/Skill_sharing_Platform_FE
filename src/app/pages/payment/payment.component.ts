@@ -12,16 +12,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class PaymentComponent implements OnInit {
   paymentForm: FormGroup;
-
-
-
   constructor(
     private _fb: FormBuilder,
     private snackBar: MatSnackBar,
     private _userService: DataServiceService,
     private _route: ActivatedRoute,
-    private _router:Router,
-
+    private _router: Router,
     private _toastr: ToastrService
   ) {
     this.paymentForm = this._fb.group({
@@ -30,7 +26,7 @@ export class PaymentComponent implements OnInit {
       expiryDate: ['', Validators.required],
       cvv: ['', [Validators.required, Validators.pattern(/^\d{3}$/)]],
       amount: [0, Validators.required],
-      SessionId:[''],
+      SessionId: [''],
     });
   }
 
@@ -46,7 +42,7 @@ export class PaymentComponent implements OnInit {
       this.emailMethod();
     }
   }
-  emailMethod(){
+  emailMethod() {
     this._userService.emailApi(this.paymentForm.getRawValue()).subscribe(
       (response: any) => {
         if (response.success) {

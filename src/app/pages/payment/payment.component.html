@@ -7,72 +7,53 @@
     </div>
     <div class="col-md-6">
       <h4 class="text-center mb-4">Payment</h4>
-      <form [formGroup]="paymentForm" >
-
+      <form [formGroup]="paymentForm">
         <div class="mb-3">
           <label for="cardNumber" class="form-label">Card Number</label>
-          <input
-            type="text"
-            class="form-control"
-            id="cardNumber"
-            formControlName="cardNumber"
+          <input type="text" class="form-control" id="cardNumber" formControlName="cardNumber"
             placeholder="Enter card number">
-          <div *ngIf="paymentForm.get('cardNumber')?.invalid && (paymentForm.get('cardNumber')?.dirty || paymentForm.get('cardNumber')?.touched)" class="text-danger">
+          <div
+            *ngIf="paymentForm.get('cardNumber')?.invalid && (paymentForm.get('cardNumber')?.dirty || paymentForm.get('cardNumber')?.touched)"
+            class="text-danger">
             <div *ngIf="paymentForm.get('cardNumber')?.errors?.['required']">Card Number is required.</div>
             <div *ngIf="paymentForm.get('cardNumber')?.errors?.['pattern']">Card Number must be 16 digits.</div>
           </div>
         </div>
-        
         <div class="mb-3">
           <label for="cardName" class="form-label">Card Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="cardName"
-            formControlName="cardName"
+          <input type="text" class="form-control" id="cardName" formControlName="cardName"
             placeholder="Enter name on card">
-          <div *ngIf="paymentForm.get('cardName')?.invalid && (paymentForm.get('cardName')?.dirty || paymentForm.get('cardName')?.touched)" class="text-danger">
+          <div
+            *ngIf="paymentForm.get('cardName')?.invalid && (paymentForm.get('cardName')?.dirty || paymentForm.get('cardName')?.touched)"
+            class="text-danger">
             <div *ngIf="paymentForm.get('cardName')?.errors?.['required']">Card Name is required.</div>
           </div>
         </div>
-        
         <div class="mb-3">
           <label for="expiryDate" class="form-label">Expiry Date</label>
-          <input
-            type="month"
-            class="form-control"
-            id="expiryDate"
-            formControlName="expiryDate">
-          <div *ngIf="paymentForm.get('expiryDate')?.invalid && (paymentForm.get('expiryDate')?.dirty || paymentForm.get('expiryDate')?.touched)" class="text-danger">
+          <input type="month" class="form-control" id="expiryDate" formControlName="expiryDate">
+          <div
+            *ngIf="paymentForm.get('expiryDate')?.invalid && (paymentForm.get('expiryDate')?.dirty || paymentForm.get('expiryDate')?.touched)"
+            class="text-danger">
             <div *ngIf="paymentForm.get('expiryDate')?.errors?.['required']">Expiry Date is required.</div>
           </div>
         </div>
-        
         <div class="mb-3">
           <label for="cvv" class="form-label">CVV</label>
-          <input
-            type="text"
-            class="form-control"
-            id="cvv"
-            formControlName="cvv"
-            placeholder="Enter CVV">
-          <div *ngIf="paymentForm.get('cvv')?.invalid && (paymentForm.get('cvv')?.dirty || paymentForm.get('cvv')?.touched)" class="text-danger">
+          <input type="text" class="form-control" id="cvv" formControlName="cvv" placeholder="Enter CVV">
+          <div
+            *ngIf="paymentForm.get('cvv')?.invalid && (paymentForm.get('cvv')?.dirty || paymentForm.get('cvv')?.touched)"
+            class="text-danger">
             <div *ngIf="paymentForm.get('cvv')?.errors?.['required']">CVV is required.</div>
             <div *ngIf="paymentForm.get('cvv')?.errors?.['pattern']">CVV must be 3 digits.</div>
           </div>
         </div>
-        
         <div class="mb-3">
           <label for="amount" class="form-label">Total Amount</label>
-          <input
-            type="number"
-            class="form-control"
-            id="amount"
-            formControlName="amount"
-            readonly>
+          <input type="number" class="form-control" id="amount" formControlName="amount" readonly>
         </div>
-        
-        <button type="submit" class="btn btn-primary w-100" [disabled]="paymentForm.invalid" (click)="onSubmit()">Make Payment</button>
+        <button type="submit" class="btn btn-primary w-100" [disabled]="paymentForm.invalid" (click)="onSubmit()">Make
+          Payment</button>
       </form>
     </div>
   </div>

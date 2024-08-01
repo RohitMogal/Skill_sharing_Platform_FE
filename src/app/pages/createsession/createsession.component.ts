@@ -30,7 +30,6 @@ export class CreatesessionComponent implements OnInit {
     private _toaster: ToastrService,
     private _router: Router
   ) { }
-
   ngOnInit(): void {
     this.sessionForm = this._fb.group({
       Title: new FormControl(null, Validators.required),
@@ -103,19 +102,17 @@ export class CreatesessionComponent implements OnInit {
     const period = formValues.period;
     const timeString = `${date} ${hour}:${minute} ${period}`;
     const sessionTime = moment(timeString, 'YYYY-MM-DD h:mm A').format('YYYY-MM-DD HH:mm:ss');
-
     const payload = {
       ...formValues,
       Interests: formValues.Interests.map((item: any) => item.ID),
       sessionTime,
       Img: this.base64Image
     };
-
     this._userService.sessionCreate(payload).subscribe(
       (response: any) => {
         if (response.success) {
           this._toaster.success('Session created successfully');
-          this._router.navigate(['/explore-page' ]);
+          this._router.navigate(['/explore-page']);
         }
       },
       (error: any) => {

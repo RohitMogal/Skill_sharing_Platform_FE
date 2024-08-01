@@ -33,7 +33,7 @@ export class ForgotPasswordComponent implements OnInit {
       this.forgotPass();
     }
   }
-//API Logic
+  //API Logic
   forgotPass() {
     this._userService.postForgot(this.forgotPasswordForm.getRawValue()).subscribe(
       (response: any) => {
@@ -55,11 +55,9 @@ export class ForgotPasswordComponent implements OnInit {
     return (formGroup: FormGroup) => {
       const control = formGroup.get(controlName);
       const matchingControl = formGroup.get(matchingControlName);
-
       if (matchingControl?.errors && !matchingControl.errors['mustMatch']) {
         return;
       }
-
       if (control?.value !== matchingControl?.value) {
         matchingControl?.setErrors({ mustMatch: true });
       } else {

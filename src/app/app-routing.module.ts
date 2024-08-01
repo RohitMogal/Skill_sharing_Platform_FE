@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'explore-page', component: ExplorePageComponent, canActivate: [AuthGuard] },
   { path: 'card-details', component: CardDetailsComponent, canActivate: [AuthGuard] },
   { path: 'create-session', component: CreatesessionComponent, canActivate: [AuthGuard] },
-  { path: 'request-session', component: RequestSessionComponent,canActivate: [AuthGuard] },
+  { path: 'request-session', component: RequestSessionComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent },
@@ -30,17 +30,7 @@ const routes: Routes = [
   { path: 'payment', component: PaymentComponent },
   { path: 'my-activity', component: MyActivityComponent },
   { path: 'payment/:amount/:SessionId', component: PaymentComponent },
-    { path: 'feedback-form/:SessionId', component: FeedbackFormComponent },
-
-  // { path: 'forgot-password', component: ForgotPasswordComponent },
-
-
-  
-
- 
-
-
-
+  { path: 'feedback-form/:SessionId', component: FeedbackFormComponent },
 ];
 
 @NgModule({

@@ -2,47 +2,41 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataServiceService } from '../services/data-service.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router,ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-
 @Component({
   selector: 'app-feedback-form',
   templateUrl: './feedback-form.component.html',
   styleUrls: ['./feedback-form.component.css']
 })
 export class FeedbackFormComponent implements OnInit {
-  feedbackForm: FormGroup |any;
+  feedbackForm: FormGroup | any;
   stars: number[] = [1, 2, 3, 4, 5];
   selectedValue: number | any;
-  constructor(private fb: FormBuilder,private _route: ActivatedRoute,
-    private _router:Router, private _userService: DataServiceService, private _toastr: ToastrService, @Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<FeedbackFormComponent>
-  ) {
+  constructor(private fb: FormBuilder, private _route: ActivatedRoute,
+    private _router: Router, private _userService: DataServiceService, private _toastr: ToastrService, @Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<FeedbackFormComponent>) {
     this.feedbackForm = this.fb.group({
       FeedbackComment: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
       Rating: [''],
-      SessionId:[this.data.sessionId],
-
+      SessionId: [this.data.sessionId],
     });
   }
-  ngOnInit():void{
-
-}
+  ngOnInit(): void {
+  }
   onSubmit() {
     if (this.feedbackForm.valid) {
       console.log('Feedback:', this.feedbackForm.value.comment);
       alert('Thank you for your feedback!');
       this.feedbackMethod();
-    
-    } 
-   
+    }
   }
 
-  feedbackMethod(){
+  feedbackMethod() {
     this._userService.feedbackApi(this.feedbackForm.getRawValue()).subscribe(
       (response: any) => {
         if (response.success) {
           this._toastr.success("Request sent successfully");
-this.dialogRef.close();
+          this.dialogRef.close();
         }
       },
       (error: any) => {

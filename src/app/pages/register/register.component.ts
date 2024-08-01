@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DataServiceService } from '../../services/data-service.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -18,8 +17,6 @@ export class RegisterComponent implements OnInit {
   dropdownData: any[] = [];
   dropdownSettings: IDropdownSettings = {};
   intrestListDropdown: any;
-  
-
   minDate: string | undefined;
 
   constructor(private _fb: FormBuilder, private _router: Router, private _userService: DataServiceService, private _toaster: ToastrService) { }
@@ -55,14 +52,11 @@ export class RegisterComponent implements OnInit {
     };
   }
 
-
   onSubmit() {
     if (this.registerForm.value.password === this.rpwd.value) {
       this.registerMethod();
-
     }
   }
-
 
   // Registration form API logic
   registerMethod() {
@@ -108,7 +102,6 @@ export class RegisterComponent implements OnInit {
             }
             this.dropdownData.push(tempObj)
           })
-          // this.dropdownData = response.data;
           this.dropdownSettings = {
             idField: 'ID',
             textField: 'Value',

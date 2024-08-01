@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profileForm: FormGroup|any;
+  profileForm: FormGroup | any;
   isEditMode: boolean = false;
 
   constructor(private _fb: FormBuilder, private dataService: DataServiceService, private _router: Router) { }
@@ -27,12 +27,12 @@ export class ProfileComponent implements OnInit {
   loadProfile() {
     this.dataService.getUserProfile().subscribe(data => {
       this.profileForm.patchValue({
-        fullName:data.data[0].fullName,
-        email:data.data[0].email,
-        about:data.data[0].about,
-        profilePicture:data.data[0].profilePicture
+        fullName: data.data[0].fullName,
+        email: data.data[0].email,
+        about: data.data[0].about,
+        profilePicture: data.data[0].profilePicture
       });
-      this.profileForm.get('email').disable(); 
+      this.profileForm.get('email').disable();
     });
   }
 
@@ -41,14 +41,14 @@ export class ProfileComponent implements OnInit {
     if (!this.isEditMode) {
       this.profileForm.get('email').disable();
     } else {
-      this.profileForm.get('email').disable(); 
+      this.profileForm.get('email').disable();
     }
   }
   onSubmit() {
     if (this.profileForm.valid) {
       this.dataService.updateUserProfile(this.profileForm.value).subscribe(response => {
         this.isEditMode = false;
-        this.loadProfile(); 
+        this.loadProfile();
       });
     }
   }

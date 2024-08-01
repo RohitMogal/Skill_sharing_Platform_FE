@@ -52,46 +52,30 @@ export class DataServiceService {
   requestSessions(requestData: any) {
     return this.http.post(`${environment.apiUrl}/request`, requestData);
   }
-
   // My activity list API
   myActivity(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/session/myActivity`);
   }
-
-  // // My interested list API
-  // myInterestedList(): Observable<any> {
-  //   return this.http.post(`${environment.apiUrl}/session/getfilterSession`, { filter: 'interested' });
-  // }
-
-  // // My requested list API
-  // requestSessionsList(): Observable<any> {
-  //   return this.http.post(`${environment.apiUrl}/session/getfilterSession`, { filter: 'requested' });
-  // }
-
   //Make Payment API
   makePayment(paymentData: any): Observable<any> {
     return this.http.post(`${environment.apiUrl}/payment`, paymentData);
   }
-
   //DropDown Intrest API
   dropDownIntrest(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/interests`);
   }
-
   //get session request
   getSessionRequest(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/session/request`);
-    }
-
-    //Feedback API
-    feedbackApi(data:any): Observable<any> {
-      return this.http.post(`${environment.apiUrl}/feedback`,data);
-    }
-    getRequestSession(): Observable<any>{
-      return this.http.get(`${environment.apiUrl}/request`);
-    }
-
-    emailApi(data:any){
-      return this.http.post(`${environment.apiUrl}/payment`,data);
-    }
+  }
+  //Feedback API
+  feedbackApi(data: any): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/feedback`, data);
+  }
+  getRequestSession(): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/request`);
+  }
+  emailApi(data: any) {
+    return this.http.post(`${environment.apiUrl}/payment`, data);
+  }
 }

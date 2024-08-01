@@ -23,7 +23,6 @@
         </button>
       </div>
       <mat-menu #menu="matMenu">
-        
         <button mat-menu-item routerLink="/profile">
           <mat-icon>person</mat-icon>
           <span>View Profile</span>
@@ -32,12 +31,9 @@
           <mat-icon>event</mat-icon>
           <span>My Activity</span>
         </button>
-        <button mat-menu-item  (click)="logout()">
+        <button mat-menu-item (click)="logout()">
           <span><mat-icon>power_settings_new</mat-icon>Log Out</span>
         </button>
-        <!-- <button mat-menu-item class="log-btn">
-          <a class="dropdown-item" (click)="logout()"><mat-icon>power_settings_new</mat-icon>Log out</a>
-        </button> -->
       </mat-menu>
     </ul>
     <div class="ml-auto" *ngIf="!loggedIn">

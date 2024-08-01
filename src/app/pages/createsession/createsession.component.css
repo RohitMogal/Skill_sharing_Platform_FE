@@ -38,7 +38,6 @@
 .form-group {
   position: relative;
 }
-
 .custom-file-upload {
   display: inline-block;
   cursor: pointer;
@@ -48,15 +47,12 @@
   border-radius: 4px;
   background-color: transparent;
 }
-
 .custom-file-upload:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
-
 .form-control-file {
   display: none;
 }
-
 .btn {
   background-color: #009aad;
   color: white;

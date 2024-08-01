@@ -8,17 +8,15 @@
       <div
         *ngIf="feedbackForm.controls['FeedbackComment'].invalid && (feedbackForm.controls['FeedbackComment'].dirty || feedbackForm.controls['FeedbackComment'].touched)"
         class="text-danger">
-        Feedback is required 
+        Feedback is required
       </div>
       <div class="col-sm-12">
-        <ul class="list-inline rating-list" 
-            *ngFor="let star of stars" style="display: inline-block">
-              <li (click)="countStar(star)" 
-                  [ngClass]="{'selected': (star <= selectedValue)}">
-                <i class="fa fa-star"></i>
-              </li> 
+        <ul class="list-inline rating-list" *ngFor="let star of stars" style="display: inline-block">
+          <li (click)="countStar(star)" [ngClass]="{'selected': (star <= selectedValue)}">
+            <i class="fa fa-star"></i>
+          </li>
         </ul>
-    </div>
+      </div>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="feedbackForm.invalid">Submit</button>
   </form>

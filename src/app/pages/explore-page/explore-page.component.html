@@ -39,14 +39,14 @@
                             <div class="col-12 d-flex align-items-center justify-content-start p-1">
                               <img src="/assets/Profile.png" class="rounded-circle profile-photo image"
                                 alt="Profile Image" (click)="openProfileModal()">
-                                <small> <strong>{{session.fullname }}</strong></small>
+                              <small> <strong>{{session.fullname }}</strong></small>
                             </div>
                             <div class="col-12">
                               <hr class="my-1">
                             </div>
                             <div class="col-12 p-0">
                               <h6 class="mb-2 card-title">{{session.title}}</h6>
-                              <img [src]="session.Img" onerror="this.onerror=null;this.src='/assets/noFoundImage.jpg';"
+                              <img [src]="session.img" onerror="this.onerror=null;this.src='/assets/python2.jpg';"
                                 class="card-img-top" alt="Image" style="width: 100%; height: 150px; object-fit: cover;">
                               <div class="card-body p-2" style="position: relative; overflow: hidden;">
                                 <small>Session Date: <strong>{{ session.sessiontime | date: 'mediumDate'
@@ -66,7 +66,8 @@
                                 </label>
                               </div>
                             </div>
-                            <a [routerLink]="['/payment',session.amount, session.id]" class="btn w-100 mt-auto">Enroll</a>
+                            <a [routerLink]="['/payment',session.amount, session.id]"
+                              class="btn w-100 mt-auto">Enroll</a>
                           </div>
                         </div>
                       </div>
@@ -119,17 +120,16 @@
                           </div>
                           <div class="col-12 p-0">
                             <h6 class="mb-2 card-title">{{reqSession.title}}</h6>
-                            <img [src]="reqSession.Img" onerror="this.onerror=null;this.src='/assets/noFoundImage.jpg';"
-                              class="card-img-top" alt="Image" style="width: 100%; height: 150px; object-fit: cover;">
-
+                            <!-- <img [src]="reqSession.img" onerror="this.onerror=null;this.src='/src/assets/python2.jpg'"
+                              class="card-img-top" alt="Image" style="width: 100%; height: 150px; object-fit: cover;"> -->
                             <div class="card-body p-2" style="position: relative; overflow: hidden;">
-                              <small class="card-text mb-1 description" [attr.data-fulltext]="reqSession.Description"
+                              <small class="card-text mb-1 description" [attr.data-fulltext]="reqSession.description"
                                 [ngClass]="{'text-truncate': !isExpanded}">
-                                {{ reqSession.Description }}
+                                {{ reqSession.description }}
                               </small>
-                              <label class="btn-read btn-link text-primary show-more" (click)="toggleReadMore()">
+                              <!-- <label class="btn-read btn-link text-primary show-more" (click)="toggleReadMore()">
                                 {{ isExpanded ? 'Read Less' : 'Read More' }}
-                              </label>
+                              </label> -->
                             </div>
                           </div>
                           <a routerLink="/create-session" class="btn w-100 mt-auto">Create</a>

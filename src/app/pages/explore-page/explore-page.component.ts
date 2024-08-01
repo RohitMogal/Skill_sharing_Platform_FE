@@ -23,7 +23,7 @@ export class ExplorePageComponent implements OnInit {
   userInterests: any = [];
   amount: string | any;
   SessionId: string | any;
- 
+
   constructor(
     private _dialogRef: MatDialog,
     private _router: Router,
@@ -126,4 +126,5 @@ export class ExplorePageComponent implements OnInit {
   close() {
     $('#profileModal').modal('hide');
   }
+
 }
