@@ -27,6 +27,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FeedbackFormComponent } from './feedback-form/feedback-form.component';
+import { HomeComponent } from './pages/home.component';
 
 
 
@@ -44,6 +45,7 @@ import { FeedbackFormComponent } from './feedback-form/feedback-form.component';
     MyActivityComponent,
     PaymentComponent,
     FeedbackFormComponent,
+    HomeComponent
     
   ],
   imports: [
