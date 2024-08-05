@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
-  styleUrls: ['./payment.component.css']
+  styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent implements OnInit {
   paymentForm: FormGroup;
@@ -29,7 +29,7 @@ export class PaymentComponent implements OnInit {
       SessionId: [''],
     });
   }
-
+//Get Session ID and Amount from Route Parameters
   ngOnInit(): void {
     const sessionId = this._route.snapshot.paramMap.get('SessionId')!;
     const amount = this._route.snapshot.paramMap.get('amount')!;
@@ -42,6 +42,7 @@ export class PaymentComponent implements OnInit {
       this.emailMethod();
     }
   }
+  //Email API Integration
   emailMethod() {
     this._userService.emailApi(this.paymentForm.getRawValue()).subscribe(
       (response: any) => {

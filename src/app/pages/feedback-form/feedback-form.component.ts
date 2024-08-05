@@ -1,13 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DataServiceService } from '../services/data-service.service';
+import { DataServiceService } from '../../services/data-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-feedback-form',
   templateUrl: './feedback-form.component.html',
-  styleUrls: ['./feedback-form.component.css']
+  styleUrls: ['./feedback-form.component.scss']
 })
 export class FeedbackFormComponent implements OnInit {
   feedbackForm: FormGroup | any;
@@ -18,11 +18,12 @@ export class FeedbackFormComponent implements OnInit {
     this.feedbackForm = this.fb.group({
       FeedbackComment: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
       Rating: [''],
-      SessionId: [this.data.sessionId],
+      SessionId: [this.data.SessionId],
     });
   }
   ngOnInit(): void {
   }
+  //On submit event handler
   onSubmit() {
     if (this.feedbackForm.valid) {
       console.log('Feedback:', this.feedbackForm.value.comment);
@@ -30,7 +31,7 @@ export class FeedbackFormComponent implements OnInit {
       this.feedbackMethod();
     }
   }
-
+//Feedback method
   feedbackMethod() {
     this._userService.feedbackApi(this.feedbackForm.getRawValue()).subscribe(
       (response: any) => {
@@ -45,7 +46,7 @@ export class FeedbackFormComponent implements OnInit {
       }
     );
   }
-
+//Count star event handler
   countStar(star: any) {
     this.selectedValue = star;
     this.feedbackForm.get('Rating').patchValue(this.selectedValue)

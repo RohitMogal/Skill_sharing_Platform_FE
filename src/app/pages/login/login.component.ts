@@ -7,7 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-  //Call when Form submitted
+  //Submit login form
   onSubmit() {
     if (this.loginForm.valid) {
       this.login();
@@ -47,12 +47,11 @@ export class LoginComponent implements OnInit {
       },
       (error: any) => {
         console.log();
-
         this._toaster.error(error.error.message);
       }
     );
   }
-
+//Toggle password visibility
   togglePasswordVisibility() {
     this.hidePassword = !this.hidePassword;
   }

@@ -5,11 +5,10 @@ import { DataServiceService } from '../../services/data-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
-
 @Component({
   selector: 'app-createsession',
   templateUrl: './createsession.component.html',
-  styleUrls: ['./createsession.component.css']
+  styleUrls: ['./createsession.component.scss']
 })
 export class CreatesessionComponent implements OnInit {
   sessionForm: FormGroup | any;
@@ -30,6 +29,7 @@ export class CreatesessionComponent implements OnInit {
     private _toaster: ToastrService,
     private _router: Router
   ) { }
+  //Initializes the component.
   ngOnInit(): void {
     this.sessionForm = this._fb.group({
       Title: new FormControl(null, Validators.required),
@@ -56,13 +56,13 @@ export class CreatesessionComponent implements OnInit {
       allowSearchFilter: true,
     };
   }
-
+  //Initializes the minimum date for the date picker.
   initializeMinDate(): void {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     this.minDate = tomorrow.toISOString().split('T')[0];
   }
-
+  //Initializes the dropdown settings for interests.
   initializeDropdown(): void {
     this._userService.dropDownIntrest().subscribe(
       (response: any) => {
@@ -87,13 +87,13 @@ export class CreatesessionComponent implements OnInit {
       }
     );
   }
-
+  //Submits the session form.
   onSubmit(): void {
     if (this.sessionForm.valid) {
       this.createSession();
     }
   }
-
+  //Creates a new session.
   createSession() {
     const formValues = this.sessionForm.getRawValue();
     const date = formValues.date;

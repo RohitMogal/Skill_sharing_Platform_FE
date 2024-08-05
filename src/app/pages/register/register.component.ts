@@ -7,7 +7,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup | any;
@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this._fb.group({
+      //Validations
       fullName: new FormControl(null, [
         Validators.required,
         Validators.pattern("[a-zA-Z].*")
@@ -51,14 +52,14 @@ export class RegisterComponent implements OnInit {
       unSelectAllText: 'UnSelect All',
     };
   }
-
+  //Form Submit
   onSubmit() {
     if (this.registerForm.value.password === this.rpwd.value) {
       this.registerMethod();
     }
   }
 
-  // Registration form API logic
+  //Calls the user registration API.
   registerMethod() {
     let payload = this.registerForm.getRawValue();
     console.log(payload)
@@ -76,20 +77,21 @@ export class RegisterComponent implements OnInit {
     );
     this._router.navigate(['/login']);
   }
-
+  //Toggles visibility of password field
   togglePasswordVisibility() {
     this.hidePassword = !this.hidePassword;
   }
-
+  //Toggles visibility of confirm password field
   toggleConfirmPasswordVisibility() {
     this.hideConfirmPassword = !this.hideConfirmPassword;
   }
+  //Initialize minimum date for any date picker
   initializeMinDate(): void {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     this.minDate = tomorrow.toISOString().split('T')[0];
   }
-
+  //Loads interests data for dropdown
   initializeDropdown(): void {
     this._userService.dropDownIntrest().subscribe(
       (response: any) => {

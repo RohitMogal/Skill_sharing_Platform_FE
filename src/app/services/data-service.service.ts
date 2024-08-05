@@ -11,70 +11,72 @@ export class DataServiceService {
   saveUsers(data: any) {
     throw new Error('Method not implemented.');
   }
-  // apiUrl = "http://192.168.9.112:3000";
+  //Subject for token updates
   tokenSubject: Subject<any> = new Subject();
 
   constructor(private http: HttpClient, private _cookieService: CookieService) { }
 
-  //Login API 
+  //Login API request
   userLogin(data: any): Observable<any> {
     return this.http.post(`${environment.apiUrl}/auth/login`, data);
   }
-  //Register API
+  //Register API request
   userRegister(data: any): Observable<any> {
     return this.http.post(`${environment.apiUrl}/user`, data);
   }
-  //Forgot Password API
+  //Forgot Password API request
   postForgot(data: any): Observable<any> {
     return this.http.post(`${environment.apiUrl}/auth/resetPassword`, data);
   }
-  //Session API
+  //Gest session API request
   getSessions() {
     return this.http.get(`${environment.apiUrl}/session`);
   }
-  //Profile API
+  //Get User Profile API request
   getUserProfile(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/user/${this._cookieService.get('userId')}`);
   }
-  //UPdate Profile API
+  //Update User Profile API request
   updateUserProfile(data: any): Observable<any> {
     return this.http.put(`${environment.apiUrl}/user/${this._cookieService.get('userId')}`, data);
   }
-  // User Interest API
+  //Get Interests API request
   getInterests(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/interests`);
   }
-  //create session API
+  //Create Session API request
   sessionCreate(sessionData: any) {
     return this.http.post(`${environment.apiUrl}/session`, sessionData);
   }
-  //Request Session API
+  //Request Session API request
   requestSessions(requestData: any) {
     return this.http.post(`${environment.apiUrl}/request`, requestData);
   }
-  // My activity list API
+  //My Activity API request
   myActivity(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/session/myActivity`);
   }
-  //Make Payment API
+  //Make Payment API request
   makePayment(paymentData: any): Observable<any> {
     return this.http.post(`${environment.apiUrl}/payment`, paymentData);
   }
-  //DropDown Intrest API
+  //Get dropdown interests API request.
   dropDownIntrest(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/interests`);
   }
-  //get session request
+  //Get session request API request.
   getSessionRequest(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/session/request`);
   }
-  //Feedback API
+  //Feedback API request.
   feedbackApi(data: any): Observable<any> {
     return this.http.post(`${environment.apiUrl}/feedback`, data);
   }
+  //Get session request API request.
   getRequestSession(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/request`);
   }
+  //Email API request for payment
   emailApi(data: any) {
     return this.http.post(`${environment.apiUrl}/payment`, data);
   }

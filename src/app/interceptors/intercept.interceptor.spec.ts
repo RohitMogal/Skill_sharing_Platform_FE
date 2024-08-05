@@ -1,7 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-
 import { InterceptInterceptor } from './intercept.interceptor';
-
 describe('InterceptInterceptor', () => {
   beforeEach(() => TestBed.configureTestingModule({
     providers: [

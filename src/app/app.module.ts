@@ -19,11 +19,11 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { ExplorePageComponent } from './pages/explore-page/explore-page.component';
-import { CardDetailsComponent } from './pages/card-details/card-details.component';
+
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { InterceptInterceptor } from './interceptors/intercept.interceptor';
 import { AuthGuard } from './services/auth-guard/auth.guard';
-import { ProfileComponent } from './includes/profile/profile.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { DataServiceService } from './services/data-service.service';
 import { FormsModule } from '@angular/forms';
 import { RequestSessionComponent } from './pages/request-session/request-session.component';
@@ -31,7 +31,7 @@ import { PaymentComponent } from './pages/payment/payment.component';
 import { MyActivityComponent } from './pages/my-activity/my-activity.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
-import { FeedbackFormComponent } from './feedback-form/feedback-form.component';
+import { FeedbackFormComponent } from './pages/feedback-form/feedback-form.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -45,7 +45,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     FooterComponent,
     CreatesessionComponent,
     ExplorePageComponent,
-    CardDetailsComponent,
     ProfileComponent,
     RequestSessionComponent,
     PaymentComponent,

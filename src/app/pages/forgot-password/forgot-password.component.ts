@@ -7,7 +7,7 @@ import { DataServiceService } from 'src/app/services/data-service.service';
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.css']
+  styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent implements OnInit {
   forgotPasswordForm: FormGroup | any;
@@ -27,13 +27,13 @@ export class ForgotPasswordComponent implements OnInit {
       validators: this.mustMatch('newPassword', 'confirmPassword')
     });
   }
-
+  //This method is called when the form is submitted.
   onSubmit() {
     if (this.forgotPasswordForm.valid) {
       this.forgotPass();
     }
   }
-  //API Logic
+  //This method calls the forgot password API to reset the user's password.
   forgotPass() {
     this._userService.postForgot(this.forgotPasswordForm.getRawValue()).subscribe(
       (response: any) => {
@@ -50,7 +50,7 @@ export class ForgotPasswordComponent implements OnInit {
       }
     );
   }
-
+  //This method is a custom validator that checks if the two passwords match.
   mustMatch(controlName: string, matchingControlName: string) {
     return (formGroup: FormGroup) => {
       const control = formGroup.get(controlName);

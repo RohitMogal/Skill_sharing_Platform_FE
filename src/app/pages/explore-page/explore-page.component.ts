@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CardDetailsComponent } from '../card-details/card-details.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataServiceService } from '../../services/data-service.service';
 import { ToastrService } from 'ngx-toastr';
@@ -8,9 +7,10 @@ declare const $: any;
 @Component({
   selector: 'app-explore-page',
   templateUrl: './explore-page.component.html',
-  styleUrls: ['./explore-page.component.css']
+  styleUrls: ['./explore-page.component.scss']
 })
 export class ExplorePageComponent implements OnInit {
+  //Input property to receive the current session from the parent component.
   @Input() session: any;
   isExpanded: boolean = false;
   selectedCategory: string = 'All Session';
@@ -31,14 +31,13 @@ export class ExplorePageComponent implements OnInit {
     private _toster: ToastrService,
     private route: ActivatedRoute
   ) { }
-
+  //Initializes the component by fetching user interests, sessions, and request sessions.
   ngOnInit(): void {
     this.fetchUserInterests();
     this.sessionRequest();
     this.requestSessionMethod();
   }
-
-  //Explore session List
+  //Fetches sessions from the data service.
   sessionRequest() {
     this._userService.getSessions().subscribe((response: any) => {
       if (response.success === true) {
@@ -52,7 +51,7 @@ export class ExplorePageComponent implements OnInit {
       this._toster.error(error.error.message || error.statusText);
     });
   }
-
+  //Fetches user interests from the data service.
   fetchUserInterests(): void {
     this._userService.getInterests().subscribe((response: any) => {
       if (response.success === true) {
@@ -65,8 +64,7 @@ export class ExplorePageComponent implements OnInit {
       this._toster.error(error.error.message);
     });
   }
-
-  //Requested Session List
+  //Fetches request sessions from the data service.
   requestSessionMethod() {
     this._userService.getRequestSession().subscribe((response: any) => {
       if (response.success === true) {
@@ -80,6 +78,7 @@ export class ExplorePageComponent implements OnInit {
       this._toster.error(error.error.message || error.statusText);
     });
   }
+  //Filters request sessions based on the selected category.
   selectCategoryReq(category?: any) {
     this.filteredSessionsList = [];
     if (category) {
@@ -94,7 +93,7 @@ export class ExplorePageComponent implements OnInit {
       this.filteredReqSessionsList = this.requestSessionList;
     }
   }
-
+  //Filters sessions based on the selected category.
   selectCategory(category?: any) {
     this.filteredSessionsList = [];
     if (category) {
@@ -110,19 +109,13 @@ export class ExplorePageComponent implements OnInit {
     }
   }
 
-  readMore() {
-    this.dialogBox = this._dialogRef.open(CardDetailsComponent, { width: "50%" });
-  }
-
   toggleReadMore() {
     this.isExpanded = !this.isExpanded;
     this._router.navigate(['/course-detail']);
   }
-
   openProfileModal(): void {
     $('#profileModal').modal('show');
   }
-
   close() {
     $('#profileModal').modal('hide');
   }

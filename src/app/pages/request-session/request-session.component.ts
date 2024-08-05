@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-request-session',
   templateUrl: './request-session.component.html',
-  styleUrls: ['./request-session.component.css']
+  styleUrls: ['./request-session.component.scss']
 })
 export class RequestSessionComponent implements OnInit {
   requestForm: FormGroup;
@@ -21,7 +21,7 @@ export class RequestSessionComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+//Submits the request form and sends a request to the API if the form is valid.
   onSubmit() {
     if (this.requestForm.valid) {
       this.requestMethod();
@@ -29,7 +29,7 @@ export class RequestSessionComponent implements OnInit {
       this._toastr.error("Form is not valid");
     }
   }
-
+//Sends a request to the API to create a new session.
   requestMethod() {
     this._userService.requestSessions(this.requestForm.getRawValue()).subscribe(
       (response: any) => {
