@@ -39,11 +39,7 @@ export class ProfileComponent implements OnInit {
   //Toggles the edit mode flag and enables/disables the email field.
   toggleEditMode() {
     this.isEditMode = !this.isEditMode;
-    if (!this.isEditMode) {
-      this.profileForm.get('email').disable();
-    } else {
-      this.profileForm.get('email').disable();
-    }
+    this.profileForm.get('email').disable();
   }
   //Submits the profile form and updates the user's profile information.
   onSubmit() {
@@ -52,12 +48,6 @@ export class ProfileComponent implements OnInit {
         this.isEditMode = false;
         this.loadProfile();
       });
-    }
-  }
-  //Saves the profile form and updates the user's profile information.
-  onSave() {
-    if (this.profileForm.valid) {
-      this.onSubmit();
     }
   }
   //Discards the changes made to the profile form and reloads the user's profile information.

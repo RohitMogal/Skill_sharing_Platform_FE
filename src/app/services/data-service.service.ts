@@ -28,7 +28,7 @@ export class DataServiceService {
   postForgot(data: any): Observable<any> {
     return this.http.post(`${environment.apiUrl}/auth/resetPassword`, data);
   }
-  //Gest session API request
+  //Get session API request
   getSessions() {
     return this.http.get(`${environment.apiUrl}/session`);
   }

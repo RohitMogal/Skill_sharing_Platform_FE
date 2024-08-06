@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { DataServiceService } from '../../services/data-service.service';
 import { ToastrService } from 'ngx-toastr';
 declare const $: any;
@@ -25,11 +24,9 @@ export class ExplorePageComponent implements OnInit {
   SessionId: string | any;
 
   constructor(
-    private _dialogRef: MatDialog,
     private _router: Router,
     private _userService: DataServiceService,
     private _toster: ToastrService,
-    private route: ActivatedRoute
   ) { }
   //Initializes the component by fetching user interests, sessions, and request sessions.
   ngOnInit(): void {

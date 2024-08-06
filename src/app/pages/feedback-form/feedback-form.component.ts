@@ -26,7 +26,6 @@ export class FeedbackFormComponent implements OnInit {
   //On submit event handler
   onSubmit() {
     if (this.feedbackForm.valid) {
-      alert('Thank you for your feedback!');
       this.feedbackMethod();
     }
   }
