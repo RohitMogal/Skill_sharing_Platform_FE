@@ -10,12 +10,11 @@ import { CookieService } from 'ngx-cookie-service';
 export class NavbarComponent implements OnInit {
   loggedIn: any;
   constructor(private _router: Router, private _dataService: DataServiceService, private _cookieService: CookieService) {
-    console.log(_cookieService.get('token'))
     if (_cookieService.get('token') != '') {
       this.loggedIn = true;
     }
   }
-//Initializes the component.
+  //Initializes the component.
   ngOnInit(): void {
     this._dataService.tokenSubject.subscribe((response: any) => {
       if (response != null) {
@@ -31,17 +30,14 @@ export class NavbarComponent implements OnInit {
     this._cookieService.deleteAll('/', 'localhost');
     this._dataService.tokenSubject.next(null)
     this._router.navigate(['/login']);
-    console.log('Logout clicked');
   }
   //Navigates to the register page.
   register() {
     this._router.navigate(['/register'])
-    console.log('Register clicked');
   }
   //Navigates to the login page.
   login() {
     this._router.navigate(['/login'])
-    console.log('Login clicked');
   }
 
 }

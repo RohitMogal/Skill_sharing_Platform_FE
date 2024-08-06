@@ -62,7 +62,6 @@ export class RegisterComponent implements OnInit {
   //Calls the user registration API.
   registerMethod() {
     let payload = this.registerForm.getRawValue();
-    console.log(payload)
     payload.interests = payload.interests.map((obj: any) => { return obj.id })
     this._userService.userRegister(payload).subscribe(
       (response: any) => {

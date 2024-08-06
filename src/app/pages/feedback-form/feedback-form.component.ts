@@ -26,7 +26,6 @@ export class FeedbackFormComponent implements OnInit {
   //On submit event handler
   onSubmit() {
     if (this.feedbackForm.valid) {
-      console.log('Feedback:', this.feedbackForm.value.comment);
       alert('Thank you for your feedback!');
       this.feedbackMethod();
     }
@@ -50,6 +49,5 @@ export class FeedbackFormComponent implements OnInit {
   countStar(star: any) {
     this.selectedValue = star;
     this.feedbackForm.get('Rating').patchValue(this.selectedValue)
-    console.log('Value of star', star);
   }
 }
