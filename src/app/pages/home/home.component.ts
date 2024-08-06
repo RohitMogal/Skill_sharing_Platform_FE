@@ -4,8 +4,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
-  slides: Slide[] = [
+export class HomeComponent implements OnInit {
+  slides: any= [
     {
       imageUrl: 'https://plus.unsplash.com/premium_photo-1663013500813-328e1ab77be7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8b25saW5lJTIwZWR1Y2F0aW9ufGVufDB8fDB8fHww',
       quote: '"In the online world, each time you learn something new."',
