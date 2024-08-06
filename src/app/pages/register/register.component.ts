@@ -116,7 +116,7 @@ export class RegisterComponent implements OnInit {
         }
       },
       (error: any) => {
-        this._toaster.error(error.error.message);
+        this._toaster.error(error.error.message || error.statusText);
       }
     );
   }
