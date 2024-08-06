@@ -1,0 +1,110 @@
+.img-fluid {
+  border-radius: 30%;
+  height: auto;
+}
+.left {
+  padding-left: 0%;
+}
+.btn-read {
+  padding-left: 0%;
+  margin: 0%;
+}
+.card-title {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  text-align: center;
+  margin: 0px;
+  font-weight: bold;
+}
+.card-img-top {
+  width: 70%;
+  height: 50%;
+}
+.rounded-circle {
+  border-radius: 32% !important;
+}
+.modal-content {
+  border-radius: 8px;
+}
+.modal-header {
+  border-bottom: none;
+}
+.modal-body {
+  text-align: center;
+}
+.modal-footer {
+  border-top: none;
+}
+.btn-link.show-more {
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+.link-text {
+  color: black;
+}
+.btn-search {
+  margin-left: 10px;
+}
+.image {
+  width: 25px;
+  height: 25px;
+  margin: 5px;
+  object-fit: cover;
+}
+.card {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  max-height: 100%;
+}
+.card-text {
+  padding: 1%;
+}
+.btn {
+  background-color: #009aad;
+  color: white;
+}
+.container {
+  padding: 20px;
+}
+.mat-form-field {
+  margin-bottom: 20px;
+  width: 100%;
+}
+.table-container {
+  margin-top: 20px;
+}
+.mat-table {
+  width: 100%;
+}
+.mat-header-cell,
+.mat-cell {
+  padding: 20px;
+  text-align: justify;
+  justify-content: center;
+}
+.mat-header-row,
+.mat-row {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+}
+.mat-header-row {
+  font-weight: bold;
+}
+.mat-paginator {
+  margin-top: 20px;
+  justify-content: center;
+}
+.btn-group {
+  display: flex;
+}
+.mat-icon-button {
+  color: red;
+}
+.search {
+  display: flex;
+  justify-content: end;
+}

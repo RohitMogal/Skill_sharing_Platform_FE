@@ -1,0 +1,18 @@
+.container {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    border-radius: 8px;
+    padding: 20px;
+    display: flexbox;
+    box-shadow: 0px 0px 10px rgba(6, 6, 6, 0.571);
+    max-width: 55%;
+    height: 30%;
+    margin: 0 auto;
+  }
+  .form-group {
+    margin-top: 20px;
+  }
+  .btn{
+    background-color:#009AAD;
+    color:white;
+  }

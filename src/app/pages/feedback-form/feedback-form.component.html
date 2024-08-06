@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <h4 class="text-center">Feedback</h4>
+  <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" class="feedback-form border p-4 rounded mx-auto">
+    <div class="mb-3">
+      <!-- Comment Box -->
+      <label for="feedback" class="form-label">Feedback Comment</label>
+      <textarea id="feedback" class="form-control border-primary" formControlName="FeedbackComment" rows="4"
+        placeholder="Enter your feedback"></textarea>
+      <div
+        *ngIf="feedbackForm.controls['FeedbackComment'].invalid && (feedbackForm.controls['FeedbackComment'].dirty || feedbackForm.controls['FeedbackComment'].touched)"
+        class="text-danger">
+        Feedback is required
+      </div>
+      <!-- Star(Rating) Logic -->
+      <div class="col-sm-12">
+        <ul class="list-inline rating-list" *ngFor="let star of stars" style="display: inline-block">
+          <li (click)="countStar(star)" [ngClass]="{'selected': (star <= selectedValue)}">
+            <i class="fa fa-star"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="feedbackForm.invalid">Submit</button>
+  </form>
+</div>

@@ -1,0 +1,57 @@
+.container {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flexbox;
+  box-shadow: 0px 0px 10px rgba(7, 6, 6, 0.571);
+  width: 50%;
+}
+h2 {
+  margin-bottom: 20px;
+}
+.purple-bg {
+  height: 85%;
+  padding: 40px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.text-white h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: black;
+}
+.btn {
+  justify-content: end;
+  margin-top: 10%;
+}
+.password-toggle-btn {
+  background: none;
+  border: none;
+  position: absolute;
+  right: 10px;
+  top: 55%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.input-w-icon {
+  position: relative;
+}
+.text-center {
+  align-items: center;
+}
+.text-white p {
+  font-size: 16px;
+  color: black;
+}
+@media (max-width: 767px) {
+  .purple-bg {
+    display: none;
+  }
+  .container {
+    border-radius: 10px;
+  }
+}
+.btn[disabled] {
+  background-color: grey;
+  color: white;
+}

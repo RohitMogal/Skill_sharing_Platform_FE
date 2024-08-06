@@ -1,0 +1,160 @@
+.heading1 {
+  font-size: 48px;
+  display: block;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  line-height: 120%;
+  font-weight: 600;
+}
+.heading2 {
+  font-size: 35px;
+  display: block;
+  font-weight: 600px;
+  line-height: 120%;
+  padding-left: 5%;
+  padding-top: 10%;
+  font-weight: 600;
+}
+.heading3 {
+  font-size: 35px;
+  display: block;
+  font-weight: 600px;
+  line-height: 120%;
+  padding-left: 5%;
+  padding-top: 10%;
+  font-weight: 600;
+}
+.heading4 {
+  font-size: 35px;
+  display: block;
+  font-weight: 600px;
+  line-height: 120%;
+  padding-left: 5%;
+  padding-top: 10%;
+  font-weight: 600;
+}
+.heading5 {
+  font-size: 35px;
+  display: block;
+  font-weight: 600px;
+  line-height: 120%;
+  padding-left: 5%;
+  padding-top: 10%;
+  font-weight: 600;
+}
+.heading6 {
+  font-size: 35px;
+  display: block;
+  font-weight: 600px;
+  line-height: 120%;
+  padding-left: 5%;
+  padding-top: 10%;
+  font-weight: 600;
+}
+.para1 {
+  font-size: 20px;
+  display: block;
+  line-height: 155%;
+}
+.para2 {
+  font-size: 20px;
+  display: block;
+  line-height: 150%;
+  padding-top: 10%;
+}
+.para3 {
+  font-size: 20px;
+  display: block;
+  line-height: 150%;
+}
+.para6 {
+  font-size: 20px;
+  display: block;
+  line-height: 150%;
+  padding-left: 5%;
+}
+.para7 {
+  font-size: 20px;
+  display: block;
+  line-height: 150%;
+}
+.para5 {
+  font-size: 17px;
+  display: block;
+  line-height: 150%;
+}
+.star {
+  font-size: 25px;
+}
+.para8 {
+  font-size: 20px;
+  display: block;
+  line-height: 150%;
+  padding-top: 10%;
+}
+.loadingPage {
+  background-color: white;
+  padding: 10%;
+}
+.full-width {
+  text-align: center;
+  box-sizing: border-box;
+}
+.image {
+  overflow-clip-margin: content-box;
+  overflow: clip;
+  background-color: #f2f2f2;
+  width: 10%;
+}
+.card-section {
+  display: flex;
+  align-items: center;
+}
+.card-title2 {
+  margin-right: 10px;
+}
+.card-rating {
+  margin-left: 10px;
+}
+.rotate-image {
+  transform: rotate(106.733deg);
+}
+.round-image {
+  border-radius: 50%;
+  background-color: transparent;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-left: 10%;
+}
+.image1 {
+  width: 150%;
+  height: 180%;
+  margin-left: -30px;
+}
+.text-right {
+  text-align: right;
+}
+.card1 {
+  width: 80%;
+  height: 25%;
+}
+.image2 {
+  width: 90%;
+  height: 90%;
+  padding-top: 70px;
+  padding-left: 200px;
+}
+.carousel-item {
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+}
+.carousel-caption {
+  bottom: 20px;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}

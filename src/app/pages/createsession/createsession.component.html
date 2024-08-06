@@ -1,0 +1,92 @@
+<div class="container mt-2">
+    <div class="row justify-content-center">
+        <div class="col-md-12 mt-3">
+            <div class="p-2">
+                <div class="row">
+                    <div class="col-md-6  align-items-center justify-content-center">
+                        <div class="text-center">
+                            <img src="/assets/createSession.jpg" alt="Image" class="img-fluid mb-4"
+                                style="max-width: 100%;" />
+                            <p>Join our skill-sharing sessions and learn from experts around the world.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-5 ">
+                        <form [formGroup]="sessionForm" (ngSubmit)="onSubmit()" class="form-group">
+                            <!-- Title Section -->
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" id="title" class="form-control" formControlName="Title"
+                                    style="max-width: 100%;" placeholder="Enter the title of the session" />
+                            </div>
+                            <!-- Description Section -->
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea id="description" class="form-control" formControlName="Description" rows="2"
+                                    style="max-width: 100%;"
+                                    placeholder="Provide a brief description of the session"></textarea>
+                            </div>
+                            <!-- Link section -->
+                            <div class="form-group">
+                                <label for="link">Link</label>
+                                <input type="text" id="link" class="form-control" formControlName="Link"
+                                    style="max-width: 100%;" placeholder="Enter the session link" />
+                            </div>
+                            <!-- Date Section -->
+                            <div class="form-group">
+                                <label for="date">Date</label>
+                                <input type="date" id="date" class="form-control" formControlName="date" [min]="minDate"
+                                    style="max-width: 100%;" placeholder="Select a date" />
+                            </div>
+                            <!-- Time section -->
+                            <div class="form-group">
+                                <label for="time">Time</label>
+                                <div class="d-flex">
+                                    <select id="hour" class="form-control me-1" formControlName="hour">
+                                        <option value="" disabled selected>HH</option>
+                                        <option *ngFor="let hour of hours" [value]="hour">{{ hour }}</option>
+                                    </select>
+                                    <span class="me-1"></span>
+                                    <select id="minute" class="form-control me-1" formControlName="minute">
+                                        <option value="" disabled selected>MM</option>
+                                        <option *ngFor="let minute of minutes" [value]="minute">{{ minute < 10 ? '0' +
+                                                minute : minute }}</option>
+                                    </select>
+                                    <select id="period" class="form-control" formControlName="period">
+                                        <option value="" disabled selected>AM/PM</option>
+                                        <option *ngFor="let p of amPm" [value]="p">{{ p }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Interests Section -->
+                            <div class="mb-3">
+                                <label for="Interests" class="form-label">Interests</label>
+                                <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="dropdownData"
+                                    formControlName="Interests"></ng-multiselect-dropdown>
+                            </div>
+                            <!-- Amount Section -->
+                            <div class="mb-3 form-group">
+                                <label for="Amount" class="form-label">Amount</label>
+                                <input type="number" id="Amount" formControlName="Amount" class="form-control" />
+                                <small class="form-text text-danger"
+                                    *ngIf="sessionForm.get('Amount').errors?.required && sessionForm.get('Amount').touched">
+                                    *Amount is required
+                                </small>
+                                <small class="form-text text-danger"
+                                    *ngIf="sessionForm.get('Amount').errors?.min && sessionForm.get('Amount').touched">
+                                    *Amount must be greater than 0
+                                </small>
+                            </div>
+                            <!-- Image Upload Section -->
+                            <div class="form-group">
+                                <label for="Img">Upload Image</label>
+                                <input type="file" id="Img" class="form-control" (change)="onImageChange($event)"
+                                    accept="image/*" placeholder="Choose an image to upload" />
+                            </div>
+                            <button type="submit" class="btn mt-3">Create</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

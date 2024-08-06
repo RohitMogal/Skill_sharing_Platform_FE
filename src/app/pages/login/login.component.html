@@ -1,0 +1,49 @@
+<div class="container mt-2 d-flex justify-content-center">
+  <div class="row w-100 ">
+    <div class="col-md-6  d-none d-md-flex align-items-center justify-content-center purple-bg">
+      <div class=" text-center">
+        <img src="/assets/signIn.png" alt="Join Us" class="img-fluid img mb-4">
+        <h3>Welcome Back!</h3>
+        <p>Sign in to access your account and continue where you left off.</p>
+      </div>
+    </div>
+    <div class="col-md-6 mt-3">
+      <div class="d-flex align-items-center ">
+        <h2 class=" mb-4">Login</h2>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3 form-group">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" formControlName="email" class="form-control">
+          <small class="form-text text-danger"
+            *ngIf="loginForm.get('email').errors?.required && loginForm.get('email').touched">
+            *Email is required
+          </small>
+          <small class="form-text text-danger" *ngIf="loginForm.get('email').errors?.pattern">
+            *Invalid email address
+          </small>
+        </div>
+        <div class="mb-3 form-group position-relative">
+          <label for="password" class="form-label">Password</label>
+          <div class="input-w-icon">
+            <input [type]="hidePassword ? 'password' : 'text'" id="password" formControlName="password"
+              class="form-control">
+            <button type="button" class="password-toggle-btn" (click)="togglePasswordVisibility()">
+              <i class="fas" [ngClass]="hidePassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+            </button>
+          </div>
+          <small class="form-text text-danger"
+            *ngIf="loginForm.controls.password?.errors?.required && loginForm.get('password').touched">
+            *Password is required
+          </small>
+        </div>
+        <div class="text-center mt-1">
+          <small><a routerLink="/forgot-password">Forgot your Password?</a></small><br>
+          <small>Don't have an account? <a routerLink="/register">Register</a></small>
+        </div>
+        <button type="submit" class="btn btn-primary" color="loginForm.valid ? 'primary' : ''"
+          [disabled]="!loginForm.valid" style="float:right; ">Sign In</button>
+      </form>
+    </div>
+  </div>
+</div>
